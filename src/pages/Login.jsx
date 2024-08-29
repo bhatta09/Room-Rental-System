@@ -1,8 +1,11 @@
 import React from 'react'
+import AuthBg from '../components/AuthBg'
 
 const Login = () => {
   return (
-    <div>Login</div>
+    <div className=''>
+        <AuthBg />
+    </div>
   )
 }
 

@@ -15,7 +15,10 @@ const Navbar = () => {
       </div>
       <div className="flex flex-row gap-5">
         {navData.map((data) => (
-          <Link className="text-black font-semibold" to={data.path}>
+          <Link
+            className="text-black font-semibold hover:text-yellow-300"
+            to={data.path}
+          >
             {data.name}
           </Link>
         ))}

@@ -14,8 +14,9 @@ const Navbar = () => {
         Room<span className="text-yellow-400">Rental</span>
       </div>
       <div className="flex flex-row gap-5">
-        {navData.map((data) => (
+        {navData.map((data, index) => (
           <Link
+            key={index}
             className="text-black font-semibold hover:text-yellow-300"
             to={data.path}
           >

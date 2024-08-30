@@ -1,14 +1,26 @@
-import img from "../assets/room.png"
+import img from "../assets/room.png";
 const AuthBg = () => {
   return (
-    <div>
-      <h1 className="font-bold text-4xl font-serif pb-10 pt-11 pl-10">Welcome to <span className="text-yellow-400">Room <br /> Rental</span> System.</h1>
-      <p className="pl-10">Rent smarter with tailored spaces that suit your lifestyle.
-Live better in a home that truly feels like yours.
-</p>
-<img src={img} alt="" className="mt-16"/>
+    <div className=" flex flex-col gap-5 pt-10  items-center ">
+      <h1 className="font-semibold text-2xl uppercase ">
+        Welcome to <span className="text-yellow-400">Room Rental</span>
+      </h1>
+      <p className="font-semibold text-gray-500 mb-6 leading-relaxed">
+        Rent smarter with tailored spaces that suit your lifestyle.
+        <br /> Live better in a home that truly feels like yours.
+      </p>
+      <div className="px-24">
+        <img src={img} alt="" className=" w-72" />
+      </div>
+      <div>
+        <ul className="text-yellow-400 font-semibold flex  gap-9 list-disc text-base">
+          <li>FAQ+</li>
+          <li>Terms & Conditions</li>
+          <li>Privacy Policy</li>
+        </ul>
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default AuthBg;

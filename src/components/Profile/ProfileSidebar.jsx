@@ -9,7 +9,7 @@ import LogoutIcon from "@mui/icons-material/Logout";
 const sidebarData = [
   {
     name: "POST FOR FREE",
-    
+
     icon: (
       <AddHomeIcon
         sx={{
@@ -80,7 +80,7 @@ const sidebarData = [
   },
 ];
 
-const ProfileSidebar = () => {  
+const ProfileSidebar = () => {
   return (
     <div className=" w-60 border-r-2 border-gray-200 min-h-screen  shadow-lg ">
       {/* image */}
@@ -99,7 +99,7 @@ const ProfileSidebar = () => {
           {sidebarData.map((data, index) => (
             <li
               key={index}
-              className="tracking-normal p-4 text-base font-semibold flex gap-2  items-center text-black hover:text-[#f65005]    hover:translate-x-6   transition ease-in-out duration-300"
+              className=" cursor-pointer tracking-normal p-4 text-base font-semibold flex gap-2  items-center text-black hover:text-[#f65005]    hover:translate-x-6   transition ease-in-out duration-300"
             >
               <data.icon.type sx={{ fontSize: 33 }} className="text-inherit" />
               {data.name}

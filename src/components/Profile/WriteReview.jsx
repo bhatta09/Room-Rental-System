@@ -1,11 +1,7 @@
-import React from 'react'
+import React from "react";
 
 const WriteReview = () => {
-  return (
-    <div>
-      
-    </div>
-  )
-}
+  return <div>WriteReview</div>;
+};
 
-export default WriteReview
+export default WriteReview;

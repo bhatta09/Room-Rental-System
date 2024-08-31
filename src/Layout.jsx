@@ -5,8 +5,11 @@ import Footer from "./components/Footer";
 const Layout = () => {
   const location = useLocation();
   const noNavbarFooterRoutes = ["/profile"];
-  const isNoNavbarFooterRoute = noNavbarFooterRoutes.includes(
-    location.pathname
+  // const isNoNavbarFooterRoute = noNavbarFooterRoutes.includes(
+  //   location.pathname
+  // );
+  const isNoNavbarFooterRoute = noNavbarFooterRoutes.some((route) =>
+    location.pathname.startsWith(route)
   );
 
   return (

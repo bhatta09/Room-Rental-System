@@ -11,16 +11,16 @@ const Login = () => {
           Login
         </h2>
         <div>
-          <div className="mb-3 font-medium">
-            <label>username</label>
+          <div className="mb-3 font-semibold  flex flex-col gap-2">
+            <label className="text-sm">EMAIL OR USERNAME</label>
             <input
               type="name"
               placeholder="Your Email or Username"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
             />
           </div>
-          <div className="mb-3">
-            <label>password</label>
+          <div className="mb-3 font-semibold flex flex-col gap-2">
+            <label className="text-sm">PASSWORD</label>
             <input
               type="text"
               name=""
@@ -30,12 +30,15 @@ const Login = () => {
             />
           </div>
 
-          <button className="bg-yellow-400 rounded h-10 w-20 text-base font-sm text-gray-800">
+          <button className=" w-full  font-semibold bg-yellow-400 rounded h-10 w-20 text-base font-sm text-gray-800">
             Login
           </button>
-          <div className="flex gap-2 text-sm mt-5">
-            <span> Dont't Have an account?</span>
-            <Link to="/sign-up" className="text-yellow-500">
+          <div className="flex gap-2 text-sm mt-5 ">
+            <span className="text-gray-500 font-semibold">
+              {" "}
+              Dont't Have an account?
+            </span>
+            <Link to="/sign-up" className="text-yellow-400 font-semibold">
               Sign up
             </Link>
           </div>

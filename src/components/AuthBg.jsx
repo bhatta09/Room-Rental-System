@@ -13,7 +13,7 @@ const AuthBg = () => {
         <img src={img} alt="" className=" w-72" />
       </div>
       <div>
-        <ul className="text-yellow-400 font-semibold flex  gap-9 list-disc text-base">
+        <ul className="text-[#FFB200] font-semibold flex  gap-9 list-disc text-base">
           <li>FAQ+</li>
           <li>Terms & Conditions</li>
           <li>Privacy Policy</li>

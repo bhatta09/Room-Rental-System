@@ -1,9 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import ProfileSidebar from "../components/Profile/ProfileSidebar";
 
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import PostForFree from "../components/Profile/PostForFree";
+import WriteReview from "../components/Profile/WriteReview";
+import Wishlist from "../components/Profile/Wishlist";
+import ChangePassword from "../components/Profile/ChangePassword";
+import ForumReplies from "../components/Profile/ForumReplies";
+import ChangeProfile from "../components/Profile/ChangeProfile";
 
 const Profile = () => {
+  const location = useLocation();
+  const [tab, setTab] = useState("");
+  useEffect(() => {
+    const urlParams = new URLSearchParams(location.search); //location search is a query string
+    const tabFromUrl = urlParams.get("tab");
+    if (tabFromUrl) {
+      setTab(tabFromUrl);
+    }
+  }, [location.search]);
   return (
     <div className="flex flex-row">
       <ProfileSidebar />
@@ -13,7 +28,13 @@ const Profile = () => {
             Room<span className="text-[#f65005]">Rental</span>
           </div>
         </Link>
-        <div>contain</div>
+        {tab === "postforfree" && <PostForFree />}
+        {tab === "changeprofile" && <ChangeProfile />}
+
+        {tab === "forumReplies" && <ForumReplies />}
+        {tab === "changepassword" && <ChangePassword />}
+        {tab === "wishlist" && <Wishlist />}
+        {tab === "writeReview" && <WriteReview />}
       </div>
     </div>
   );

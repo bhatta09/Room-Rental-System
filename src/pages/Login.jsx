@@ -7,12 +7,12 @@ const Login = () => {
     <div className="flex flex-row gap-11 px-52">
       <AuthBg />
       <div className="max-w-lg w-full p-5 mt-10 ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg ">
-        <h2 className="text-2xl font-semibold mb-6 text-gray-800 text-center uppercase">
+        <h2 className="text-3xl font-normal mb-6 text-gray-800 text-center uppercase">
           Login
         </h2>
         <div>
           <div className="mb-3 font-semibold  flex flex-col gap-2">
-            <label className="text-sm">EMAIL OR USERNAME</label>
+            <label className="text-xs font-bold">EMAIL OR USERNAME</label>
             <input
               type="name"
               placeholder="Your Email or Username"
@@ -20,7 +20,7 @@ const Login = () => {
             />
           </div>
           <div className="mb-3 font-semibold flex flex-col gap-2">
-            <label className="text-sm">PASSWORD</label>
+            <label className="text-xs font-bold">PASSWORD</label>
             <input
               type="text"
               name=""
@@ -30,7 +30,7 @@ const Login = () => {
             />
           </div>
 
-          <button className=" w-full  font-semibold bg-yellow-400 rounded h-10 w-20 text-base font-sm text-gray-800">
+          <button className=" w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800">
             Login
           </button>
           <div className="flex gap-2 text-sm mt-5 ">
@@ -42,6 +42,14 @@ const Login = () => {
               Sign up
             </Link>
           </div>
+        </div>
+        <div>
+          <h1 className="text-xl  font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
+            or
+          </h1>
+          <h1 className="text-xl  font-normal tracking-normal mb-6 text-gray-800 text-center ">
+            Continue With
+          </h1>
         </div>
       </div>
     </div>

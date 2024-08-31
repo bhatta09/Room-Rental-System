@@ -26,7 +26,7 @@ const Navbar = () => {
       </div>
       <div className="flex items-center space-x-4">
         <Link to="/login">
-          <button className=" text-bold px-4 py-2 bg-black text-[#FFB200] rounded hover:bg-gray-800 transition">
+          <button className=" text-extrabold px-4 py-2 bg-black text-yellow-200 rounded hover:bg-gray-800 transition">
             Login
           </button>
         </Link>

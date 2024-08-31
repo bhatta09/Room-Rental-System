@@ -1,9 +1,13 @@
+import SearchIcon from "@mui/icons-material/Search";
+import PaymentsIcon from "@mui/icons-material/Payments";
+import PlaceIcon from "@mui/icons-material/Place";
+import HomeIcon from "@mui/icons-material/Home";
 const Home = () => {
   return (
     <div className=" bg-gray-50">
       {/* -Hero Section */}
       <section
-        className="relative flex items-center justify-center h-[60vh] bg-cover bg-center"
+        className="relative flex items-center justify-center h-[68vh] bg-cover bg-center"
         style={{
           backgroundImage:
             "url(https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
@@ -14,29 +18,41 @@ const Home = () => {
           <h1 className="text-5xl font-bold mb-4 animate-fade-in-down">
             Find Your Perfect Room
           </h1>
-          <p className="text-lg mb-8">
+          <p className="text-lg mb-10">
             Explore the best rooms in town with ease.
           </p>
-          <div className="flex justify-center space-x-2 mb-4">
-            <input
-              type="text"
-              placeholder="Location"
-              className="px-4 py-2 rounded-l-lg w-1/3"
-            />
-            <input
-              type="text"
-              placeholder="Room Type"
-              className="px-4 py-2 w-1/3"
-            />
-            <input
-              type="text"
-              placeholder="Budget"
-              className="px-4 py-2 rounded-r-lg w-1/3"
-            />
+          <div className="flex bg-white rounded-full  py-2 px-2 gap-4 items-center justify-center">
+            <div className="flex justify-center items-center  ">
+              <label htmlFor="">
+                <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
+              </label>
+              <input
+                type="text"
+                placeholder="Location"
+                className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+              />
+              <label htmlFor="">
+                <HomeIcon sx={{ fontSize: 30, color: "yellow" }} />
+              </label>
+              <input
+                type="text"
+                placeholder="Room Type"
+                className=" p-2 w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+              />
+              <label htmlFor="">
+                <PaymentsIcon sx={{ fontSize: 30, color: "yellow" }} />
+              </label>
+
+              <input
+                type="text"
+                placeholder="Budget"
+                className=" p-2 rounded-r-full w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+              />
+            </div>
+            <button className="px-6 py-3  font-bold text-xl h-12 bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition ">
+              <SearchIcon /> Search
+            </button>
           </div>
-          <button className="px-6 py-3 bg-yellow-500 text-white rounded-lg hover:bg-yellow-600 transition animate-bounce">
-            Search Now
-          </button>
         </div>
       </section>
       {/* Featured Rooms Section */}

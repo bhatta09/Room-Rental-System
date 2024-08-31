@@ -19,7 +19,6 @@ const SignUp = () => {
             <Grid item xs={12} sm={6}>
               <TextField
                 autoComplete="fname"
-                variant="outlined"
                 required
                 fullWidth
                 id="fullName"
@@ -29,17 +28,15 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="phoneNumber"
-                label="Ypur Phone Name"
+                label="Your Phone Name"
                 autoComplete="lname"
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="email"
@@ -50,7 +47,6 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="password"
@@ -60,7 +56,6 @@ const SignUp = () => {
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
-                variant="outlined"
                 required
                 fullWidth
                 id="confirmPassword"

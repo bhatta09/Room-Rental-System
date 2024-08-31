@@ -30,7 +30,6 @@ const Profile = () => {
         </Link>
         {tab === "postforfree" && <PostForFree />}
         {tab === "changeprofile" && <ChangeProfile />}
-
         {tab === "forumReplies" && <ForumReplies />}
         {tab === "changepassword" && <ChangePassword />}
         {tab === "wishlist" && <Wishlist />}

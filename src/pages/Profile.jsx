@@ -25,7 +25,7 @@ const Profile = () => {
       <div className="flex  flex-col">
         <Link to="/">
           <div className="text-2xl font-bold h-32 p-5 ">
-            Room<span className="text-[#f65005]">Rental</span>
+            Room<span className="text-yellow-400">Rental</span>
           </div>
         </Link>
         {tab === "postforfree" && <PostForFree />}

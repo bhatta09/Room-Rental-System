@@ -1,13 +1,14 @@
 import React from "react";
 import AuthBg from "../components/AuthBg";
 import { Link } from "react-router-dom";
+import { Button } from "@mui/material";
 
 const Login = () => {
   return (
-    <div className="flex flex-row gap-11 px-52">
+    <div className="flex flex-col md:flex-row gap-11 md:px-52 items-center justify-center overflow-hidden">
       <AuthBg />
-      <div className="max-w-lg w-full p-5 mt-10 ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg ">
-        <h2 className="text-3xl font-normal mb-6 text-gray-800 text-center uppercase">
+      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg ">
+        <h2 className="text-2xl font-normal mb-6 text-gray-800 text-center uppercase">
           Login
         </h2>
         <div>
@@ -44,12 +45,22 @@ const Login = () => {
           </div>
         </div>
         <div>
-          <h1 className="text-xl  font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
+          <h1 className="text-lg  font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
             or
           </h1>
-          <h1 className="text-xl  font-normal tracking-normal mb-6 text-gray-800 text-center ">
+          <h1 className="text-lg  font-normal tracking-normal mb-6 text-gray-800 text-center ">
             Continue With
           </h1>
+          <div className="flex justify-center">
+            <Button variant="outlined">
+              <img
+                className="w-7"
+                src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
+                alt=""
+              />
+              Google
+            </Button>
+          </div>
         </div>
       </div>
     </div>

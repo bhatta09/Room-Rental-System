@@ -1,16 +1,16 @@
 import AuthBg from "../components/AuthBg";
 import { Link } from "react-router-dom";
 
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 
 import Grid from "@material-ui/core/Grid";
+import { Button } from "@mui/material";
 
 const SignUp = () => {
   return (
-    <div className="flex flex-row px-52 gap-11">
+    <div className="flex  flex-col md:flex-row  md:px-52 md:gap-11 items-center justify-center">
       <AuthBg />
-      <div className="max-w-lg w-full p-5 mt-10 ml-10 bg-white bg-opacity-80 shadow-lg rounded-lg">
+      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-2xl">
         <h2 className="uppercase text-2xl font-semibold mb-6 text-gray-800 text-center">
           Signup
         </h2>{" "}
@@ -72,6 +72,24 @@ const SignUp = () => {
           <Link to="/login" className="text-yellow-400 font-semibold">
             login
           </Link>
+        </div>
+        <div>
+          <h1 className="text-lg  font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
+            or
+          </h1>
+          <h1 className="text-lg  font-normal tracking-normal mb-6 text-gray-800 text-center ">
+            Continue With
+          </h1>
+          <div className="flex justify-center">
+            <Button variant="outlined">
+              <img
+                className="w-7"
+                src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
+                alt=""
+              />
+              Google
+            </Button>
+          </div>
         </div>
       </div>
     </div>

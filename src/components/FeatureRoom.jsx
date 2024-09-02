@@ -1,7 +1,9 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RoofingIcon from "@mui/icons-material/Roofing";
+
 const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
   const [isHovered, setIsHovered] = useState(false);
 
@@ -32,7 +34,7 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
               />
             </div>
             <button className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 text-white font-bold text-xl">
-              View
+              <Link to="/roomdetail">View</Link>
             </button>
           </div>
         )}
@@ -46,9 +48,8 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
           {location}
         </p>
         <div className="flex justify-between items-center">
-          <span className="text-gray-700 text-sm font-medium">
-            {" "}
-            <RoofingIcon />
+          <span className="text-gray-700 text-sm font-medium flex items-center">
+            <RoofingIcon className="mr-1" />
             {roomType}
           </span>
           <span className="text-yellow-400 text-base font-semibold">

@@ -43,7 +43,7 @@ const Profile = () => {
               properties.
             </p>
             <div className="w-96 h-40 bg-yellow-300 rounded-lg flex flex-col items-center justify-center">
-              <h1 className="text-3xl font-medium"> Total Listed</h1>
+              <h1 className="text-3xl font-normal"> Total Listed</h1>
               <p className="text-2xl font-medium">0</p>
             </div>
           </div>

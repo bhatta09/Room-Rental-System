@@ -61,24 +61,64 @@ const Home = () => {
         <h2 className="text-3xl font-semibold text-center mb-8">
           Featured Rooms
         </h2>
-        <div className="flex flex-row gap-11 ">
-  <FeatureRoom 
-          imageUrl="https://www.pexels.com/photo/gray-wooden-sideboard-271816/"
-          roomName="Ground floor flat on rent in ..."
-          location="Samakhushi,Kathmandu"
-          roomType="Flat"
-          price="Rs15000/month"
-  
-  />
-   <FeatureRoom 
-          imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-          roomName="Office space for rent..."
-          location="Gwarko,Lalitpur"
-          roomType="office"
-          price="Rs25000/month"
-  
-  />
-  </div>
+        <div className="flex flex-wrap justify-center gap-11 ">
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />{" "}
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />{" "}
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+          <FeatureRoom
+            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+            roomName="Office space for rent..."
+            location="Gwarko,Lalitpur"
+            roomType="office"
+            price="Rs25000/month"
+          />
+        </div>
       </section>
       {/* Why Choose Us Section */}
       <section className="p-8 bg-gray-100">

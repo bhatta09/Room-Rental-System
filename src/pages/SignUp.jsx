@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import TextField from "@material-ui/core/TextField";
 
 import Grid from "@material-ui/core/Grid";
-import { Button } from "@mui/material";
+import { Button, OutlinedInput, Select } from "@mui/material";
 
 const SignUp = () => {
   return (
@@ -75,6 +75,15 @@ const SignUp = () => {
                 label="Confirm Password"
               />
             </Grid>
+            <Select
+              native
+              input={<OutlinedInput label="Age" id="demo-dialog-native" />}
+            >
+              <option aria-label="None" value="" />
+              <option>Thirty</option>
+              <option>Ten</option>
+              <option>Twenty</option>
+            </Select>
           </Grid>
           <button className=" mt-5 w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800">
             Signup

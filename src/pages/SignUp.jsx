@@ -8,9 +8,11 @@ import { Button } from "@mui/material";
 
 const SignUp = () => {
   return (
-    <div className="flex  flex-col md:flex-row  md:px-52 md:gap-11 items-center justify-center">
-      <AuthBg />
-      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-2xl">
+    <div className="flex  flex-col md:flex-row  md:px-52 md:gap-11">
+      <div className="mt-5">
+        <AuthBg />
+      </div>
+      <div className="max-w-lg w-full p-3 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-2xl mb-5">
         <h2 className="uppercase text-2xl font-semibold mb-6 text-gray-800 text-center">
           Signup
         </h2>{" "}
@@ -45,6 +47,17 @@ const SignUp = () => {
                 autoComplete="email"
               />
             </Grid>
+            <Grid item xs={12}>
+              <TextField
+                required
+                fullWidth
+                id="email"
+                label=" Address"
+                name="address"
+                autoComplete="email"
+              />
+            </Grid>
+
             <Grid item xs={12} sm={6}>
               <TextField
                 required

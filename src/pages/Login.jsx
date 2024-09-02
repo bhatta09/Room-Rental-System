@@ -5,9 +5,11 @@ import { Button } from "@mui/material";
 
 const Login = () => {
   return (
-    <div className="flex flex-col md:flex-row gap-11 md:px-52 items-center justify-center overflow-hidden">
-      <AuthBg />
-      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg ">
+    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden">
+      <div className="mt-5">
+        <AuthBg />
+      </div>
+      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg mb-4">
         <h2 className="text-2xl font-normal mb-6 text-gray-800 text-center uppercase">
           Login
         </h2>

@@ -2,6 +2,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
+import FeatureRoom from "../components/FeatureRoom";
 const Home = () => {
   return (
     <div className=" bg-gray-50">
@@ -60,24 +61,24 @@ const Home = () => {
         <h2 className="text-3xl font-semibold text-center mb-8">
           Featured Rooms
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="bg-white shadow-lg rounded-lg overflow-hidden transform hover:-translate-y-2 hover:shadow-xl transition">
-            <img
-              src="room1.jpg"
-              alt="Room 1"
-              className="w-full h-48 object-cover"
-            />
-            <div className="p-4">
-              <h3 className="text-xl font-semibold">Cozy Room in Downtown</h3>
-              <p className="text-gray-600">$500 / month</p>
-              <p className="text-gray-700 mt-2">
-                A beautiful room in the heart of the city with all amenities
-                included.
-              </p>
-            </div>
-          </div>
-          {/* Repeat for other rooms */}
-        </div>
+        <div className="flex flex-row gap-11 ">
+  <FeatureRoom 
+          imageUrl="https://www.pexels.com/photo/gray-wooden-sideboard-271816/"
+          roomName="Ground floor flat on rent in ..."
+          location="Samakhushi,Kathmandu"
+          roomType="Flat"
+          price="Rs15000/month"
+  
+  />
+   <FeatureRoom 
+          imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+          roomName="Office space for rent..."
+          location="Gwarko,Lalitpur"
+          roomType="office"
+          price="Rs25000/month"
+  
+  />
+  </div>
       </section>
       {/* Why Choose Us Section */}
       <section className="p-8 bg-gray-100">

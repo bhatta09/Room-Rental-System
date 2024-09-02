@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
 
 const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
   const [isHovered, setIsHovered] = useState(false);
@@ -13,7 +14,7 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
         <img src={imageUrl} alt={roomName} className="w-full h-48 object-cover" />
         {isHovered && (
           <button className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 text-white font-bold text-lg">
-            View
+            <Link to="/roomdetail">View</Link>
           </button>
         )}
       </div>

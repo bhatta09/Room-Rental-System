@@ -57,7 +57,7 @@ const ProfileSidebar = () => {
   }, [location.search]);
 
   return (
-    <div className=" w-60 border-r-2 border-gray-200 min-h-screen  shadow-lg ">
+    <div className="w-60 min-w-[240px] border-r-2 border-gray-200 min-h-screen  shadow-lg ">
       {/* image */}
       <div className="flex flex-col justify-center items-center gap-1 mt-2 mb-10 pl-4">
         <img
@@ -69,7 +69,9 @@ const ProfileSidebar = () => {
       </div>
       {/* Dashboard */}
       <div className="pl-4">
-        <h1 className="text-base font-semibold mb-4">Dashboard</h1>
+        <Link to="/profile">
+          <h1 className=" pl-4 text-lg font-semibold mb-4  ">Dashboard</h1>
+        </Link>
         <ul>
           {sidebarData.map((data, index) => (
             <li

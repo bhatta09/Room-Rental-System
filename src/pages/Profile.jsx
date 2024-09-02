@@ -12,13 +12,18 @@ import ChangeProfile from "../components/Profile/ChangeProfile";
 const Profile = () => {
   const location = useLocation();
   const [tab, setTab] = useState("");
+
   useEffect(() => {
-    const urlParams = new URLSearchParams(location.search); //location search is a query string
+    const urlParams = new URLSearchParams(location.search);
     const tabFromUrl = urlParams.get("tab");
-    if (tabFromUrl) {
+
+    if (location.pathname === "/profile") {
+      setTab("");
+    } else if (tabFromUrl) {
       setTab(tabFromUrl);
     }
-  }, [location.search]);
+  }, [location.pathname, location.search]);
+
   return (
     <div className="flex flex-row">
       <ProfileSidebar />
@@ -28,6 +33,21 @@ const Profile = () => {
             Room<span className="text-yellow-400">Rental</span>
           </div>
         </Link>
+        {location.pathname === "/profile" && (
+          <div className="ml-6">
+            <h1 className="text-3xl font-medium">Hello ,Swornim Shrestha</h1>
+            <p className="text-lg mb-6">
+              Welcome to your control panel. Here, you have access to add new
+              properties, promote your property, change your password, change
+              your name & contact details, and also track your listed & pending
+              properties.
+            </p>
+            <div className="w-96 h-40 bg-yellow-300 rounded-lg flex flex-col items-center justify-center">
+              <h1 className="text-3xl font-medium"> Total Listed</h1>
+              <p className="text-2xl font-medium">0</p>
+            </div>
+          </div>
+        )}
         {tab === "postforfree" && <PostForFree />}
         {tab === "changeprofile" && <ChangeProfile />}
         {tab === "forumReplies" && <ForumReplies />}

@@ -1,7 +1,10 @@
 import React from "react";
 
+
 const ChangeProfile = () => {
-  return <div>ChangeProfile</div>;
+  return <div>
+   
+  </div>;
 };
 
 export default ChangeProfile;

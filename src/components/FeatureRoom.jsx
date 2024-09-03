@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import FavoriteIcon from "@mui/icons-material/Favorite";
@@ -26,7 +26,7 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
               <FavoriteIcon
                 sx={{
                   color: "white",
-                  fontSize: 30,
+                  fontSize: 28,
                   "&:hover": {
                     color: "black",
                   },

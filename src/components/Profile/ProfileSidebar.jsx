@@ -70,13 +70,13 @@ const ProfileSidebar = () => {
       {/* Dashboard */}
       <div className="pl-4">
         <Link to="/profile">
-          <h1 className=" pl-4 text-lg font-semibold mb-4  ">Dashboard</h1>
+          <h1 className=" pl-4 text-lg font-medium mb-4  ">Dashboard</h1>
         </Link>
         <ul>
           {sidebarData.map((data, index) => (
             <li
               key={index}
-              className={`cursor-pointer tracking-normal p-4 text-base font-semibold flex gap-2 items-center text-black hover:text-yellow-400 hover:translate-x-6 transition ease-in-out duration-300 ${
+              className={`cursor-pointer tracking-normal p-4 text-base  flex gap-2 items-center text-black hover:text-yellow-400 hover:translate-x-6 transition ease-in-out duration-300 ${
                 tab === data.tab ? " text-[#FFB200]" : ""
               }`}
             >

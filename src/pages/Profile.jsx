@@ -34,16 +34,18 @@ const Profile = () => {
           </div>
         </Link>
         {location.pathname === "/profile" && (
-          <div className="ml-6">
-            <h1 className="text-3xl font-medium">Hello ,Swornim Shrestha</h1>
-            <p className="text-lg mb-6">
+          <div className="mx-6 ">
+            <h1 className="text-3xl font-normal mb-2">
+              Hello ,Swornim Shrestha
+            </h1>
+            <p className="text-base leading-6 tracking-wide mb-6">
               Welcome to your control panel. Here, you have access to add new
               properties, promote your property, change your password, change
               your name & contact details, and also track your listed & pending
               properties.
             </p>
-            <div className="w-96 h-40 bg-yellow-300 rounded-lg flex flex-col items-center justify-center">
-              <h1 className="text-3xl font-normal"> Total Listed</h1>
+            <div className="w-80 h-40 bg-yellow-300 rounded-lg flex flex-col items-center justify-center">
+              <h1 className="text-2xl font-normal"> Total Listed</h1>
               <p className="text-2xl font-medium">0</p>
             </div>
           </div>

@@ -16,7 +16,7 @@ const Home = () => {
       >
         <div className="absolute inset-0 bg-black opacity-50"></div>
         <div className="relative text-center text-white z-10">
-          <h1 className="text-5xl font-bold mb-4 animate-fade-in-down">
+          <h1 className="text-5xl font-medium mb-4 animate-fade-in-down">
             Find Your Perfect Room
           </h1>
           <p className="text-lg mb-10">
@@ -30,7 +30,7 @@ const Home = () => {
               <input
                 type="text"
                 placeholder="Location"
-                className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+                className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
               />
               <label htmlFor="">
                 <HomeIcon sx={{ fontSize: 30, color: "yellow" }} />
@@ -38,7 +38,7 @@ const Home = () => {
               <input
                 type="text"
                 placeholder="Room Type"
-                className=" p-2 w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+                className=" p-2 w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
               />
               <label htmlFor="">
                 <PaymentsIcon sx={{ fontSize: 30, color: "yellow" }} />
@@ -47,7 +47,7 @@ const Home = () => {
               <input
                 type="text"
                 placeholder="Budget"
-                className=" p-2 rounded-r-full w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-semibold text-base"
+                className=" p-2 rounded-r-full w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
               />
             </div>
             <button className="px-6 py-3  font-bold text-xl h-12 bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition ">
@@ -58,7 +58,7 @@ const Home = () => {
       </section>
       {/* Featured Rooms Section */}
       <section className="p-8">
-        <h2 className="text-3xl font-semibold text-center mb-8">
+        <h2 className="text-3xl font-normal text-center mb-8">
           Featured Rooms
         </h2>
         <div className="flex flex-wrap justify-center gap-11 ">

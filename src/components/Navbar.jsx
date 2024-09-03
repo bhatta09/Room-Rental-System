@@ -44,7 +44,7 @@ const Navbar = () => {
         {navData.map((data, index) => (
           <Link
             key={index}
-            className="text-black font-semibold hover:text-yellow-300"
+            className="text-black font-medium hover:text-yellow-300 "
             to={data.path}
           >
             {data.name}

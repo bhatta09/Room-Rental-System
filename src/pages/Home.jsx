@@ -3,6 +3,7 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
 import FeatureRoom from "../components/FeatureRoom";
+import AboutUs from "./AboutUs";
 const Home = () => {
   return (
     <div className=" bg-gray-50">
@@ -119,6 +120,9 @@ const Home = () => {
             price="Rs25000/month"
           />
         </div>
+      </section>
+      <section>
+        <AboutUs />
       </section>
       {/* Why Choose Us Section */}
       <section className="p-8 bg-gray-100">

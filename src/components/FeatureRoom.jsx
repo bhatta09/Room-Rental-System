@@ -40,7 +40,7 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
         )}
       </div>
       <div className="p-4">
-        <h3 className="text-xl font-semibold mb-2">{roomName}</h3>
+        <h3 className="text-lg font-normal mb-2">{roomName}</h3>
         <p className="text-gray-600 text-sm flex items-center mb-4">
           <span className="mr-2">
             <PlaceIcon />

@@ -1,4 +1,5 @@
 import img from "../assets/room1.jpg"
+import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
     <div className="bg-gray-100 flex flex-col md:flex-row items-center justify-between p-11 rounded-lg shadow-md">
@@ -16,7 +17,7 @@ const AboutUs = () => {
            user interaction and satisfaction
         </p>
         <button className="mt-4 px-6 py-2 bg-yellow-400 text-white rounded-md hover:bg-yellow-700 transition duration-300">
-          VIEW MORE →
+         <Link to="/about"> VIEW MORE → </Link>
         </button>
       </div>
 

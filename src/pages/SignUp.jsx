@@ -1,18 +1,55 @@
 import AuthBg from "../components/AuthBg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import TextField from "@material-ui/core/TextField";
 
 import Grid from "@material-ui/core/Grid";
 import { Button } from "@mui/material";
 import { useState } from "react";
+import axios from "axios";
 
 const SignUp = () => {
+  const [formData, setFormData] = useState({
+    fullName: "swornim",
+    username: "",
+    phoneNum: "",
+    email: "",
+    address: "",
+    password: "",
+    confirmPassword: "",
+  });
   const [userType, setUserType] = useState("");
+  const navigate = useNavigate();
+  const handleChange = (e) => {
+    const { id, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    const combinedData = { ...formData, role:userType };
+    console.log(combinedData);
+    try {
+      const response = await axios.post(
+        "http://localhost:9090/api/v1/auth/signUp",
+        combinedData
+      );
+      console.log(response.data);
+      alert("Form submitted successfully!");
+      navigate("/login");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Form submission failed.");
+    }
+  };
 
   const handleUserTypeChange = (event) => {
     setUserType(event.target.value);
   };
+
   return (
     <div className="flex  flex-col md:flex-row  md:px-52 md:gap-11">
       <div className="mt-5">
@@ -26,21 +63,24 @@ const SignUp = () => {
           <Grid container spacing={2}>
             <Grid item xs={12} sm={6}>
               <TextField
-                autoComplete="fname"
                 required
                 fullWidth
                 id="fullName"
                 label="Full Name"
                 autoFocus
+                value={formData.fullName}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
-                id="phoneNumber"
-                label="Your Phone Name"
-                autoComplete="lname"
+                id="username"
+                label="User Name"
+                autoFocus
+                value={formData.username}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
@@ -49,18 +89,20 @@ const SignUp = () => {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
                 autoComplete="email"
+                value={formData.email}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12}>
               <TextField
                 required
                 fullWidth
-                id="email"
                 label=" Address"
-                name="address"
+                id="address"
                 autoComplete="email"
+                value={formData.address}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -70,6 +112,8 @@ const SignUp = () => {
                 id="password"
                 label="Password"
                 autoFocus
+                value={formData.password}
+                onChange={handleChange}
               />
             </Grid>
             <Grid item xs={12} sm={6}>
@@ -78,6 +122,19 @@ const SignUp = () => {
                 fullWidth
                 id="confirmPassword"
                 label="Confirm Password"
+                value={formData.confirmPassword}
+                onChange={handleChange}
+              />
+            </Grid>
+            <Grid item xs={12} sm={6}>
+              <TextField
+                type="number"
+                required
+                fullWidth
+                id="phoneNum"
+                label="Your Phone Name"
+                value={formData.phoneNum}
+                onChange={handleChange}
               />
             </Grid>
             <div className="my-4 ">
@@ -88,8 +145,8 @@ const SignUp = () => {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    value="landlord"
-                    checked={userType === "landlord"}
+                    value="LANDLORD"
+                    checked={userType === "LANDLORD"}
                     onChange={handleUserTypeChange}
                     className="mr-2 "
                   />
@@ -98,8 +155,8 @@ const SignUp = () => {
                 <label className="flex items-center">
                   <input
                     type="radio"
-                    value="renter"
-                    checked={userType === "renter"}
+                    value="RENTER"
+                    checked={userType === "RENTER"}
                     onChange={handleUserTypeChange}
                     className="mr-2 "
                   />
@@ -109,7 +166,10 @@ const SignUp = () => {
             </div>
             ;
           </Grid>
-          <button className=" mt-5 w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800">
+          <button
+            onClick={handleSubmit}
+            className=" mt-5 w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800 "
+          >
             Signup
           </button>
         </form>

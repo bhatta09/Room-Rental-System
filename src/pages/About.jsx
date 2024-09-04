@@ -4,6 +4,26 @@ import img from "../assets/room1.jpg";
 const About = () => {
   return (
     <div className="flex flex-col items-center justify-center py-8">
+
+    <div className="bg-white  rounded-lg overflow-hidden">
+
+      <div className='flex flex-row gap-20'>
+ <div className="md:w-1/2 flex justify-center">
+        <img src={img}  alt="About Us" className="w-full md:w-3/4 rounded-lg shadow-lg object-cover"
+        />
+        </div>
+
+ <div className='md:w-1/2 mb-6 md:mb-0'>
+          <p className='text-gray-800 pb-6'> The Room Rental System is a web application designed to streamline the process
+         of finding and renting rooms, offering a user-friendly interface for both property
+         owners and potential tenants. Built using React.js and Tailwind CSS, it features an 
+         intuitive design that showcases available rooms with key details like location, type,
+          and price. </p>
+           <p className='text-gray-800 '>Users can easily browse through room listings, view detailed information, 
+          and make inquiries directly through the platform. The system is optimized for a seamless
+           experience, providing advanced filtering options and secure login features to enhance 
+           user interaction and satisfaction</p>
+
       <div className="bg-white  rounded-lg overflow-hidden">
         <div className="relative">
           <img
@@ -34,7 +54,10 @@ const About = () => {
             filtering options and secure login features to enhance user
             interaction and satisfaction
           </p>
+
         </div>
+        </div>
+       
 
         <div className="grid grid-cols-4 m-14">
           <div>
@@ -78,7 +101,10 @@ const About = () => {
         </div>
       </div>
     </div>
+  )
+}
   );
 };
+
 
 export default About;

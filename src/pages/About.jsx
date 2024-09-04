@@ -5,26 +5,26 @@ const About = () => {
   return (
     <div className="flex flex-col items-center justify-center py-8">
     <div className="bg-white  rounded-lg overflow-hidden">
- <div className="relative">
-        <img src={img}  alt="About Us" className="w-full h-96 object-cover rounded-t-lg rounded-b-lg p-10"
-        />
-        <div className="absolute inset-0  bg-opacity-50 flex flex-col items-center justify-center">
-          <h1 className="text-3xl font-bold text-white">About Us</h1>
-          <p className="text-lg text-white mt-2">Online real estate</p>
-        </div>
-      </div>
 
-        <div className='p-10'>
-          <p className='text-gray-800 text-base leading-relaxed'> The Room Rental System is a web application designed to streamline the process
+      <div className='flex flex-row gap-20'>
+ <div className="md:w-1/2 flex justify-center">
+        <img src={img}  alt="About Us" className="w-full md:w-3/4 rounded-lg shadow-lg object-cover"
+        />
+        </div>
+
+ <div className='md:w-1/2 mb-6 md:mb-0'>
+          <p className='text-gray-800 pb-6'> The Room Rental System is a web application designed to streamline the process
          of finding and renting rooms, offering a user-friendly interface for both property
          owners and potential tenants. Built using React.js and Tailwind CSS, it features an 
          intuitive design that showcases available rooms with key details like location, type,
           and price. </p>
-           <p className='text-gray-800 text-base '>Users can easily browse through room listings, view detailed information, 
+           <p className='text-gray-800 '>Users can easily browse through room listings, view detailed information, 
           and make inquiries directly through the platform. The system is optimized for a seamless
            experience, providing advanced filtering options and secure login features to enhance 
            user interaction and satisfaction</p>
         </div>
+        </div>
+       
 
         <div className='grid grid-cols-4 m-14'>
           <div>
@@ -62,6 +62,7 @@ const About = () => {
        </div>
       </div>
     </div>
+   
   )
 }
 

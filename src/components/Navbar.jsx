@@ -66,7 +66,7 @@ const Navbar = () => {
           {navData.map((data, index) => (
             <Link
               key={index}
-              className="text-black font-semibold py-2 hover:text-yellow-300"
+              className="text-black  py-2 hover:text-yellow-300"
               to={data.path}
               onClick={() => setIsOpen(false)}
             >

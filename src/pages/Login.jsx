@@ -1,9 +1,37 @@
-import React from "react";
+import React, { useState } from "react";
 import AuthBg from "../components/AuthBg";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
+import axios from "axios";
 
 const Login = () => {
+  const [username, setusername] = useState("");
+  const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      const response = await axios.post(
+        "http://localhost:9090/api/v1/auth/signIn",
+        {
+          username,
+          password,
+        }
+      );
+
+      console.log("Response:", response.data);
+      alert("Form Submitted Successfully");
+      setPassword("");
+      setusername("");
+      setTimeout
+      navigate("/");
+    } catch (error) {
+      console.error("Error:", error);
+      alert("Form is not Submitted ");
+    }
+  };
+
   return (
     <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden">
       <div className="mt-5">
@@ -15,9 +43,11 @@ const Login = () => {
         </h2>
         <div>
           <div className="mb-3 font-semibold  flex flex-col gap-2">
-            <label className="text-xs font-bold">EMAIL OR USERNAME</label>
+            <label className="text-xs font-bold"> USERNAME</label>
             <input
               type="name"
+              value={username}
+              onChange={(e) => setusername(e.target.value)}
               placeholder="Your Email or Username"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
             />
@@ -25,6 +55,8 @@ const Login = () => {
           <div className="mb-3 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">PASSWORD</label>
             <input
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
               type="text"
               name=""
               required
@@ -33,7 +65,10 @@ const Login = () => {
             />
           </div>
 
-          <button className=" w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800">
+          <button
+            onClick={handleSubmit}
+            className="  w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800"
+          >
             Login
           </button>
           <div className="flex gap-2 text-sm mt-5 ">

@@ -3,10 +3,10 @@ import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
 import FeatureRoom from "../components/FeatureRoom";
-import AboutUs from "./AboutUs";
+import AboutUs from "../components/AboutSection";
 const Home = () => {
   return (
-    <div className=" bg-gray-50">
+    <div className=" bg-gray-50 flex flex-col gap-32">
       {/* -Hero Section */}
       <section
         className="relative flex items-center justify-center h-[68vh] bg-cover bg-center"
@@ -91,34 +91,6 @@ const Home = () => {
             roomType="office"
             price="Rs25000/month"
           />{" "}
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
         </div>
       </section>
       <section>

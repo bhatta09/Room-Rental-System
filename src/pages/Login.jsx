@@ -24,7 +24,7 @@ const Login = () => {
       alert("Form Submitted Successfully");
       setPassword("");
       setusername("");
-      setTimeout
+
       navigate("/");
     } catch (error) {
       console.error("Error:", error);

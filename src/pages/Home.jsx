@@ -6,7 +6,7 @@ import FeatureRoom from "../components/FeatureRoom";
 import AboutUs from "../components/AboutSection";
 const Home = () => {
   return (
-    <div className=" bg-gray-50 flex flex-col gap-32">
+    <div className=" bg-gray-50 flex flex-col gap-11">
       {/* -Hero Section */}
       <section
         className="relative flex items-center justify-center h-[68vh] bg-cover bg-center"
@@ -58,7 +58,7 @@ const Home = () => {
         </div>
       </section>
       {/* Featured Rooms Section */}
-      <section className="p-8">
+      <section className="p-3">
         <h2 className="text-3xl font-normal text-center mb-8">
           Featured Rooms
         </h2>

@@ -1,80 +1,109 @@
+import FavoriteIcon from "@mui/icons-material/Favorite";
+import SearchIcon from "@mui/icons-material/Search";
+import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
+import PersonIcon from "@mui/icons-material/Person";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import HomeIcon from "@mui/icons-material/Home";
 
+import PaymentsIcon from "@mui/icons-material/Payments";
 const navData = [
-  { name: "Home", path: "/" },
-  { name: "Contact", path: "/contact" },
-  { name: "About", path: "/about" },
-  { name: "Profile", path: "/profile" },
+  { name: "Promote", path: "/contact" },
+  { name: "Find me room", path: "/about" },
 ];
-
+const mobileNavData = [
+  { name: "Home", path: "/contact", icon: <HomeIcon sx={{ fontSize: 18 }} /> },
+  {
+    name: "Find me room",
+    path: "/about",
+    icon: <SearchIcon sx={{ fontSize: 18 }} />,
+  },
+  {
+    name: "Login/Signup",
+    path: "/contact",
+    icon: <PersonIcon sx={{ fontSize: 18 }} />,
+  },
+  {
+    name: "Shift room",
+    path: "/about",
+    icon: <AirportShuttleIcon sx={{ fontSize: 18 }} />,
+  },
+];
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
   return (
-    <nav className="flex justify-between items-center p-8 h-14 bg-white shadow-md relative">
-      <div className="text-2xl font-bold">
-        Room<span className="text-yellow-400">Rental</span>
+    <nav className="flex justify-between items-center py-6 bg-white  top-0  lg:px-32 sticky z-[100]">
+      <div className="flex gap-20 items-center mx-4 md:mx-0">
+        <Link to="/">
+          <div className="text-2xl font-bold ">
+            Room<span className="text-yellow-400">Rental</span>
+          </div>
+        </Link>
+
+        <div className=" text-base font-semibold uppercase  md:flex flex-col mt-[-20px] items-end hidden ">
+          <div className="w-5 h-5 rounded-full bg-yellow-300  text-white flex justify-center items-center">
+            0
+          </div>
+          <div>
+            Wishlist <FavoriteIcon sx={{ fontSize: 18 }} />
+          </div>
+        </div>
+        <div className=" ml-16 hidden md:block">
+          <Link to="/login">
+            <button className="flex items-center gap-1 text-base font-semibold uppercase ">
+              Login <PersonIcon sx={{ fontSize: 20 }} />
+            </button>
+          </Link>
+        </div>
       </div>
 
-      {/* Hamburger Icon for Mobile */}
-      <div className="md:hidden cursor-pointer" onClick={toggleMenu}>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          className="h-8 w-8 text-black"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </div>
+      <div className="flex flex-row gap-5  ">
+        <button className="md:block ">
+          <h1 className=" uppercase text-sm md:text-base font-semibold  ">
+            Add Room +
+          </h1>
+        </button>
+        <button className="md:hidden ">
+          <h1 className=" uppercase text-xs md:text-base font-semibold  border-2 border-gray-500  py-2 px-3 rounded-md ">
+            Promote
+          </h1>
+        </button>
 
-      {/* Nav Links for Desktop */}
-      <div className="hidden md:flex flex-row gap-5">
         {navData.map((data, index) => (
           <Link
             key={index}
             className="text-black font-medium hover:text-yellow-300 "
             to={data.path}
           >
-            {data.name}
+            <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
+              <h1 className=" uppercase text-xs leading-4">{data.name}</h1>
+            </button>
           </Link>
         ))}
+
+        <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
+          <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
+          <h1 className=" uppercase text-xs leading-4 font-semibold text-white">
+            shift Home
+          </h1>
+        </button>
       </div>
 
-      <div className=" md:flex md:items-center md:space-x-4 md:relative md:right-0 absolute right-20">
-        <Link to="/login">
-          <button className=" text-extrabold px-4 py-2 bg-black text-yellow-200 rounded hover:bg-gray-800 transition">
-            Login
-          </button>
-        </Link>
-      </div>
-
-      {/* Mobile Menu */}
-      {isOpen && (
-        <div className=" z-50 absolute top-16 left-0 w-full bg-white shadow-lg flex flex-col items-center md:hidden">
-          {navData.map((data, index) => (
-            <Link
-              key={index}
-              className="text-black  py-2 hover:text-yellow-300"
-              to={data.path}
-              onClick={() => setIsOpen(false)}
-            >
-              {data.name}
-            </Link>
+      <div className="w-full fixed bg-white shadow-2xl   bottom-0 z-[100] md:hidden rounded-t-full  ">
+        <div className="flex flex-row mx-8 my-3 justify-between gap-5 items-center">
+          {mobileNavData.map((data, index) => (
+            <div className=" uppercase text-xs flex flex-col items-center ">
+              {data.icon}
+              <Link
+                key={index}
+                className="text-black font-medium hover:text-yellow-300 "
+                to={data.path}
+              >
+                <h1 className="text-[10px] font-bold">{data.name}</h1>
+              </Link>
+            </div>
           ))}
         </div>
-      )}
+      </div>
     </nav>
   );
 };

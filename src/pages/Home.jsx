@@ -6,57 +6,61 @@ import FeatureRoom from "../components/FeatureRoom";
 import AboutUs from "../components/AboutSection";
 const Home = () => {
   return (
-    <div className=" bg-gray-50 flex flex-col gap-11">
+    <div className=" mt-3 flex flex-col gap-11  ">
       {/* -Hero Section */}
-      <section
-        className="relative flex items-center justify-center h-[68vh] bg-cover bg-center"
-        style={{
-          backgroundImage:
-            "url(https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)",
-        }}
-      >
-        <div className="absolute inset-0 bg-black opacity-50"></div>
-        <div className="relative text-center text-white z-10">
-          <h1 className="text-5xl font-medium mb-4 animate-fade-in-down">
-            Find Your Perfect Room
-          </h1>
-          <p className="text-lg mb-10">
-            Explore the best rooms in town with ease.
-          </p>
-          <div className="flex bg-white rounded-full  py-2 px-2 gap-4 items-center justify-center">
-            <div className="flex justify-center items-center  ">
-              <label htmlFor="">
-                <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
-              </label>
-              <input
-                type="text"
-                placeholder="Location"
-                className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
-              />
-              <label htmlFor="">
-                <HomeIcon sx={{ fontSize: 30, color: "yellow" }} />
-              </label>
-              <input
-                type="text"
-                placeholder="Room Type"
-                className=" p-2 w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
-              />
-              <label htmlFor="">
-                <PaymentsIcon sx={{ fontSize: 30, color: "yellow" }} />
-              </label>
+      <div className="mx-2 md:mx-0 lg:mx-32">
+        <section className=" shadow-xl relative flex items-center justify-center h-[48vh]  rounded-3xl bg-cover bg-center  overflow-hidden w-full bg-black">
+          {/* <div className="absolute inset-0 bg-black opacity-50"></div> */}
+          <div className="relative mt-44 text-white z-10  hidden md:block  ">
+            <div className="flex bg-white rounded-full  py-2 px-2 gap-4 items-center justify-center">
+              <div className="flex justify-center items-center  ">
+                <label htmlFor="">
+                  <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
+                </label>
+                <input
+                  type="text"
+                  placeholder="Search By Title"
+                  className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                />
+                <label htmlFor="">
+                  <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
+                </label>
+                <input
+                  type="text"
+                  placeholder=" Search for Location"
+                  className=" p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                />
+                <label htmlFor="">
+                  <HomeIcon sx={{ fontSize: 30, color: "yellow" }} />
+                </label>
+                <input
+                  type="text"
+                  placeholder="Room Type"
+                  className=" p-2 w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                />
+                <label htmlFor="">
+                  <PaymentsIcon sx={{ fontSize: 30, color: "yellow" }} />
+                </label>
 
-              <input
-                type="text"
-                placeholder="Budget"
-                className=" p-2 rounded-r-full w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
-              />
+                <input
+                  type="text"
+                  placeholder=" Select Budget"
+                  className=" p-2 rounded-r-full w-1/3  text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                />
+              </div>
+              <button className="px-6 py-3  font-bold text-xl h-12 bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition ">
+                <SearchIcon /> Search
+              </button>
             </div>
-            <button className="px-6 py-3  font-bold text-xl h-12 bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition ">
-              <SearchIcon /> Search
-            </button>
           </div>
-        </div>
-      </section>
+          <img
+            className=" w-full absolute"
+            src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </section>
+      </div>
+
       {/* Featured Rooms Section */}
       <section className="p-3">
         <h2 className="text-3xl font-normal text-center mb-8">

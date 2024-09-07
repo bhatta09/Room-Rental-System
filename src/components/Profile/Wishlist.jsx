@@ -1,5 +1,5 @@
 import React from "react";
-import RoomDetail from "../RoomDetails/RoomDetails";
+import RoomDetail from "../../pages/RoomDetails";
 import DeleteIcon from "@mui/icons-material/Delete";
 
 const Wishlist = () => {

@@ -6,7 +6,7 @@ import SignUp from "./pages/SignUp";
 import Layout from "./Layout";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
-import RoomDetail from "./components/RoomDetails/RoomDetails";
+import RoomDetail from "./pages/RoomDetails";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -41,7 +41,7 @@ const App = () => {
         },
         {
           path: "/roomdetail",
-          element: <RoomDetail />
+          element: <RoomDetail />,
         },
       ],
     },

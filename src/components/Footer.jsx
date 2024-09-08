@@ -1,5 +1,12 @@
 import { Link } from "react-router-dom"
-
+import img from "../assets/image.png"
+import PhoneIcon from '@mui/icons-material/Phone';
+import EmailIcon from '@mui/icons-material/Email';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import FacebookIcon from '@mui/icons-material/Facebook';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import XIcon from '@mui/icons-material/X';
 const Footer = () => {
   return (
     <div className="mt-10">
@@ -34,19 +41,44 @@ const Footer = () => {
 
 
   <div className="text-[12px] flex flex-col gap-5">
-    <h3 className="text-xl font-bold text-yellow-400">LOgo</h3>
-    <Link>98000000</Link>
-    <Link>9800000000</Link>
-    <Link>swornim@academiacollege.edu.np</Link>
-    <Link>Contact us</Link>
-    <Link>Social Media</Link>
+ <img src={img} alt="" className="h-20 w-32"/>
+    <Link><label htmlFor="">
+                  <PhoneIcon sx={{ fontSize: 18, color: "" }} />
+                </label> 9869348462</Link>
+    <Link><label htmlFor="">
+                  <PhoneIcon sx={{ fontSize: 18, color: "" }} />
+                </label> 9813793994</Link>
+    <Link><label htmlFor="">
+    <EmailIcon sx={{ fontSize: 18, color: "" }} />
+    </label>
+    swornim@academiacollege.edu.np</Link>
+    <div>
+      <h2>Contact Us</h2>
+      <div className="flex flex-row gap-3 ">
+      <label htmlFor="">
+      <InstagramIcon sx={{ fontSize: 18, color: "" }} />
+      </label>
+      <label htmlFor="">
+      <FacebookIcon sx={{ fontSize: 18, color: "" }} />
+      </label>
+      <label htmlFor="">
+      <LinkedInIcon sx={{ fontSize: 18, color: "" }} />
+      </label>
+      <label htmlFor="">
+      <YouTubeIcon sx={{ fontSize: 18, color: "" }} />
+      </label>
+      <label htmlFor="">
+      < XIcon sx={{ fontSize: 18, color: "" }} />
+      </label>
+      </div>
+    </div>
   </div>
 </div>
 
     <footer className="p-6 bg-slate-200 text-white text-center">
       <div className="grid grid-cols-2 text-black font-semibold">
         <h3>© 2024 Room Rental. All Rights Reserved.</h3>
-        <h3>Developed by Academians hamro sano group technology</h3>
+        <h3>Developed by Academians Hamro Sano Group Technology</h3>
       </div>
     </footer>
     </div>

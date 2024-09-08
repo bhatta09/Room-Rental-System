@@ -41,7 +41,7 @@ const footerData = [
 const Footer = () => {
   return (
     <div className="mt-4  bg-[#f5f5fe]">
-      <div className="flex flex-row gap-56 bg-orange-400 py-12 px-32 ">
+      <div className="flex flex-row gap-56 bg-orange-400 py-12 lg:px-32 ">
         <div>
           <h3 className="text-2xl  font-semibold">
             Subscribe to our newsletter and we’ll keep you up to date on <br />{" "}
@@ -59,7 +59,7 @@ const Footer = () => {
           </button>
         </div>
       </div>
-      <div className="flex flex-row  px-32 mt-4 pt-4 mb-10 gap-48 ">
+      <div className="flex flex-row  lg:px-32 mt-4 pt-4 mb-10 gap-48 ">
         <div className="flex flex-row gap-32">
           <div className="flex flex-col gap-5 text-[12px]">
             <h3 className=" font-bold text-xl text-yellow-400">

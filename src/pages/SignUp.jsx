@@ -10,7 +10,7 @@ import axios from "axios";
 
 const SignUp = () => {
   const [formData, setFormData] = useState({
-    fullName: "swornim",
+    fullName: "",
     username: "",
     phoneNum: "",
     email: "",
@@ -30,12 +30,10 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const combinedData = { ...formData, role:userType };
-    console.log(combinedData);
     try {
       const response = await axios.post(
         "http://localhost:9090/api/v1/auth/signUp",
-        combinedData
+        formData
       );
       console.log(response.data);
       alert("Form submitted successfully!");
@@ -46,12 +44,8 @@ const SignUp = () => {
     }
   };
 
-  const handleUserTypeChange = (event) => {
-    setUserType(event.target.value);
-  };
-
   return (
-    <div className="flex  flex-col md:flex-row  md:px-52 md:gap-11">
+    <div className="flex  flex-col lg:flex-row  lg:px-52 md:gap-11">
       <div className="mt-5">
         <AuthBg />
       </div>
@@ -94,7 +88,7 @@ const SignUp = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12}>
+            <Grid item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -102,6 +96,18 @@ const SignUp = () => {
                 id="address"
                 autoComplete="email"
                 value={formData.address}
+                onChange={handleChange}
+              />
+            </Grid>
+
+            <Grid item xs={12} sm={6}>
+              <TextField
+                type="number"
+                required
+                fullWidth
+                id="phoneNum"
+                label="Your Phone Name"
+                value={formData.phoneNum}
                 onChange={handleChange}
               />
             </Grid>
@@ -126,45 +132,6 @@ const SignUp = () => {
                 onChange={handleChange}
               />
             </Grid>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                type="number"
-                required
-                fullWidth
-                id="phoneNum"
-                label="Your Phone Name"
-                value={formData.phoneNum}
-                onChange={handleChange}
-              />
-            </Grid>
-            <div className="my-4 ">
-              <label className="block text-gray-500 mb-2 font-semibold ml-2">
-                Are you a:
-              </label>
-              <div className="flex justify-between ml-2 gap-5">
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="LANDLORD"
-                    checked={userType === "LANDLORD"}
-                    onChange={handleUserTypeChange}
-                    className="mr-2 "
-                  />
-                  <h1 className=" text-lg text-gray-700">Landlord</h1>
-                </label>
-                <label className="flex items-center">
-                  <input
-                    type="radio"
-                    value="RENTER"
-                    checked={userType === "RENTER"}
-                    onChange={handleUserTypeChange}
-                    className="mr-2 "
-                  />
-                  <h1 className="text-lg text-gray-700">Renter</h1>
-                </label>
-              </div>
-            </div>
-            ;
           </Grid>
           <button
             onClick={handleSubmit}

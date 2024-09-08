@@ -4,7 +4,7 @@ const Footer = () => {
     <div className="flex flex-row gap-20 bg-orange-500">
     <div>
       <h3 className="text-2xl p-14 font-bold">
-        Subscribe to our newsletter and we’ll keep you up to date on{" "}
+        Subscribe to our newsletter and we’ll keep you up to date ongit 
         <br /> our products and services
       </h3>
     </div>

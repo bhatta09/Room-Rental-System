@@ -4,6 +4,9 @@ import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
 import FeatureRoom from "../components/FeatureRoom";
 import AboutUs from "../components/AboutSection";
+import LetKnow from "../components/Letknow";
+import AgentCard from "../components/AgentCard";
+import img from "../assets/image.png"
 const Home = () => {
   return (
     <div className=" mt-3 flex flex-col gap-11  ">
@@ -99,6 +102,27 @@ const Home = () => {
       </section>
       <section>
         <AboutUs />
+      </section>
+      <section>
+        <LetKnow />
+      </section>
+      <section>
+      <div className='flex flex-row gap-96 mx-56'>
+<div>
+  <h2 className="text-2xl font-semibold">Get best from the agents</h2>
+</div>
+<div>
+  <button className="bg-yellow-400 border-yellow-500 border-2 rounded-xl px-5 py-1">View All <span className="ml-2">→</span></button>
+</div>
+      </div>
+       <div className="flex flex-wrap flex-row mx-10 my-10">
+<AgentCard image={img} name="Swornim Shrestha" button="view Profile → "/>
+<AgentCard image={img} name="Swornim Shrestha" button="view Profile → "/>
+<AgentCard image={img} name="Swornim Shrestha" button="view Profile → "/>
+<AgentCard image={img} name="Swornim Shrestha" button="view Profile → "/>
+<AgentCard image={img} name="Swornim Shrestha" button="view Profile → "/>
+
+       </div>
       </section>
       {/* Why Choose Us Section */}
       <section className="p-8 bg-gray-100">

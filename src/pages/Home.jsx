@@ -5,8 +5,9 @@ import HomeIcon from "@mui/icons-material/Home";
 import FeatureRoom from "../components/FeatureRoom";
 import AboutUs from "../components/AboutSection";
 import LetKnow from "../components/Letknow";
-import AgentCard from "../components/AgentCard";
-import img from "../assets/image.png";
+import banner from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner.png";
+import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1).png";
+
 import Agent from "../components/Agent";
 const Home = () => {
   return (
@@ -63,6 +64,10 @@ const Home = () => {
             alt=""
           />
         </section>
+      </div>
+      <div className="mx-2 md:mx-0 lg:mx-32 flex justify-between">
+        <img src={banner} alt="" className="h-36 " />
+        <img src={banner1} alt="" className="h-36 " />
       </div>
 
       {/* Featured Rooms Section */}

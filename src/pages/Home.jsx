@@ -112,11 +112,11 @@ const Home = () => {
       <section>
         <LetKnow />
       </section>
-      <section>
+      <section className="bg-[#f3f4f6]">
         <Agent />
       </section>
       {/* Why Choose Us Section */}
-      <section className="p-8 bg-gray-100">
+      <section className="p-8 ">
         <h2 className="text-3xl font-semibold text-center mb-8">
           Why Choose Us?
         </h2>

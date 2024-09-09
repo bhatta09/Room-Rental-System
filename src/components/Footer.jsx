@@ -40,7 +40,7 @@ const footerData = [
 
 const Footer = () => {
   return (
-    <div className="mt-4  bg-[#f5f5fe]">
+    <div className="  bg-[#f5f5fe]">
       <div className="flex flex-row gap-56 bg-orange-400 py-12 lg:px-32 ">
         <div>
           <h3 className="text-2xl  font-semibold">

@@ -31,10 +31,7 @@ const SignUp = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:9090/api/v1/auth/signUp",
-        formData
-      );
+      const response = await axios.post("/api/v1/auth/signUp", formData);
       console.log(response.data);
       alert("Form submitted successfully!");
       navigate("/login");

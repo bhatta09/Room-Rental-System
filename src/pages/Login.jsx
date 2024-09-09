@@ -12,13 +12,10 @@ const Login = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post(
-        "http://localhost:9090/api/v1/auth/signIn",
-        {
-          username,
-          password,
-        }
-      );
+      const response = await axios.post("/api/v1/auth/signIn", {
+        username,
+        password,
+      });
 
       console.log("Response:", response.data);
       alert("Form Submitted Successfully");

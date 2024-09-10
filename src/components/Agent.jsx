@@ -4,7 +4,7 @@ import AgentCard from "./AgentCard";
 const Agent = () => {
   return (
     <div>
-      <div className="flex flex-row justify-between mx-8 md:mx-32 pt-4 ">
+      <div className="flex flex-row justify-between mx-8 md:mx-32 pt-10 ">
         <div>
           <h2 className=" text-xl md:text-2xl font-bold">
             Get best from the agents

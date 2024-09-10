@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden">
+    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden mb-24">
       <div className="mt-5">
         <AuthBg />
       </div>

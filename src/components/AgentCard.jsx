@@ -1,6 +1,6 @@
 const AgentCard = (props) => {
   return (
-    <div className="rounded-lg ">
+    <div className="rounded-lg shadow bg-[#f3f4f6] mb-6 ">
       <div className="flex flex-col  items-center justify-center  p-5 gap-1">
         <div className="">
           <img src={props.image} alt="" className="h-20 w-20 rounded-full  " />

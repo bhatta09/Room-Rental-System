@@ -13,6 +13,7 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
+// Next Arrow component
 const NextArrow = ({ onClick }) => (
   <div
     className="absolute right-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -22,6 +23,7 @@ const NextArrow = ({ onClick }) => (
   </div>
 );
 
+// Prev Arrow component
 const PrevArrow = ({ onClick }) => (
   <div
     className="absolute left-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -30,9 +32,6 @@ const PrevArrow = ({ onClick }) => (
     <MdArrowBackIos className="text-yellow-500 text-4xl" />
   </div>
 );
-
-
-
 
 const Home = () => {
   const settings = {
@@ -114,12 +113,13 @@ const Home = () => {
           />
         </section>
       </div>
+
       <div className="mx-2 md:mx-0 lg:mx-32 flex justify-between">
         <img src={banner} alt="" className="h-36" />
         <img src={banner1} alt="" className="h-36" />
       </div>
 
-   
+      {/* Featured Rooms Section */}
       <section className="p-8 gap-7">
         <h2 className="text-3xl font-normal text-center mb-8">Featured Rooms</h2>
         <Slider {...settings}>
@@ -153,8 +153,8 @@ const Home = () => {
           />
         </Slider>
       </section>
-      <section>
 
+      <section>
         <AboutUs />
       </section>
 
@@ -165,7 +165,7 @@ const Home = () => {
       <section className="bg-[#f3f4f6]">
         <Agent />
       </section>
-     
+
       <section className="p-8">
         <h2 className="text-3xl font-semibold text-center mb-8">Why Choose Us?</h2>
         <div className="flex justify-around">
@@ -182,7 +182,7 @@ const Home = () => {
           <div className="text-center">
             <div className="text-5xl mb-4">👍</div>
             <h3 className="text-xl font-semibold">Trusted Hosts</h3>
-            <p className="text-gray-600">Our hosts are verified and trustworthy.</p>
+            <p className="text-gray-600">Our hosts are verified for safety and quality.</p>
           </div>
         </div>
       </section>
@@ -191,4 +191,3 @@ const Home = () => {
 };
 
 export default Home;
-

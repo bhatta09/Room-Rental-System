@@ -11,14 +11,25 @@ import Agent from "../components/Agent";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
+// Next Arrow component
 const NextArrow = ({ onClick }) => (
   <div
     className="absolute right-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
     onClick={onClick}
   >
     <MdArrowForwardIos className="text-yellow-500 text-4xl" />
+  </div>
+);
+
+// Prev Arrow component
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute left-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
+    onClick={onClick}
+  >
+    <MdArrowBackIos className="text-yellow-500 text-4xl" />
   </div>
 );
 
@@ -30,7 +41,7 @@ const Home = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
-
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -102,15 +113,15 @@ const Home = () => {
           />
         </section>
       </div>
+
       <div className="mx-2 md:mx-0 lg:mx-32 flex justify-between">
         <img src={banner} alt="" className="h-36" />
         <img src={banner1} alt="" className="h-36" />
       </div>
 
-      <section className="p-5">
-        <h2 className="text-3xl font-normal text-center mb-8">
-          Featured Rooms
-        </h2>
+      {/* Featured Rooms Section */}
+      <section className="p-8 gap-7">
+        <h2 className="text-3xl font-normal text-center mb-8">Featured Rooms</h2>
         <Slider {...settings}>
           <FeatureRoom
             imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
@@ -142,41 +153,36 @@ const Home = () => {
           />
         </Slider>
       </section>
+
       <section>
         <AboutUs />
       </section>
+
       <section>
         <LetKnow />
       </section>
+
       <section className="bg-[#f3f4f6]">
         <Agent />
       </section>
-      {/* Why Choose Us Section */}
+
       <section className="p-8">
-        <h2 className="text-3xl font-semibold text-center mb-8">
-          Why Choose Us?
-        </h2>
+        <h2 className="text-3xl font-semibold text-center mb-8">Why Choose Us?</h2>
         <div className="flex justify-around">
           <div className="text-center">
             <div className="text-5xl mb-4">🌟</div>
             <h3 className="text-xl font-semibold">Best Locations</h3>
-            <p className="text-gray-600">
-              All our rooms are in prime locations.
-            </p>
+            <p className="text-gray-600">All our rooms are in prime locations.</p>
           </div>
           <div className="text-center">
             <div className="text-5xl mb-4">💰</div>
             <h3 className="text-xl font-semibold">Affordable Prices</h3>
-            <p className="text-gray-600">
-              We offer competitive prices for all room types.
-            </p>
+            <p className="text-gray-600">We offer competitive prices for all room types.</p>
           </div>
           <div className="text-center">
             <div className="text-5xl mb-4">👍</div>
             <h3 className="text-xl font-semibold">Trusted Hosts</h3>
-            <p className="text-gray-600">
-              Our hosts are verified and trustworthy.
-            </p>
+            <p className="text-gray-600">Our hosts are verified for safety and quality.</p>
           </div>
         </div>
       </section>

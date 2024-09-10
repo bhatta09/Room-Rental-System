@@ -11,7 +11,7 @@ import Agent from "../components/Agent";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import {  MdArrowForwardIos } from "react-icons/md";
+import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -21,6 +21,16 @@ const NextArrow = ({ onClick }) => (
     <MdArrowForwardIos className="text-yellow-500 text-4xl" />
   </div>
 );
+
+const PrevArrow = ({ onClick }) => (
+  <div
+    className="absolute left-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
+    onClick={onClick}
+  >
+    <MdArrowBackIos className="text-yellow-500 text-4xl" />
+  </div>
+);
+
 
 
 
@@ -32,7 +42,7 @@ const Home = () => {
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
-  
+    prevArrow: <PrevArrow />,
     responsive: [
       {
         breakpoint: 1024,
@@ -110,7 +120,7 @@ const Home = () => {
       </div>
 
    
-      <section className="p-5">
+      <section className="p-8 gap-7">
         <h2 className="text-3xl font-normal text-center mb-8">Featured Rooms</h2>
         <Slider {...settings}>
           <FeatureRoom
@@ -144,15 +154,18 @@ const Home = () => {
         </Slider>
       </section>
       <section>
+
         <AboutUs />
       </section>
+
       <section>
         <LetKnow />
       </section>
+
       <section className="bg-[#f3f4f6]">
         <Agent />
       </section>
-      {/* Why Choose Us Section */}
+     
       <section className="p-8">
         <h2 className="text-3xl font-semibold text-center mb-8">Why Choose Us?</h2>
         <div className="flex justify-around">

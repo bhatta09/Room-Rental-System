@@ -65,7 +65,7 @@ const Home = () => {
           />
         </section>
       </div>
-      <div className="mx-2 md:mx-0 lg:mx-32 flex justify-between">
+      <div className="mx-2 md:mx-0 lg:mx-36 flex flex-col md:flex-row md:justify-between   gap-8 md:gap-0">
         <img src={banner} alt="" className="h-36 " />
         <img src={banner1} alt="" className="h-36 " />
       </div>

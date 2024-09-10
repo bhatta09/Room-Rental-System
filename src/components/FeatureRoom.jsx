@@ -1,18 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import RoofingIcon from "@mui/icons-material/Roofing";
 
 const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
-  const [isHovered, setIsHovered] = useState(false);
-
   return (
-    <div
-      className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden"
-      onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
-    >
+    <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden group relative">
       <div className="relative">
         <img
           src={imageUrl}
@@ -20,24 +14,21 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
           className="w-full h-48 object-cover"
         />
 
-        {isHovered && (
-          <div>
-            <div className="absolute right-3 top-3 z-50 cursor-pointer hover:text-black">
-              <FavoriteIcon
-                sx={{
-                  color: "white",
-                  fontSize: 28,
-                  "&:hover": {
-                    color: "black",
-                  },
-                }}
-              />
-            </div>
-            <button className="absolute inset-0 flex justify-center items-center bg-black bg-opacity-50 text-white font-bold text-xl">
-              <Link to="/roomdetail">View</Link>
-            </button>
-          </div>
-        )}
+        <div className="absolute inset-0 bg-black bg-opacity-50 text-white font-bold text-xl flex justify-center items-center h-full -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+          <Link to="/roomdetail">View</Link>
+        </div>
+
+        <div className="absolute right-3 top-3 z-50 cursor-pointer hover:text-black">
+          <FavoriteIcon
+            sx={{
+              color: "white",
+              fontSize: 28,
+              "&:hover": {
+                color: "black",
+              },
+            }}
+          />
+        </div>
       </div>
       <div className="p-4">
         <h3 className="text-lg font-normal mb-2">{roomName}</h3>

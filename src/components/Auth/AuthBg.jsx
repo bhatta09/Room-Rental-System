@@ -1,4 +1,4 @@
-import img from "../assets/room.png";
+import img from "../../assets/room.png";
 const AuthBg = () => {
   return (
     <div className=" flex flex-col gap-5 pt-10  items-center ">

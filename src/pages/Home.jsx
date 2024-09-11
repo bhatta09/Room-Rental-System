@@ -2,16 +2,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
-import FeatureRoom from "../components/FeatureRoom";
-import AboutUs from "../components/AboutSection";
-import LetKnow from "../components/Letknow";
 import banner from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner.png";
 import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1).png";
-import Agent from "../components/Agent";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdArrowForwardIos } from "react-icons/md";
+import FeatureRoom from "../components/Home/FeatureRoom";
+import AboutUs from "../components/Home/AboutSection";
+import LetKnow from "../components/Home/Letknow";
+import Agent from "../components/Home/Agent";
 
 const NextArrow = ({ onClick }) => (
   <div

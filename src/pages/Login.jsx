@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import AuthBg from "../components/AuthBg";
+import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "@mui/material";
 import axios from "axios";

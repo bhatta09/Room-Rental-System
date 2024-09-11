@@ -7,6 +7,7 @@ import Layout from "./Layout";
 import About from "./pages/About";
 import Profile from "./pages/Profile";
 import RoomDetail from "./pages/RoomDetails";
+import EmailVerification from "./pages/EmailVerification";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -42,6 +43,10 @@ const App = () => {
         {
           path: "/roomdetail",
           element: <RoomDetail />,
+        },
+        {
+          path: "/emailverification",
+          element: <EmailVerification />,
         },
       ],
     },

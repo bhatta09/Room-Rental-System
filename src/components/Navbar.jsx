@@ -31,14 +31,13 @@ const mobileNavData = [
   },
 ];
 const Navbar = () => {
-  const [currentUser, setCurrentUser] = useState(false);
+  const [currentUser, setCurrentUser] = useState(true);
   return (
     <nav className="flex justify-between items-center pb-2 pt-1 bg-white  top-0  lg:px-32 sticky z-[100]">
       <div className="flex gap-20 items-center mx-4 md:mx-0">
         <Link to="/">
           <div className=" ">
             <img src={logo} alt="" className="w-28" />
-            {/* Room<span className="text-yellow-400">Rental</span> */}
           </div>
         </Link>
 

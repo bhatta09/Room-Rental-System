@@ -1,4 +1,4 @@
-import img from "../assets/image.png";
+import img from "../../assets/image.png";
 
 const LetKnow = () => {
   return (

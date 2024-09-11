@@ -9,6 +9,8 @@ import Profile from "./pages/Profile";
 import RoomDetail from "./pages/RoomDetails";
 import EmailVerification from "./pages/EmailVerification";
 
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -54,6 +56,18 @@ const App = () => {
   return (
     <>
       <RouterProvider router={router} />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="colored"
+      />
     </>
   );
 };

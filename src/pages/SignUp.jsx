@@ -9,14 +9,17 @@ const SignUp = () => {
   const [formData, setFormData] = useState({
     fullName: "",
     username: "",
-    phoneNum: "",
+    phoneNumber: "",
     email: "",
     address: "",
     password: "",
     confirmPassword: "",
   });
-  const [userType, setUserType] = useState("");
+
+  const [formErrors, setFormErrors] = useState({}); // State for form validation errors
+
   const navigate = useNavigate();
+
   const handleChange = (e) => {
     const { id, value } = e.target;
     setFormData((prevData) => ({
@@ -25,16 +28,31 @@ const SignUp = () => {
     }));
   };
 
+  // Google login handler
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:9090/oauth2/authorization/google";
+  };
+
+  // GitHub login handler
+  const handleGithubLogin = () => {
+    window.location.href = "http://localhost:9090/oauth2/authorization/github";
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/v1/auth/signUp", formData);
       console.log(response.data);
-      alert("Form submitted successfully!");
       navigate("/emailverification");
     } catch (error) {
-      console.error("Error:", error);
-      alert("Form submission failed.");
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        setFormErrors(errors); // Populate formErrors with API validation errors
+      } else {
+        setFormErrors({
+          general: "An unexpected error occurred",
+        });
+      }
     }
   };
 
@@ -49,8 +67,9 @@ const SignUp = () => {
         </h2>{" "}
         <form>
           <Grid2 container spacing={2}>
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
                 id="fullName"
@@ -58,21 +77,26 @@ const SignUp = () => {
                 autoFocus
                 value={formData.fullName}
                 onChange={handleChange}
+                error={!!formErrors.fullName}
+                helperText={formErrors.fullName}
               />
             </Grid2>
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
                 id="username"
                 label="User Name"
-                autoFocus
                 value={formData.username}
                 onChange={handleChange}
+                error={!!formErrors.username}
+                helperText={formErrors.username}
               />
             </Grid2>
-            <Grid2 item xs={12}>
+            <Grid2 size={16}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
                 id="email"
@@ -80,81 +104,101 @@ const SignUp = () => {
                 autoComplete="email"
                 value={formData.email}
                 onChange={handleChange}
+                error={!!formErrors.email}
+                helperText={formErrors.email}
               />
             </Grid2>
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
-                label=" Address"
+                label="Address"
                 id="address"
-                autoComplete="email"
                 value={formData.address}
                 onChange={handleChange}
+                error={!!formErrors.address}
+                helperText={formErrors.address}
               />
             </Grid2>
 
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 type="number"
                 required
                 fullWidth
-                id="phoneNum"
-                label="Your Phone Name"
-                value={formData.phoneNum}
+                id="phoneNumber"
+                label="Phone Number"
+                value={formData.phoneNumber}
                 onChange={handleChange}
+                error={!!formErrors.phoneNumber}
+                helperText={formErrors.phoneNumber}
               />
             </Grid2>
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
                 id="password"
                 label="Password"
-                autoFocus
                 value={formData.password}
                 onChange={handleChange}
+                error={!!formErrors.error}
+                helperText={formErrors.error}
               />
             </Grid2>
-            <Grid2 item xs={12} sm={6}>
+            <Grid2 size={6}>
               <TextField
+                variant="standard"
                 required
                 fullWidth
                 id="confirmPassword"
                 label="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
+                error={!!formErrors.error}
+                helperText={formErrors.error}
               />
             </Grid2>
           </Grid2>
           <button
             onClick={handleSubmit}
-            className=" mt-5 w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800 "
+            className="mt-5 w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-gray-800"
           >
             Signup
           </button>
         </form>
-        <div className="flex gap-2 text-sm mt-5 ">
-          <span className="text-gray-500 font-semibold"> Already a member</span>
-          <Link to="/login/:token" className="text-yellow-400 font-semibold">
+        <div className="flex gap-2 text-sm mt-5">
+          <span className="text-gray-500 font-semibold">Already a member</span>
+          <Link to="/login" className="text-yellow-400 font-semibold">
             login
           </Link>
         </div>
         <div>
-          <h1 className="text-lg  font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
+          <h1 className="text-lg font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
             or
           </h1>
-          <h1 className="text-lg  font-normal tracking-normal mb-6 text-gray-800 text-center ">
+          <h1 className="text-lg font-normal tracking-normal mb-6 text-gray-800 text-center">
             Continue With
           </h1>
-          <div className="flex justify-center">
-            <Button variant="outlined">
+          <div className="flex justify-center gap-2">
+            <Button variant="outlined" onClick={handleGoogleLogin}>
               <img
                 className="w-7"
                 src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-                alt=""
+                alt="Google"
               />
               Google
+            </Button>
+            <Button variant="outlined" onClick={handleGithubLogin}>
+              <img
+                className="w-7"
+                src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
+                alt="GitHub"
+              />
+              GitHub
             </Button>
           </div>
         </div>

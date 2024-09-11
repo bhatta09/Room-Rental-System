@@ -110,7 +110,7 @@ const Login = () => {
           <h1 className="text-lg  font-normal tracking-normal mb-6 text-gray-800 text-center ">
             Continue With
           </h1>
-          <div className="flex justify-center">
+          <div className="flex justify-center gap-2">
             <Button variant="outlined" onClick={handleGoogleLogin}>
               <img
                 className="w-7"
@@ -119,10 +119,10 @@ const Login = () => {
               />
               Google
             </Button>
-            <Button variant="outlined" onClick={handleGithubLogin}>
+            <Button variant="outlined"  onClick={handleGithubLogin}>
               <img
                 className="w-7"
-                src="https://img.icons8.com/?size=100&id=17960&format=png&color=000000"
+                src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
                 alt="GitHub"
               />
               GitHub

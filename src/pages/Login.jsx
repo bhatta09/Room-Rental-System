@@ -1,10 +1,13 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import AuthBg from "../components/Auth/AuthBg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import axios from "axios";
 
 const Login = () => {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get("token");
+
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
@@ -29,8 +32,30 @@ const Login = () => {
     }
   };
 
+  useEffect(() => {
+    const extractDetails = async () => {
+      const response = await axios.get("/api/user/extract-details", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+    };
+    extractDetails();
+  }, []);
+
+  // Google login handler
+  const handleGoogleLogin = () => {
+    window.location.href = "http://localhost:9090/oauth2/authorization/google"; // Replace with your actual backend URL for Google
+  };
+
+  // GitHub login handler
+  const handleGithubLogin = () => {
+    window.location.href = "http://localhost:9090/oauth2/authorization/github"; // Replace with your actual backend URL for GitHub
+  };
+
   return (
-    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden mb-24">
+    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden mb-24 ">
       <div className="mt-5">
         <AuthBg />
       </div>
@@ -86,13 +111,21 @@ const Login = () => {
             Continue With
           </h1>
           <div className="flex justify-center">
-            <Button variant="outlined">
+            <Button variant="outlined" onClick={handleGoogleLogin}>
               <img
                 className="w-7"
                 src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-                alt=""
+                alt="Google"
               />
               Google
+            </Button>
+            <Button variant="outlined" onClick={handleGithubLogin}>
+              <img
+                className="w-7"
+                src="https://img.icons8.com/?size=100&id=17960&format=png&color=000000"
+                alt="GitHub"
+              />
+              GitHub
             </Button>
           </div>
         </div>

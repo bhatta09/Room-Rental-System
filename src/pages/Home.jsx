@@ -1,17 +1,17 @@
 import SearchIcon from "@mui/icons-material/Search";
+import FeatureRoom from "../components/Home/FeatureRoom";
+import AboutUs from "../components/Home/AboutSection";
+import LetKnow from "../components/Home/Letknow";
+import Agent from "../components/Home/Agent";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
-import FeatureRoom from "../components/FeatureRoom";
-import AboutUs from "../components/AboutSection";
-import LetKnow from "../components/Letknow";
 import banner from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner.png";
 import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1).png";
-import Agent from "../components/Agent";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MdArrowBackIos, MdArrowForwardIos } from "react-icons/md";
+import { MdArrowForwardIos } from "react-icons/md";
 
 // Next Arrow component
 const NextArrow = ({ onClick }) => (
@@ -121,7 +121,9 @@ const Home = () => {
 
       {/* Featured Rooms Section */}
       <section className="p-8 gap-7">
-        <h2 className="text-3xl font-normal text-center mb-8">Featured Rooms</h2>
+        <h2 className="text-3xl font-normal text-center mb-8">
+          Featured Rooms
+        </h2>
         <Slider {...settings}>
           <FeatureRoom
             imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
@@ -167,22 +169,30 @@ const Home = () => {
       </section>
 
       <section className="p-8">
-        <h2 className="text-3xl font-semibold text-center mb-8">Why Choose Us?</h2>
+        <h2 className="text-3xl font-semibold text-center mb-8">
+          Why Choose Us?
+        </h2>
         <div className="flex justify-around">
           <div className="text-center">
             <div className="text-5xl mb-4">🌟</div>
             <h3 className="text-xl font-semibold">Best Locations</h3>
-            <p className="text-gray-600">All our rooms are in prime locations.</p>
+            <p className="text-gray-600">
+              All our rooms are in prime locations.
+            </p>
           </div>
           <div className="text-center">
             <div className="text-5xl mb-4">💰</div>
             <h3 className="text-xl font-semibold">Affordable Prices</h3>
-            <p className="text-gray-600">We offer competitive prices for all room types.</p>
+            <p className="text-gray-600">
+              We offer competitive prices for all room types.
+            </p>
           </div>
           <div className="text-center">
             <div className="text-5xl mb-4">👍</div>
             <h3 className="text-xl font-semibold">Trusted Hosts</h3>
-            <p className="text-gray-600">Our hosts are verified for safety and quality.</p>
+            <p className="text-gray-600">
+              Our hosts are verified for safety and quality.
+            </p>
           </div>
         </div>
       </section>

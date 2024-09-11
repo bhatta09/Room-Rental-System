@@ -1,4 +1,4 @@
-import AuthBg from "../components/AuthBg";
+import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
 
 import TextField from "@material-ui/core/TextField";
@@ -34,7 +34,7 @@ const SignUp = () => {
       const response = await axios.post("/api/v1/auth/signUp", formData);
       console.log(response.data);
       alert("Form submitted successfully!");
-      navigate("/login");
+      navigate("/emailverification");
     } catch (error) {
       console.error("Error:", error);
       alert("Form submission failed.");

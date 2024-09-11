@@ -139,7 +139,7 @@ const SignUp = () => {
         </form>
         <div className="flex gap-2 text-sm mt-5 ">
           <span className="text-gray-500 font-semibold"> Already a member</span>
-          <Link to="/login" className="text-yellow-400 font-semibold">
+          <Link to="/login/:token" className="text-yellow-400 font-semibold">
             login
           </Link>
         </div>

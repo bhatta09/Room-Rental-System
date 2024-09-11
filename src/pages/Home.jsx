@@ -4,7 +4,7 @@ import AboutUs from "../components/Home/AboutSection";
 import LetKnow from "../components/Home/Letknow";
 import Agent from "../components/Home/Agent";
 import Reviews from "../components/Home/Reviews";
-import img from "../assets/swornim.jpg"
+import img from "../assets/swornim.jpg";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
@@ -66,7 +66,7 @@ const Home = () => {
     <div className="mt-3 flex flex-col gap-11">
       {/* Hero Section */}
       <div className="mx-2 md:mx-0 lg:mx-32">
-        <section className="shadow-xl relative flex items-center justify-center h-[48vh] rounded-3xl bg-cover bg-center overflow-hidden w-full bg-black">
+        <section className="shadow-xl relative flex items-center justify-center h-[54vh] rounded-3xl bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="relative mt-44 text-white z-10 hidden md:block">
             <div className="flex bg-white rounded-full py-2 px-2 gap-4 items-center justify-center">
               <div className="flex justify-center items-center">
@@ -108,15 +108,10 @@ const Home = () => {
               </button>
             </div>
           </div>
-          <img
-            className="w-full absolute"
-            src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            alt=""
-          />
         </section>
       </div>
 
-      <div className="mx-2 md:mx-0 lg:mx-32 flex justify-between">
+      <div className="mx-2 md:mx-0 lg:mx-32 flex flex-wrap justify-center gap-6">
         <img src={banner} alt="" className="h-36" />
         <img src={banner1} alt="" className="h-36" />
       </div>
@@ -171,12 +166,14 @@ const Home = () => {
       </section>
 
       <section>
-      <h1 className='text-4xl font-semibold text-center pt-24 pb-10'>Customor's Review</h1>
-<div className='flex flex-col md:flex-row gap-4 mt-5 mx-3'>
-                <Reviews img={img} name="Pritam"/>
-                <Reviews img={img} name="Swornim"/>
-                <Reviews img={img} name="Bijaya"/>
-            </div>
+        <h1 className="text-4xl font-semibold text-center pt-24 pb-10">
+          Customor's Review
+        </h1>
+        <div className="flex flex-col md:flex-row gap-4 mt-5 mx-3">
+          <Reviews img={img} name="Pritam" />
+          <Reviews img={img} name="Swornim" />
+          <Reviews img={img} name="Bijaya" />
+        </div>
       </section>
 
       <section className="p-8">

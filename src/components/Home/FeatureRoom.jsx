@@ -1,4 +1,3 @@
-import React from "react";
 import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
 import FavoriteIcon from "@mui/icons-material/Favorite";

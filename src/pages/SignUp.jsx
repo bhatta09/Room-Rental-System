@@ -1,10 +1,7 @@
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
 
-import TextField from "@material-ui/core/TextField";
-
-import Grid from "@material-ui/core/Grid";
-import { Button } from "@mui/material";
+import { Button, Grid2, TextField } from "@mui/material";
 import { useState } from "react";
 import axios from "axios";
 
@@ -51,8 +48,8 @@ const SignUp = () => {
           Signup
         </h2>{" "}
         <form>
-          <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
+          <Grid2 container spacing={2}>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -62,8 +59,8 @@ const SignUp = () => {
                 value={formData.fullName}
                 onChange={handleChange}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid2>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -73,8 +70,8 @@ const SignUp = () => {
                 value={formData.username}
                 onChange={handleChange}
               />
-            </Grid>
-            <Grid item xs={12}>
+            </Grid2>
+            <Grid2 item xs={12}>
               <TextField
                 required
                 fullWidth
@@ -84,8 +81,8 @@ const SignUp = () => {
                 value={formData.email}
                 onChange={handleChange}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid2>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -95,9 +92,9 @@ const SignUp = () => {
                 value={formData.address}
                 onChange={handleChange}
               />
-            </Grid>
+            </Grid2>
 
-            <Grid item xs={12} sm={6}>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 type="number"
                 required
@@ -107,8 +104,8 @@ const SignUp = () => {
                 value={formData.phoneNum}
                 onChange={handleChange}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid2>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -118,8 +115,8 @@ const SignUp = () => {
                 value={formData.password}
                 onChange={handleChange}
               />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            </Grid2>
+            <Grid2 item xs={12} sm={6}>
               <TextField
                 required
                 fullWidth
@@ -128,8 +125,8 @@ const SignUp = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
               />
-            </Grid>
-          </Grid>
+            </Grid2>
+          </Grid2>
           <button
             onClick={handleSubmit}
             className=" mt-5 w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800 "

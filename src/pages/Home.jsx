@@ -11,7 +11,7 @@ import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 
 // Next Arrow component
 const NextArrow = ({ onClick }) => (

@@ -3,6 +3,7 @@ import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button } from "@mui/material";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 const Login = () => {
   const [searchParams] = useSearchParams();
@@ -21,7 +22,7 @@ const Login = () => {
       });
 
       console.log("Response:", response.data);
-      alert("Form Submitted Successfully");
+      toast.success("Form Submitted Successfully");
       setPassword("");
       setusername("");
 
@@ -31,18 +32,24 @@ const Login = () => {
       alert("Form is not Submitted ");
     }
   };
-
   useEffect(() => {
-    const extractDetails = async () => {
-      const response = await axios.get("/api/user/extract-details", {
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      });
-      console.log(response.data);
+    const verifyToken = async () => {
+      if (token) {
+        try {
+          const response = await axios.get(
+            `/api/v1/auth/confirm?token=${token}`
+          );
+          console.log(response.data);
+          toast.success("Email verified successfully!");
+        } catch (error) {
+          console.error("Error verifying token", error);
+          toast.error("Error verifying email.");
+        }
+      }
     };
-    extractDetails();
-  }, []);
+
+    verifyToken();
+  }, [token]);
 
   // Google login handler
   const handleGoogleLogin = () => {
@@ -119,7 +126,7 @@ const Login = () => {
               />
               Google
             </Button>
-            <Button variant="outlined"  onClick={handleGithubLogin}>
+            <Button variant="outlined" onClick={handleGithubLogin}>
               <img
                 className="w-7"
                 src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"

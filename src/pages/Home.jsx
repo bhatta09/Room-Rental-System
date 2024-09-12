@@ -17,17 +17,17 @@ import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { useEffect } from "react";
 import axios from "axios";
 
-// Next Arrow component
+
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute right-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
+    className="absolute right-[-10px] top-1/2 transform -translate-y-1/2 cursor-pointer"
     onClick={onClick}
   >
     <MdArrowForwardIos className="text-yellow-500 text-4xl" />
   </div>
 );
 
-// Prev Arrow component
+
 const PrevArrow = ({ onClick }) => (
   <div
     className="absolute left-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -39,14 +39,15 @@ const PrevArrow = ({ onClick }) => (
 
 const Home = () => {
   const settings = {
-    dots: true,
-    infinite: true,
+   infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    responsive: [
+    autoplay:true, 
+    autoplaySpeed:5000,
+   responsive: [
       {
         breakpoint: 1024,
         settings: {
@@ -136,37 +137,55 @@ const Home = () => {
         <h2 className="text-3xl font-normal text-center mb-8">
           Featured Rooms
         </h2>
-        <Slider {...settings}>
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-          <FeatureRoom
-            imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-            roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="office"
-            price="Rs25000/month"
-          />
-        </Slider>
-      </section>
+        <div className="flex justify-end mb-5 mr-8">
+        <button className="bg-yellow-400 border-yellow-500 border-2 rounded font-medium px-5 py-1">
+            View All <span className="ml-2">→</span>
+          </button>
+  </div>
+  
+  <Slider
+    {...settings}
+   >
+    <div className="px-2"> 
+      <FeatureRoom
+        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+        roomName="Office space for rent..."
+        location="Gwarko,Lalitpur"
+        roomType="office"
+        price="Rs25000/month"
+      />
+    </div>
+    <div className="px-2"> 
+      <FeatureRoom
+        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+        roomName="Office space for rent..."
+        location="Gwarko,Lalitpur"
+        roomType="office"
+        price="Rs25000/month"
+      />
+    </div>
+    <div className="px-2"> 
+      <FeatureRoom
+        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+        roomName="Office space for rent..."
+        location="Gwarko,Lalitpur"
+        roomType="office"
+        price="Rs25000/month"
+      />
+    </div>
+    <div className="px-2"> 
+      <FeatureRoom
+        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+        roomName="Office space for rent..."
+        location="Gwarko,Lalitpur"
+        roomType="office"
+        price="Rs25000/month"
+      />
+    </div>
+  </Slider>
+</section>
+
+
 
       <section>
         <AboutUs />

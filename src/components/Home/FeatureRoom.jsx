@@ -5,15 +5,15 @@ import RoofingIcon from "@mui/icons-material/Roofing";
 
 const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
   return (
-    <div className="max-w-sm bg-white rounded-lg shadow-lg overflow-hidden group relative">
+    <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden group relative"> 
       <div className="relative">
         <img
           src={imageUrl}
           alt={roomName}
-          className="w-full h-48 object-cover"
+          className="w-full h-40 object-cover"
         />
 
-        <div className="absolute inset-0 bg-black bg-opacity-50 text-white font-bold text-xl flex justify-center items-center h-full -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+        <div className="absolute inset-0 bg-black bg-opacity-50 text-white font-bold text-lg flex justify-center items-center h-full -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
           <Link to="/roomdetail">View</Link>
         </div>
 
@@ -21,7 +21,7 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
           <FavoriteIcon
             sx={{
               color: "white",
-              fontSize: 28,
+              fontSize: 24, 
               "&:hover": {
                 color: "black",
               },
@@ -29,20 +29,20 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
           />
         </div>
       </div>
-      <div className="p-4">
-        <h3 className="text-lg font-normal mb-2">{roomName}</h3>
-        <p className="text-gray-600 text-sm flex items-center mb-4">
-          <span className="mr-2">
-            <PlaceIcon />
+      <div className="p-3">  
+        <h3 className="text-md font-normal mb-2">{roomName}</h3>
+        <p className="text-gray-600 text-xs flex items-center mb-3"> 
+          <span className="mr-1">
+            <PlaceIcon fontSize="small" />
           </span>
           {location}
         </p>
         <div className="flex justify-between items-center">
-          <span className="text-gray-700 text-sm font-medium flex items-center">
-            <RoofingIcon className="mr-1" />
+          <span className="text-gray-700 text-xs font-medium flex items-center">
+            <RoofingIcon fontSize="small" className="mr-1" />
             {roomType}
           </span>
-          <span className="text-yellow-400 text-base font-semibold">
+          <span className="text-yellow-400 text-sm font-semibold">
             {price}
           </span>
         </div>
@@ -52,3 +52,4 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
 };
 
 export default FeatureRoom;
+

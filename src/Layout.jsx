@@ -1,6 +1,7 @@
 import Navbar from "./components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
+import ScrollToTop from "./components/Helper/ScrollToTop";
 
 const Layout = () => {
   const location = useLocation();
@@ -11,6 +12,8 @@ const Layout = () => {
 
   return (
     <div className="flex flex-col min-h-screen">
+      <ScrollToTop />
+
       {!isNoNavbarFooterRoute && <Navbar />}
       <main className="flex-grow">
         <Outlet />

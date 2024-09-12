@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-sm font-medium flex flex-col gap-4 ">
-          <img src={img} alt="" className="h-32 w-52" />
+          <img src={img} alt="" className="h-32 w-48" />
           <Link>
             <label htmlFor="">
               <PhoneIcon sx={{ fontSize: 18, color: "" }} />

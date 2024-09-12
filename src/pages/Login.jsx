@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
-import { Button } from "@mui/material";
+
+import { Button, Grid2, TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
 
@@ -11,6 +12,8 @@ const Login = () => {
 
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
+  const [formErrors, setFormErrors] = useState({}); // State for form validation errors
+
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -22,14 +25,20 @@ const Login = () => {
       });
 
       console.log("Response:", response.data);
-      toast.success("Form Submitted Successfully");
+      toast.success("Login Successfully");
       setPassword("");
       setusername("");
 
       navigate("/");
     } catch (error) {
-      console.error("Error:", error);
-      alert("Form is not Submitted ");
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        setFormErrors(errors);
+      } else {
+        setFormErrors({
+          general: "An unexpected error occurred",
+        });
+      }
     }
   };
   useEffect(() => {
@@ -73,24 +82,24 @@ const Login = () => {
         <div>
           <div className="mb-3 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold"> USERNAME</label>
-            <input
+            <TextField
               type="name"
               value={username}
               onChange={(e) => setusername(e.target.value)}
               placeholder="Your Email or Username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+              error={!!formErrors.error}
+              helperText={formErrors.error}
             />
           </div>
           <div className="mb-3 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">PASSWORD</label>
-            <input
+            <TextField
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              type="text"
-              name=""
-              required
+              type=""
               placeholder="Password"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+              error={!!formErrors.error}
+              helperText={formErrors.error}
             />
           </div>
 

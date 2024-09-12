@@ -14,6 +14,8 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
+import { useEffect } from "react";
+import axios from "axios";
 
 // Next Arrow component
 const NextArrow = ({ onClick }) => (
@@ -61,6 +63,19 @@ const Home = () => {
       },
     ],
   };
+  const token =
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2RlbG9yZCIsImlhdCI6MTcyNjExNTY4OCwiZXhwIjoxNzI2MTMwMDg4fQ.2fy3MIijNIoj-ELwqstRX16edp_E7WMpAvNTuq9ml-U";
+  useEffect(() => {
+    const extractDetails = async () => {
+      const response = await axios.get(`/api/user/extract-details`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      console.log(response.data);
+    };
+    extractDetails();
+  }, []);
 
   return (
     <div className="mt-3 flex flex-col gap-11">

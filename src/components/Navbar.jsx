@@ -41,9 +41,12 @@ const mobileNavData = [
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
   const [username, setUsername] = useState("");
+  const [imageName, setImageName] = useState("");
+  const [image, setImage] = useState("");
   useEffect(() => {
     if (token) {
       extractDetails();
+      imageData();
     }
   }, [token]);
 
@@ -57,11 +60,24 @@ const Navbar = () => {
 
       const userDetails = response.data["User Details"];
 
-      console.log(userDetails.username);
+      setImageName(userDetails.imageName);
       setUsername(userDetails.username);
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
+  };
+
+  const imageData = async () => {
+    const response = await axios.get(`/api/user/${imageName}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      responseType: "blob",
+    });
+    console.log(response.data);
+
+    const imageUrl = URL.createObjectURL(response.data);
+    setImage(imageUrl);
   };
 
   return (
@@ -90,7 +106,7 @@ const Navbar = () => {
                 Hi
                 <div className="w-6 h-6 rounded-full overflow-hidden border-2 border-yellow-500 bg-gray-900">
                   <img
-                    src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    src={image}
                     alt=""
                     className="w-full h-full object-cover"
                   />

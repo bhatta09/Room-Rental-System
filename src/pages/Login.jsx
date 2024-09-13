@@ -5,6 +5,8 @@ import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button, Grid2, TextField } from "@mui/material";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useDispatch } from "react-redux";
+import { setToken } from "../redux/auth/authSlice";
 
 const Login = () => {
   const [searchParams] = useSearchParams();
@@ -15,7 +17,7 @@ const Login = () => {
   const [formErrors, setFormErrors] = useState({}); // State for form validation errors
 
   const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -24,11 +26,12 @@ const Login = () => {
         password,
       });
 
-      console.log("Response:", response.data);
+      console.log("Response:", response.data.token);
+      const userToken = response.data.token;
+      dispatch(setToken(userToken));
       toast.success("Login Successfully");
       setPassword("");
       setusername("");
-
       navigate("/");
     } catch (error) {
       if (error.response && error.response.data) {

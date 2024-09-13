@@ -16,7 +16,7 @@ import "slick-carousel/slick/slick-theme.css";
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { useEffect } from "react";
 import axios from "axios";
-
+import { useSelector } from "react-redux";
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -26,7 +26,6 @@ const NextArrow = ({ onClick }) => (
     <MdArrowForwardIos className="text-yellow-500 text-4xl" />
   </div>
 );
-
 
 const PrevArrow = ({ onClick }) => (
   <div
@@ -39,15 +38,15 @@ const PrevArrow = ({ onClick }) => (
 
 const Home = () => {
   const settings = {
-   infinite: true,
+    infinite: true,
     speed: 500,
     slidesToShow: 4,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
-    autoplay:true, 
-    autoplaySpeed:5000,
-   responsive: [
+    autoplay: true,
+    autoplaySpeed: 5000,
+    responsive: [
       {
         breakpoint: 1024,
         settings: {
@@ -64,19 +63,25 @@ const Home = () => {
       },
     ],
   };
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2RlbG9yZCIsImlhdCI6MTcyNjExNTY4OCwiZXhwIjoxNzI2MTMwMDg4fQ.2fy3MIijNIoj-ELwqstRX16edp_E7WMpAvNTuq9ml-U";
+
+  const token = useSelector((state) => state.auth.token);
+
   useEffect(() => {
-    const extractDetails = async () => {
-      const response = await axios.get(`/api/user/extract-details`, {
+    extractDetails();
+  }, []);
+
+  const extractDetails = async () => {
+    try {
+      const response = await axios.get("/api/user/extract-details", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       });
       console.log(response.data);
-    };
-    extractDetails();
-  }, []);
+    } catch (error) {
+      console.error("Error fetching image:", error);
+    }
+  };
 
   return (
     <div className="mt-3 flex flex-col gap-11">
@@ -138,54 +143,50 @@ const Home = () => {
           Featured Rooms
         </h2>
         <div className="flex justify-end mb-5 mr-8">
-        <button className="bg-yellow-400 border-yellow-500 border-2 rounded font-medium px-5 py-1">
+          <button className="bg-yellow-400 border-yellow-500 border-2 rounded font-medium px-5 py-1">
             View All <span className="ml-2">→</span>
           </button>
-  </div>
-  
-  <Slider
-    {...settings}
-   >
-    <div className="px-2"> 
-      <FeatureRoom
-        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-        roomName="Office space for rent..."
-        location="Gwarko,Lalitpur"
-        roomType="office"
-        price="Rs25000/month"
-      />
-    </div>
-    <div className="px-2"> 
-      <FeatureRoom
-        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-        roomName="Office space for rent..."
-        location="Gwarko,Lalitpur"
-        roomType="office"
-        price="Rs25000/month"
-      />
-    </div>
-    <div className="px-2"> 
-      <FeatureRoom
-        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-        roomName="Office space for rent..."
-        location="Gwarko,Lalitpur"
-        roomType="office"
-        price="Rs25000/month"
-      />
-    </div>
-    <div className="px-2"> 
-      <FeatureRoom
-        imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-        roomName="Office space for rent..."
-        location="Gwarko,Lalitpur"
-        roomType="office"
-        price="Rs25000/month"
-      />
-    </div>
-  </Slider>
-</section>
+        </div>
 
-
+        <Slider {...settings}>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+            />
+          </div>
+        </Slider>
+      </section>
 
       <section>
         <AboutUs />

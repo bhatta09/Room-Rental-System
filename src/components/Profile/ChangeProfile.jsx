@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 
 const ChangeProfile = () => {
   const [image, setImage] = useState(null);
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJzd29ybmltIiwiaWF0IjoxNzI1ODU3NTQ4LCJleHAiOjE3MjU4NzE5NDh9.NJwKRpAIr55JKVz2qywHLgeqM8qWyinjGJngBqXUi04";
+  const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     fetchImage();

@@ -2,31 +2,68 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import SearchIcon from "@mui/icons-material/Search";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
 import PersonIcon from "@mui/icons-material/Person";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
 import logo from "../assets/image.png";
+import { useSelector } from "react-redux";
+import axios from "axios";
 
 const mobileNavData = [
-  { name: "Home", path: "/contact", icon: <HomeIcon sx={{ fontSize: 18 }} /> },
   {
+    id: 1,
+    name: "Home",
+    path: "/contact",
+    icon: <HomeIcon sx={{ fontSize: 18 }} />,
+  },
+  {
+    id: 2,
+
     name: "Find me room",
     path: "/about",
     icon: <SearchIcon sx={{ fontSize: 18 }} />,
   },
   {
+    id: 3,
+
     name: "Login/Signup",
     path: "/contact",
     icon: <PersonIcon sx={{ fontSize: 18 }} />,
   },
   {
+    id: 4,
+
     name: "Shift room",
     path: "/about",
     icon: <AirportShuttleIcon sx={{ fontSize: 18 }} />,
   },
 ];
 const Navbar = () => {
-  const [currentUser, setCurrentUser] = useState(false);
+  const token = useSelector((state) => state.auth.token);
+  const [username, setUsername] = useState("");
+  useEffect(() => {
+    if (token) {
+      extractDetails();
+    }
+  }, [token]);
+
+  const extractDetails = async () => {
+    try {
+      const response = await axios.get("/api/user/extract-details", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userDetails = response.data["User Details"];
+
+      console.log(userDetails.username);
+      setUsername(userDetails.username);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
   return (
     <nav className=" bg-white sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1 pb-2 gap-4 ">
       {/* logo */}
@@ -46,11 +83,26 @@ const Navbar = () => {
       </div>
       {/* login */}
       <div className=" mx-auto hidden md:block  ">
-        <Link to={currentUser ? "/profile" : "/login"}>
-          <button className="flex items-center gap-1 text-base font-semibold uppercase">
-            {currentUser ? "Profile" : "Login"}{" "}
-            <PersonIcon sx={{ fontSize: 20 }} />
-          </button>
+        <Link to={username ? "/profile" : "/login"}>
+          <div className="flex items-center gap-1 text-base font-semibold uppercase">
+            {username ? (
+              <div className="flex items-center gap-1 text-base font-semibold uppercase">
+                Hi
+                <div className="w-6 h-6 rounded-full overflow-hidden border-2 border-yellow-500 bg-gray-900">
+                  <img
+                    src="https://plus.unsplash.com/premium_photo-1664474619075-644dd191935f?q=80&w=2069&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt=""
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                {username}
+              </div>
+            ) : (
+              <div className="flex items-center gap-1 text-base font-semibold uppercase">
+                Login <PersonIcon sx={{ fontSize: 20 }} />
+              </div>
+            )}
+          </div>
         </Link>
       </div>
 
@@ -92,11 +144,13 @@ const Navbar = () => {
       {/* mobileResponsive */}
       <div className="w-full fixed bg-white shadow-2xl   bottom-0 z-[100] md:hidden rounded-t-full  ">
         <div className="flex flex-row mx-8 my-3 justify-between gap-5 items-center">
-          {mobileNavData.map((data, index) => (
-            <div className=" uppercase text-xs flex flex-col items-center ">
+          {mobileNavData.map((data) => (
+            <div
+              key={data.id}
+              className=" uppercase text-xs flex flex-col items-center "
+            >
               {data.icon}
               <Link
-                key={index}
                 className="text-black font-medium hover:text-yellow-300 "
                 to={data.path}
               >

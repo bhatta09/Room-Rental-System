@@ -14,9 +14,11 @@ import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { setToken } from "../redux/auth/authSlice";
 
 const NextArrow = ({ onClick }) => (
   <div
@@ -64,11 +66,20 @@ const Home = () => {
     ],
   };
 
+  const location = useLocation();
+  const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
+    const queryParams = new URLSearchParams(location.search);
+    const tokenFromUrl = queryParams.get("token");
+    if (tokenFromUrl) {
+      dispatch(setToken(tokenFromUrl));
+    }
     extractDetails();
-  }, []);
+
+    
+  }, [location]);
 
   const extractDetails = async () => {
     try {
@@ -79,7 +90,7 @@ const Home = () => {
       });
       console.log(response.data);
     } catch (error) {
-      console.error("Error fetching image:", error);
+      console.error("Error fetching details:", error);
     }
   };
 

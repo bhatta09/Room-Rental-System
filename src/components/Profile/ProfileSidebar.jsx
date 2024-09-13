@@ -5,7 +5,10 @@ import Person4Icon from "@mui/icons-material/Person4";
 import PasswordIcon from "@mui/icons-material/Password";
 import ReplyIcon from "@mui/icons-material/Reply";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { clearToken } from "../../redux/auth/authSlice";
+import { toast } from "react-toastify";
 
 const sidebarData = [
   {
@@ -38,11 +41,6 @@ const sidebarData = [
     tab: "forumReplies",
     icon: <ReplyIcon sx={{ fontSize: 33 }} />,
   },
-  {
-    name: "Logout",
-    tab: "logout",
-    icon: <LogoutIcon sx={{ fontSize: 33 }} />,
-  },
 ];
 
 const ProfileSidebar = () => {
@@ -55,7 +53,13 @@ const ProfileSidebar = () => {
       setTab(tabFromUrl);
     }
   }, [location.search]);
-
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(clearToken());
+    navigate("/");
+    toast.error("Logged out!");
+  };
   return (
     <div className="w-60 min-w-[240px] border-r-2 border-gray-200 min-h-screen  shadow-lg ">
       {/* image */}
@@ -89,6 +93,13 @@ const ProfileSidebar = () => {
               </Link>
             </li>
           ))}
+          <li
+            onClick={handleLogout}
+            className="cursor-pointer tracking-normal p-4 text-base  flex gap-2 items-center text-black hover:text-yellow-400 hover:translate-x-6 transition ease-in-out duration-300 "
+          >
+            <LogoutIcon sx={{ fontSize: 33 }} className="text-inherit" />
+            Logout
+          </li>
         </ul>
       </div>
     </div>

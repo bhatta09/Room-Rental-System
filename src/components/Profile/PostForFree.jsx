@@ -200,10 +200,42 @@ const PostForFree = () => {
 </div>
  </div>
 {/*basic detail end*/}
+
      
-     
-      <div>
+     {/*more detail*/}
+     <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md mt-10">
+        <h2 className="text-xl font-semibold text-gray-700">3. More details</h2>
+        <p className="text-sm text-gray-500">All fields marked with * are mandatory</p>
+
+<div className="flex flex-col gap-8">
+<div>
+  <label className="block text-gray-700 font-semibold mb-2">Contact Number*</label>
+  <input 
+  type="number"
+  className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+
+/>
+</div>
+<div>
+  <label className="block text-gray-700 font-semibold mb-2">Propperty Location</label>
+  <select  placeholder="select option"
+      className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+      >
+    <option>Lalitpur</option>
+    <option>Bhakatapur</option>
+    <option>Kathmandu</option>
+  </select>
+</div>
+</div>
  </div>
+ {/*more detail end*/}
+
+
+ <div className="max-w-4xl mx-auto  p-10  mt-10">
+ <button className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+ Submit for Approval <span className="ml-2">→</span></button>
+</div>
+
     </div>
   )
 }

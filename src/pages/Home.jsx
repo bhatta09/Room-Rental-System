@@ -20,6 +20,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { setToken } from "../redux/auth/authSlice";
 
+import NorthIcon from "@mui/icons-material/North";
+
 const NextArrow = ({ onClick }) => (
   <div
     className="absolute right-[-10px] top-1/2 transform -translate-y-1/2 cursor-pointer"
@@ -77,8 +79,6 @@ const Home = () => {
       dispatch(setToken(tokenFromUrl));
     }
     extractDetails();
-
-    
   }, [location]);
 
   const extractDetails = async () => {
@@ -96,11 +96,18 @@ const Home = () => {
 
   return (
     <div className="mt-3 flex flex-col gap-11">
+      <a
+        id="scrollToTop"
+        href="#heroSection"
+        className="fixed z-[101] bottom-8 right-20 h-9 w-9  text-center rounded-full border-2 border-yellow-400 "
+      >
+        <NorthIcon color="black" />
+      </a>
       {/* Hero Section */}
-      <div className="mx-2 md:mx-0 lg:mx-32">
+      <div className="mx-12 lg:mx-32" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[54vh] rounded-3xl bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
-          <div className="relative mt-44 text-white z-10 hidden md:block">
-            <div className="flex bg-white rounded-full py-2 px-2 gap-4 items-center justify-center">
+          <div className="relative mt-44 text-white z-10 hidden md:block mx-auto">
+            <div className="flex bg-yellow-50 rounded-full py-2 px-2 gap-4 items-center justify-center  ">
               <div className="flex justify-center items-center">
                 <label htmlFor="">
                   <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
@@ -135,21 +142,22 @@ const Home = () => {
                   className="p-2 rounded-r-full w-1/3 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
                 />
               </div>
-              <button className="px-6 py-3 font-bold text-xl h-12 bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
-                <SearchIcon /> Search
+              <button className="flex text-xl items-center font-medium p-3  justify-between flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
+                <SearchIcon />
+                <span className="hidden lg:block">Search</span>
               </button>
             </div>
           </div>
         </section>
       </div>
 
-      <div className="mx-2 md:mx-0 lg:mx-32 flex flex-wrap justify-center gap-6">
-        <img src={banner} alt="" className="h-36" />
-        <img src={banner1} alt="" className="h-36" />
+      <div className="flex mx-auto  flex-wrap  justify-center lg:justify-between px-9  items-center  md:mx-0 lg:mx-32 ">
+        <img src={banner} alt="" className="h-32 " />
+        <img src={banner1} alt="" className="h-32 " />
       </div>
 
       {/* Featured Rooms Section */}
-      <section className="p-8 gap-7">
+      <section className="px-12 lg:px-32 gap-7 ">
         <h2 className="text-3xl font-normal text-center mb-8">
           Featured Rooms
         </h2>

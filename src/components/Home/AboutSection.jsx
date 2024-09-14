@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 const AboutUs = () => {
   return (
-    <div className="bg-[#f3f4f6] flex flex-col md:flex-row items-center md:py-11 gap-14 p-12 md:px-32 ">
+    <div className="bg-[#f3f4f6] flex flex-col md:flex-row items-center  gap-14 p-12 lg:px-32 ">
       <div className="">
         <h2 className="text-2xl font-bold text-gray-800 mb-4">About Us</h2>
         <p className="text-gray-600">

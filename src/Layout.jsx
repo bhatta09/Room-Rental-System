@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar";
 import { Outlet, useLocation } from "react-router-dom";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/Helper/ScrollToTop";
+import NorthIcon from "@mui/icons-material/North";
 
 const Layout = () => {
   const location = useLocation();

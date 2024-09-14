@@ -101,7 +101,7 @@ const Home = () => {
       <a
         id="scrollToTop"
         href="#heroSection"
-        className="fixed z-[101] bottom-8 right-20 h-9 w-9  text-center rounded-full border-2 border-yellow-400 "
+        className="fixed z-[101] bottom-8 right-20 h-9 w-9  text-center rounded-full border-2 border-yellow-400 animate-bounce "
       >
         <NorthIcon color="black" />
       </a>
@@ -217,7 +217,7 @@ const Home = () => {
         <LetKnow />
       </section>
 
-      <section className="bg-[#f3f4f6]">
+      <section className="bg-[#fefeff]">
         <Agent />
       </section>
 
@@ -230,7 +230,7 @@ const Home = () => {
           Our happy clients say about us
         </h1>
         <div className="relative flex flex-col md:flex-row gap-8 mt-5 mx-3 px-12 lg:px-32 p-8 rounded-lg justify-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-yellow-500 to-white blur-lg rounded-lg"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-white via-yellow-300 to-white blur-lg rounded-lg"></div>
           <div className="relative z-10 flex flex-wrap md:flex-row gap-8 justify-center">
             {/* Testimonial 1 */}
             <Reviews

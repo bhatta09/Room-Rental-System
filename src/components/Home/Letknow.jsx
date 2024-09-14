@@ -2,8 +2,8 @@ import img from "../../assets/image.png";
 
 const LetKnow = () => {
   return (
-    <div className=" min-h-screen flex justify-center items-center lg:mx-24">
-      <div className="container mx-auto px-8 grid md:grid-cols-5 gap-4">
+    <div className="  flex justify-center items-center lg:mx-24">
+      <div className="container  px-8 grid grid-cols-5 gap-4">
         <div className="bg-slate-200 p-6 rounded-2xl shadow-lg h-[500px] col-span-3 ">
           <div className="flex items-center space-x-4 mb-4">
             <div className="">
@@ -48,7 +48,7 @@ const LetKnow = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-xl shadow-xl  md:col-span-2 col-span-3">
+        <div className="bg-white p-6 rounded-xl shadow-xl  col-span-2 ">
           <h2 className="text-xl font-semibold text-gray-700 mb-4">
             Didn't Find What You are Looking for?
             <br />

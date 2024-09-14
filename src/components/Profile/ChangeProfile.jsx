@@ -3,12 +3,30 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ChangeProfile = () => {
+  const [formData, setFormData]=useState("")
   const [image, setImage] = useState(null);
   const token = useSelector((state) => state.auth.token);
 
   useEffect(() => {
     fetchImage();
+    extractDetails();
   }, []);
+
+  const extractDetails = async () => {
+    try {
+      const response = await axios.get("/api/user/extract-details", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userDetails = response.data["User Details"];
+console.log(userDetails)
+setFormData(userDetails)
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
 
   const fetchImage = async () => {
     try {
@@ -52,6 +70,7 @@ const ChangeProfile = () => {
               Username
             </label>
             <input
+            value={formData.username}
               type="text"
               placeholder="Your username"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -63,6 +82,8 @@ const ChangeProfile = () => {
               Email
             </label>
             <input
+            
+            value={formData.email}
               type="email"
               placeholder="Your Email"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -76,6 +97,8 @@ const ChangeProfile = () => {
               Address
             </label>
             <input
+            
+            value={formData.address || ""}
               type="text"
               placeholder="Your Address"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -87,6 +110,8 @@ const ChangeProfile = () => {
               Phone Number
             </label>
             <input
+            
+            value={formData.phoneNumber || ""}
               type="text"
               placeholder="New Phone Number"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"

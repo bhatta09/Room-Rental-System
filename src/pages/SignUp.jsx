@@ -57,7 +57,7 @@ const SignUp = () => {
   };
 
   return (
-    <div className="flex  flex-col lg:flex-row  lg:px-52 md:gap-11 mb-10">
+    <div className=" flex mx-auto justify-center flex-wrap mb-10">
       <div className="mt-5">
         <AuthBg />
       </div>

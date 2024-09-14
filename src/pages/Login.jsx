@@ -65,16 +65,16 @@ const Login = () => {
 
   // Google login handler
   const handleGoogleLogin = () => {
-    window.location.href = "http://localhost:9090/oauth2/authorization/google"; // Replace with your actual backend URL for Google
+    window.location.href = "http://localhost:9090/oauth2/authorization/google";
   };
 
   // GitHub login handler
   const handleGithubLogin = () => {
-    window.location.href = "http://localhost:9090/oauth2/authorization/github"; // Replace with your actual backend URL for GitHub
+    window.location.href = "http://localhost:9090/oauth2/authorization/github";
   };
 
   return (
-    <div className="flex flex-col md:flex-row gap-11 md:px-52  overflow-hidden mb-24 ">
+    <div className="flex mx-auto  justify-center flex-wrap mb-24 ">
       <div className="mt-5">
         <AuthBg />
       </div>

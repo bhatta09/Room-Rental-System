@@ -1,48 +1,65 @@
 import { Link } from "react-router-dom";
 import PlaceIcon from "@mui/icons-material/Place";
-import FavoriteIcon from "@mui/icons-material/Favorite";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import RoofingIcon from "@mui/icons-material/Roofing";
-
+import StarIcon from "@mui/icons-material/Star";
+import { yellow } from "@mui/material/colors";
 const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
   return (
-    <div className="max-w-xs bg-white rounded-lg shadow-lg overflow-hidden group relative"> 
-      <div className="relative">
-        <img
-          src={imageUrl}
-          alt={roomName}
-          className="w-full h-40 object-cover"
-        />
-
-        <div className="absolute inset-0 bg-black bg-opacity-50 text-white font-bold text-lg flex justify-center items-center h-full -translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-          <Link to="/roomdetail">View</Link>
+    <div className="max-w-72 h-auto bg-white rounded-2xl shadow-lg overflow-hidden group relative">
+      <div className="relative ">
+        <Link to="/roomdetail">
+          <img
+            src={imageUrl}
+            alt={roomName}
+            className="w-full h-64 object-cover rounded-2xl scale-100 hover:scale-105 transition-transform duration-500 ease-in-out"
+          />
+        </Link>
+        <div className="absolute  left-3 top-3 z-50 cursor-pointer w-auto p-2 bg-gray-400/70 rounded-xl ">
+          <h1 className="text-white font-semibold text-sm">Rent</h1>
+        </div>
+        <div className="absolute  left-3 bottom-3 z-50 cursor-pointer w-16 h-20 bg-gray-200/70 rounded-bl-2xl rounded-r-2xl flex justify-center items-center">
+          <img
+            src="https://plus.unsplash.com/premium_photo-1664366737698-3a98169201c3?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            alt={roomName}
+            className="w-12 h-12 object-cover rounded-full"
+          />
         </div>
 
         <div className="absolute right-3 top-3 z-50 cursor-pointer hover:text-black">
-          <FavoriteIcon
+          <FavoriteBorderIcon
+            className=" text-yellow-400 "
             sx={{
-              color: "white",
-              fontSize: 24, 
+              fontSize: 24,
               "&:hover": {
-                color: "black",
+                color: "white",
               },
             }}
           />
         </div>
       </div>
-      <div className="p-3">  
-        <h3 className="text-md font-normal mb-2">{roomName}</h3>
-        <p className="text-gray-600 text-xs flex items-center mb-3"> 
+      <div className="p-3">
+        <div className="flex justify-between">
+          <h3 className="text-md font-medium mb-2">{roomName}</h3>
+          <p className="text-gray-600 text-sm font-semibold flex items-center mb-3">
+            <span className="mr-1">
+              <StarIcon fontSize="medium" sx={{ color: "yellow" }} />
+            </span>
+            4.5(8)
+          </p>
+        </div>
+        <p className="text-gray-600 text-sm font-medium flex items-center mb-3">
           <span className="mr-1">
-            <PlaceIcon fontSize="small" />
+            <PlaceIcon fontSize="medium" />
           </span>
           {location}
         </p>
         <div className="flex justify-between items-center">
-          <span className="text-gray-700 text-xs font-medium flex items-center">
-            <RoofingIcon fontSize="small" className="mr-1" />
+          <span className="text-gray-700 text-sm font-medium flex items-center">
+            <RoofingIcon fontSize="medium" className="mr-1" />
             {roomType}
           </span>
-          <span className="text-yellow-400 text-sm font-semibold">
+          <span className="text-yellow-400 text-base font-semibold">
             {price}
           </span>
         </div>
@@ -52,4 +69,3 @@ const FeatureRoom = ({ imageUrl, roomName, location, roomType, price }) => {
 };
 
 export default FeatureRoom;
-

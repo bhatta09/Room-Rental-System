@@ -13,6 +13,8 @@ import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -95,6 +97,12 @@ const Home = () => {
       console.error("Error fetching details:", error);
     }
   };
+
+
+  useEffect(() => {
+    AOS.init({duration: 1500
+    });
+},[])
 
   return (
     <div className="mt-3 flex flex-col gap-11">
@@ -209,19 +217,19 @@ const Home = () => {
         </Slider>
       </section>
 
-      <section>
+      <section data-aos="fade-up">
         <AboutUs />
       </section>
 
-      <section>
+      <section data-aos="fade-left">
         <LetKnow />
       </section>
 
-      <section className="bg-[#fefeff]">
+      <section className="bg-[#fefeff]" data-aos="fade-up">
         <Agent />
       </section>
 
-      <section className="">
+      <section data-aos="zoom-out-left" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
           3,012 people have said how good NayaAawas
         </h1>
@@ -266,7 +274,7 @@ const Home = () => {
           Why Choose Us?
         </h2>
         <div className="flex  justify-between  mx-12 lg:mx-32">
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center" data-aos="fade-right">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <WhereToVoteOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -275,7 +283,7 @@ const Home = () => {
               All our rooms are in prime locations.
             </p>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center " data-aos="fade-up">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <ShoppingBagOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -284,7 +292,7 @@ const Home = () => {
               We offer competitive prices for all room types.
             </p>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center" data-aos="fade-left">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <VerifiedOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>

@@ -121,11 +121,9 @@ const Home = () => {
     }
   };
 
-
   useEffect(() => {
-    AOS.init({duration: 1500
-    });
-},[])
+    AOS.init({ duration: 1500 });
+  }, []);
 
   return (
     <div className="mt-3 flex flex-col gap-11">
@@ -240,19 +238,19 @@ const Home = () => {
         </Slider>
       </section>
 
-      <section data-aos="fade-up">
+      <section>
         <AboutUs />
       </section>
 
-      <section data-aos="fade-left">
+      <section>
         <LetKnow />
       </section>
 
-      <section className="bg-[#fefeff]" data-aos="fade-up">
+      <section className="bg-[#fefeff]">
         <Agent />
       </section>
 
-      <section data-aos="zoom-out-left" className="">
+      <section data-aos="fade-up" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
           3,012 people have said how good NayaAawas
         </h1>

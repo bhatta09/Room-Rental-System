@@ -28,19 +28,21 @@ import PriceCheckOutlinedIcon from "@mui/icons-material/PriceCheckOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 const NextArrow = ({ onClick }) => (
   <div
-    className="absolute right-[-10px] top-1/2 transform -translate-y-1/2 cursor-pointer"
+    className=" text-gray-100 text-base bg-white border-[3px]  border-yellow-300 p-1 absolute left-16 bottom-[-50px]  transform -translate-y-1/2 cursor-pointer rounded-full"
     onClick={onClick}
   >
-    <MdArrowForwardIos className="text-yellow-500 text-4xl" />
+    <MdArrowForwardIos className="text-gray-900 text-base" />
+    {/* Nex0t */}
   </div>
 );
 
 const PrevArrow = ({ onClick }) => (
   <div
-    className="absolute left-[-25px] top-1/2 transform -translate-y-1/2 cursor-pointer"
+    className="absolute text-gray-100 text-base bg-white border-[3px] border-yellow-300 p-1 left-6 bottom-[-50px] transform -translate-y-1/2 cursor-pointer rounded-full"
     onClick={onClick}
   >
-    <MdArrowBackIos className="text-yellow-500 text-4xl" />
+    {/* Prev */}
+    <MdArrowBackIos className="text-gray-900 text-base" />
   </div>
 );
 
@@ -75,6 +77,7 @@ const Home = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -83,6 +86,26 @@ const Home = () => {
       dispatch(setToken(tokenFromUrl));
     }
     extractDetails();
+
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      const windowHeight = window.innerHeight;
+      const fullHeight = document.documentElement.scrollHeight;
+
+      const scrollPercent = (scrollTop / (fullHeight - windowHeight)) * 100;
+
+      if (scrollPercent >= 20) {
+        setIsVisible(true);
+      } else {
+        setIsVisible(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
   }, [location]);
 
   const extractDetails = async () => {
@@ -106,18 +129,20 @@ const Home = () => {
 
   return (
     <div className="mt-3 flex flex-col gap-11">
-      <a
-        id="scrollToTop"
-        href="#heroSection"
-        className="fixed z-[101] bottom-8 right-20 h-9 w-9  text-center rounded-full border-2 border-yellow-400 animate-bounce "
-      >
-        <NorthIcon color="black" />
-      </a>
+      {isVisible && (
+        <a
+          id="scrollToTop"
+          href="#heroSection"
+          className="fixed z-[101] bottom-8 right-20 h-9 w-9  text-center rounded-full border-2 border-yellow-400 animate-bounce "
+        >
+          <NorthIcon color="black" />
+        </a>
+      )}
       {/* Hero Section */}
       <div className="mx-12 lg:mx-32" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[54vh] rounded-3xl bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="relative mt-44 text-white z-10 hidden md:block mx-auto">
-            <div className="flex bg-yellow-50 rounded-full py-2 px-2 gap-4 items-center justify-center  ">
+            <div className="flex bg-yellow-50 rounded-full  px-1 gap-4 items-center justify-end  ">
               <div className="flex justify-center items-center">
                 <label htmlFor="">
                   <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
@@ -152,7 +177,7 @@ const Home = () => {
                   className="p-2 rounded-r-full w-1/3 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
                 />
               </div>
-              <button className="flex text-xl items-center font-medium p-3  justify-between flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
+              <button className="flex text-base items-center font-bold p-3 my-1 justify-between flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
                 <SearchIcon />
                 <span className="hidden lg:block">Search</span>
               </button>
@@ -167,13 +192,11 @@ const Home = () => {
       </div>
 
       {/* Featured Rooms Section */}
-      <section className="px-12 lg:px-32 gap-7 ">
-        <h2 className="text-3xl font-normal text-center mb-8">
-          Featured Rooms
-        </h2>
-        <div className="flex justify-end mb-5 mr-8">
-          <button className="bg-yellow-400 border-yellow-500 border-2 rounded font-medium px-5 py-1">
-            View All <span className="ml-2">→</span>
+      <section className="px-12 lg:px-32 gap-7  ">
+        <div className="flex justify-between mb-5 ">
+          <h2 className="text-xl font-semibold text-center ">Featured Rooms</h2>
+          <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
+            View All <span className="ml-2 text-white font-bold">→</span>
           </button>
         </div>
 

@@ -41,12 +41,11 @@ const mobileNavData = [
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
   const [username, setUsername] = useState("");
-  const [imageName, setImageName] = useState("");
   const [image, setImage] = useState("");
   useEffect(() => {
     if (token) {
       extractDetails();
-      imageData();
+     
     }
   }, [token]);
 
@@ -60,25 +59,28 @@ const Navbar = () => {
 
       const userDetails = response.data["User Details"];
 
-      setImageName(userDetails.imageName);
+      if(userDetails.imageName){
+        imageData(userDetails.imageName)
+      }
       setUsername(userDetails.username);
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
   };
 
-  const imageData = async () => {
-    const response = await axios.get(`/api/user/${imageName}`, {
+  const imageData = async (imageData) => {
+    const response = await axios.get(`/api/user/${imageData}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
       responseType: "blob",
     });
-    console.log(response.data);
 
     const imageUrl = URL.createObjectURL(response.data);
     setImage(imageUrl);
   };
+
+
 
   return (
     <nav  className=" bg-white sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1 pb-2 gap-4 ">

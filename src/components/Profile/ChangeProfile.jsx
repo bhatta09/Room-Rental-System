@@ -3,13 +3,19 @@ import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const ChangeProfile = () => {
-  const [formData, setFormData]=useState("")
-  const [image, setImage] = useState(null);
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    phoneNumber: "",
+    address: "",
+  });
+  const [image, setImage] = useState("");
+  const [id,setId]= useState("")
   const token = useSelector((state) => state.auth.token);
-
+  console.log(token);
   useEffect(() => {
-    fetchImage();
     extractDetails();
+    
   }, []);
 
   const extractDetails = async () => {
@@ -21,31 +27,58 @@ const ChangeProfile = () => {
       });
 
       const userDetails = response.data["User Details"];
-console.log(userDetails)
-setFormData(userDetails)
+      console.log(userDetails);
+      setFormData(userDetails);
+      if(userDetails.imageName){
+        fetchImage(userDetails.imageName)
+      }
+      
+      setId(userDetails.id)
+      
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
   };
 
-  const fetchImage = async () => {
+  const fetchImage = async (imageName) => {
     try {
-      const response = await axios.get(
-        "/api/user/09b18213-73be-4fc0-8b93-d9ddf5eda753_default.jpg",
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-          responseType: "blob",
-        }
-      );
-      console.log(response.data);
+      const response = await axios.get(`/api/user/${imageName}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        responseType: "blob",
+      });
       const imageUrl = URL.createObjectURL(response.data);
       setImage(imageUrl);
     } catch (error) {
       console.error("Error fetching image:", error);
     }
   };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+  
+  const handelSubmit =(e)=>{
+    e.preventDefault()
+    console.log("button clicked")
+    const postData = async () => {
+      const response = await axios.put(`/api/user/${id}`,formData,{
+        headers:{
+          Authorization: `Bearer ${token}`,
+          "Content-Type":"multipart/form-data"
+        },
+      })
+      console.log(response.data)
+
+    }
+    postData()
+      }
 
   return (
     <div className="flex justify-center items-center  ">
@@ -70,7 +103,9 @@ setFormData(userDetails)
               Username
             </label>
             <input
-            value={formData.username}
+              value={formData.username}
+              onChange={handleChange}
+              name="username"
               type="text"
               placeholder="Your username"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -82,8 +117,9 @@ setFormData(userDetails)
               Email
             </label>
             <input
-            
-            value={formData.email}
+              value={formData.email}
+              onChange={handleChange}
+              name="email"
               type="email"
               placeholder="Your Email"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -97,8 +133,9 @@ setFormData(userDetails)
               Address
             </label>
             <input
-            
-            value={formData.address || ""}
+              value={formData.address || ""}
+              onChange={handleChange}
+              name="address"
               type="text"
               placeholder="Your Address"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -110,8 +147,9 @@ setFormData(userDetails)
               Phone Number
             </label>
             <input
-            
-            value={formData.phoneNumber || ""}
+              value={formData.phoneNumber || ""}
+              onChange={handleChange}
+              name="phoneNumber"
               type="text"
               placeholder="New Phone Number"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
@@ -120,7 +158,7 @@ setFormData(userDetails)
         </div>
 
         <div className="mt-6">
-          <button className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+          <button onClick={handelSubmit} className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
             Update <span className="ml-2">→</span>
           </button>
         </div>

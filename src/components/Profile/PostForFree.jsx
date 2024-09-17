@@ -1,4 +1,4 @@
-
+import { TextField } from "@mui/material"
 const PostForFree = () => {
   return (
     <div className="bg-gray-50 ml-72">
@@ -24,10 +24,10 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Your Title*</label>
-            <input 
-              type="text" 
-              className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="Enter title"
+            <TextField
+           type=""
+              placeholder="Password"
+               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
 
@@ -47,9 +47,10 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Main Photo</label>
-            <input 
-              type="file"
-              className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
+            <TextField
+           type="file"
+              placeholder="Password"
+               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
         </div>
@@ -57,9 +58,9 @@ const PostForFree = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6">
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Price*</label>
-            <input 
-              type="text"
-              className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            <TextField
+           type=""
+            className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
               placeholder="e.g., 5000 per month"
             />
           </div>
@@ -94,11 +95,11 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Bed*</label>
-            <input 
-              type="text"
-              className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="Number of bedrooms e.g., 1, 2, 3"
-            />
+            <TextField
+           type=""
+              placeholder="Password"
+               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
+         />
           </div>
 
           <div>
@@ -113,12 +114,12 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Bath*</label>
-            <input 
-              type="text"
-              className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              placeholder="Number of bathrooms e.g., 1, 2, 3"
-            />
-          </div>
+               <TextField
+               type=""
+                  placeholder="Password"
+                   className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
+                />
+                </div>
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Furnishing*</label>
@@ -210,11 +211,10 @@ const PostForFree = () => {
 <div className="flex flex-col gap-8">
 <div>
   <label className="block text-gray-700 font-semibold mb-2">Contact Number*</label>
-  <input 
-  type="number"
-  className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none focus:ring-2 focus:ring-yellow-500"
-
-/>
+  <TextField
+           type=""
+               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
+            />
 </div>
 <div>
   <label className="block text-gray-700 font-semibold mb-2">Propperty Location</label>

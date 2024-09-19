@@ -1,4 +1,4 @@
-import { TextField } from "@mui/material"
+import { TextField, Select, MenuItem } from "@mui/material"
 const PostForFree = () => {
   return (
     <div className="bg-gray-50 ml-72">
@@ -14,12 +14,13 @@ const PostForFree = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-4">
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Purpose*</label>
-            <select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <option value="">Rent</option>
-              <option value="">Sale</option>
-              <option value="">Lease</option>
-              <option value="">Paying Guest</option>
-            </select>
+            <Select
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              <MenuItem>Rent</MenuItem>
+              <MenuItem>Salet</MenuItem>
+              <MenuItem>Lease</MenuItem>
+              <MenuItem>Paying Guest</MenuItem>
+            </Select>
           </div>
 
           <div>
@@ -33,16 +34,16 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Category*</label>
-            <select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <option value="">Single Room</option>
-              <option value="">Two Rooms</option>
-              <option value="">1 BHK</option>
-              <option value="">2 BHK</option>
-              <option value="">3 BHK/4 BHK</option>
-              <option value="">Flat</option>
-              <option value="">House</option>
-              <option value="">Apartment</option>
-            </select>
+            <Select
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <MenuItem>Single Room</MenuItem>
+            <MenuItem>Two Rooms</MenuItem>
+            <MenuItem>1 BHK</MenuItem>
+            <MenuItem>2 BHK</MenuItem>
+            <MenuItem>3 / 4 BHK</MenuItem>
+            <MenuItem>House</MenuItem>
+            <MenuItem>Apartment</MenuItem>
+            </Select>
           </div>
 
           <div>
@@ -67,12 +68,12 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Price Negotiable*</label>
-            <select 
+            <Select
               className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <option>No</option>
-              <option>Yes</option>
-            </select>
+               <MenuItem>No</MenuItem>
+               <MenuItem>Yes</MenuItem>
+            </Select>
           </div>
         </div>
       </div>
@@ -85,12 +86,12 @@ const PostForFree = () => {
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Date of Build*</label>
-            <select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <option value="">2081</option>
-              <option value="">2080</option>
-              <option value="">2079</option>
-              <option value="">Select Option</option>
-            </select>
+            <Select
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+              <MenuItem>2081</MenuItem>
+              <MenuItem>2080</MenuItem>
+              <MenuItem>2079</MenuItem>
+             </Select>
           </div>
 
           <div>
@@ -104,12 +105,12 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Select Kitchen*</label>
-            <select 
+            <Select
               className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <option>No</option>
-              <option>Yes</option>
-            </select>
+               <MenuItem>No</MenuItem>
+               <MenuItem>Yes</MenuItem>
+            </Select>
           </div>
 
           <div>
@@ -123,80 +124,81 @@ const PostForFree = () => {
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">Furnishing*</label>
-            <select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <option>No</option>
-              <option>Yes</option>
-              <option>Semi</option>
-            </select>
+            <Select
+            className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+             <MenuItem>No</MenuItem>
+             <MenuItem>Yes</MenuItem>
+              v  <MenuItem>Semi</MenuItem>
+            </Select>
           </div>
 
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Faced</label>
-      <select 
+    <Select
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>East</option>
-        <option>West</option>
-        <option>South</option>
-        <option>North</option>
-      </select>
+        <MenuItem>East</MenuItem>
+        <MenuItem>West</MenuItem>
+        <MenuItem>South</MenuItem>
+        <MenuItem>North</MenuItem>
+    </Select>
    </div>
 
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Parking</label>
-      <select 
+    <Select 
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>No</option>
-        <option>Yes</option>
-      </select>
+      <MenuItem>No</MenuItem>
+      <MenuItem>Yes</MenuItem>
+      </Select>
    </div>
 
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Balcony</label>
-      <select 
+    <Select
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>No</option>
-        <option>Yes</option>
-      </select>
+         <MenuItem>No</MenuItem>
+         <MenuItem>Yes</MenuItem>
+      </Select>
    </div>
 
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Rental Floor</label>
-      <select 
+    <Select
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>Ground</option>
-        <option>1st</option>
-        <option>2st</option>
-      </select>
+         <MenuItem>Ground</MenuItem>
+         <MenuItem>1st</MenuItem>
+         <MenuItem>2nd</MenuItem>
+      </Select>
    </div>
   
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Road type</label>
-      <select 
+    <Select
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>Black Pitched</option>
-        <option>Goreto bato</option>
-        <option>Gravel</option>
-      </select>
+  <MenuItem>Blacked Pitched</MenuItem>
+  <MenuItem>Gorato Bato</MenuItem>
+  <MenuItem>Gravel</MenuItem>
+      </Select>
    </div>
    <div>
     <label className="block text-gray-700 font-semibold mb-2">Water Facility</label>
-      <select 
+    <Select
       placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-        <option>Yes</option>
-        <option>No</option>
-      </select>
+         <MenuItem>No</MenuItem>
+         <MenuItem>Yes</MenuItem>
+      </Select>
    </div>
 </div>
  </div>
@@ -218,13 +220,14 @@ const PostForFree = () => {
 </div>
 <div>
   <label className="block text-gray-700 font-semibold mb-2">Propperty Location</label>
-  <select  placeholder="select option"
+  <Select 
+   placeholder="select option"
       className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
       >
-    <option>Lalitpur</option>
-    <option>Bhakatapur</option>
-    <option>Kathmandu</option>
-  </select>
+     <MenuItem>Lalitpur</MenuItem>
+     <MenuItem>Bhaktpur</MenuItem>
+     <MenuItem>Kathmandu</MenuItem>
+  </Select>
 </div>
 </div>
  </div>

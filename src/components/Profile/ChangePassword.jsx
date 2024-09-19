@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState } from "react";
+import { TextField } from "@mui/material"
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
@@ -37,7 +38,7 @@ const ChangePassword = () => {
         <div>
           <div className="mb-10 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
-            <input
+            <TextField
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               type="name"
@@ -47,7 +48,7 @@ const ChangePassword = () => {
           </div>
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">New Password</label>
-            <input
+            <TextField
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               type="text"
@@ -59,7 +60,7 @@ const ChangePassword = () => {
           </div>
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">Confirm Password</label>
-            <input
+            <TextField
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               type="text"

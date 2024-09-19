@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { TextField, Select, MenuItem } from "@mui/material"
 
 const WriteReview = () => {
   const [message, setMessage] = useState('');
@@ -19,7 +20,7 @@ const WriteReview = () => {
               <label htmlFor="photo" className="block text-gray-700 font-semibold mb-2">
                 Photo
               </label>
-              <input
+              <TextField
                 type="file"
                 id="photo"
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
@@ -30,7 +31,7 @@ const WriteReview = () => {
               <label htmlFor="fullName" className="block text-gray-700 font-semibold mb-2">
                 Full Name
               </label>
-              <input
+              <TextField
                 type="text"
                 value="Sandesh Bhatta"
                 readOnly
@@ -45,24 +46,24 @@ const WriteReview = () => {
               <label htmlFor="rating" className="block text-gray-700 font-semibold mb-2">
                 Rating
               </label>
-              <select
+              <Select
                 id="rating"
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <option>Select Your Rating</option>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={4}>4</option>
-                <option value={5}>5</option>
-              </select>
+                <MenuItem value={1}>1</MenuItem>
+                <MenuItem value={2}>2</MenuItem>
+                <MenuItem value={3}>3</MenuItem>
+                <MenuItem value={4}>4</MenuItem>
+                <MenuItem value={5}>5</MenuItem>
+             </Select>
             </div>
 
             <div>
               <label htmlFor="activity" className="block text-gray-700 font-semibold mb-2">
                 Explain Activity
               </label>
-              <input
+              <TextField
                 type="text"
                 id="activity"
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
@@ -74,7 +75,7 @@ const WriteReview = () => {
             <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
               Message
             </label>
-            <textarea
+            <TextField
               id="message"
               onChange={(e) => setMessage(e.target.value)}
               maxLength={maxChars}

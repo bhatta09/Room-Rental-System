@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
+import { TextField } from "@mui/material";
 
 const ChangeProfile = () => {
   const [formData, setFormData] = useState({
@@ -98,25 +99,11 @@ const ChangeProfile = () => {
         </div>
 
         <div className="flex gap-10 mt-8">
-          <div className="w-1/2">
-            <label className="block text-sm font-medium text-gray-700">
-              Username
-            </label>
-            <input
-              value={formData.username}
-              onChange={handleChange}
-              name="username"
-              type="text"
-              placeholder="Your username"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-            />
-          </div>
-
-          <div className="w-1/2">
+         <div className="w-1/2">
             <label className="block text-sm font-medium text-gray-700">
               Email
             </label>
-            <input
+            <TextField
               value={formData.email}
               onChange={handleChange}
               name="email"
@@ -132,7 +119,7 @@ const ChangeProfile = () => {
             <label className="block text-sm font-medium text-gray-700">
               Address
             </label>
-            <input
+            <TextField
               value={formData.address || ""}
               onChange={handleChange}
               name="address"
@@ -146,7 +133,7 @@ const ChangeProfile = () => {
             <label className="block text-sm font-medium text-gray-700">
               Phone Number
             </label>
-            <input
+            <TextField
               value={formData.phoneNumber || ""}
               onChange={handleChange}
               name="phoneNumber"

@@ -1,7 +1,7 @@
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
-
-import { Button, Grid2, TextField } from "@mui/material";
+import { Button, TextField, IconButton, InputAdornment, Grid2 } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import axios from "axios";
 
@@ -17,7 +17,7 @@ const SignUp = () => {
   });
 
   const [formErrors, setFormErrors] = useState({}); // State for form validation errors
-
+  const [showPassword, setShowPassword] = useState(false); 
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -27,6 +27,9 @@ const SignUp = () => {
       [id]: value,
     }));
   };
+
+  
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   // Google login handler
   const handleGoogleLogin = () => {
@@ -138,6 +141,7 @@ const SignUp = () => {
             </Grid2>
             <Grid2 size={6}>
               <TextField
+               type={showPassword ? "text" : "password"} 
                 variant="standard"
                 required
                 fullWidth
@@ -147,10 +151,23 @@ const SignUp = () => {
                 onChange={handleChange}
                 error={!!formErrors.error}
                 helperText={formErrors.error}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid2>
             <Grid2 size={6}>
               <TextField
+               type={showPassword ? "text" : "password"} 
                 variant="standard"
                 required
                 fullWidth
@@ -160,6 +177,18 @@ const SignUp = () => {
                 onChange={handleChange}
                 error={!!formErrors.error}
                 helperText={formErrors.error}
+                InputProps={{
+                  endAdornment: (
+                    <InputAdornment position="end">
+                      <IconButton
+                        onClick={handleClickShowPassword}
+                        edge="end"
+                      >
+                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      </IconButton>
+                    </InputAdornment>
+                  ),
+                }}
               />
             </Grid2>
           </Grid2>

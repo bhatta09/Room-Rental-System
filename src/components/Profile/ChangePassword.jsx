@@ -1,17 +1,21 @@
 import axios from "axios";
 import { useState } from "react";
-import { TextField } from "@mui/material"
+import { TextField, IconButton, InputAdornment } from "@mui/material";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 const ChangePassword = () => {
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false); 
 
   const formData = {
     currentPassword,
     newPassword,
     confirmPassword,
   };
+
+  const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,6 +33,8 @@ const ChangePassword = () => {
       console.error("Error", error);
     }
   };
+
+
   return (
     <div className="max-w-lg w-full p-8 mt-2 ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
       <form onSubmit={handleSubmit}>
@@ -39,35 +45,71 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
             <TextField
+             type={showPassword ? "text" : "password"} 
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
-              type="name"
               placeholder="Your Old Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">New Password</label>
             <TextField
+             type={showPassword ? "text" : "password"} 
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
-              type="text"
               name=""
               required
               placeholder=" Your New Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">Confirm Password</label>
             <TextField
+             type={showPassword ? "text" : "password"} 
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
-              type="text"
               name=""
               required
               placeholder=" Confirm Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <IconButton
+                      onClick={handleClickShowPassword}
+                      edge="end"
+                    >
+                      {showPassword ? <VisibilityOff /> : <Visibility />}
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
             />
           </div>
 

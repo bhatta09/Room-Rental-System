@@ -8,9 +8,10 @@ import About from "./pages/About";
 import Profile from "./pages/Profile";
 import RoomDetail from "./pages/RoomDetails";
 import EmailVerification from "./pages/EmailVerification";
-
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Blog from "./pages/Blog";
+import FAQ from "./pages/FAQ"
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -49,6 +50,14 @@ const App = () => {
         {
           path: "/emailverification",
           element: <EmailVerification />,
+        },
+        {
+          path: "/faq",
+          element: <FAQ />,
+        },
+        {
+          path: "/blog",
+          element: <Blog />,
         },
       ],
     },

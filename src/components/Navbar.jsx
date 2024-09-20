@@ -5,7 +5,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
-import logo from "../assets/image.png";
+import logo from "../assets/home7.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 
@@ -87,7 +87,7 @@ const Navbar = () => {
       {/* logo */}
       <div className="mb-4 md:mb-0  sm:mr-64 md:mr-4">
         <Link to="/">
-          <img src={logo} alt="" className="w-28 " />
+          <img src={logo} alt="" className="w-24" />
         </Link>
       </div>
       {/*wishlist  */}

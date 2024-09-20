@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import img from "../assets/image-removebg.png";
+import img from "../assets/home7.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import YouTubeIcon from "@mui/icons-material/YouTube";
-import XIcon from "@mui/icons-material/X";
+
 
 const footerData = [
   {
@@ -21,15 +21,15 @@ const footerData = [
   {
     navigationLinks: [
       { label: "Home", path: "/home" },
-      { label: "Featured Rooms", path: "/featured-rooms" },
+      { label: "Add Rooms", path: "/postforfree" },
       { label: "Profile", path: "/profile" },
       { label: "Blog", path: "/blog" },
-      { label: "Add Property", path: "/add-property" },
+      { label: "FAQ", path: "/faq" },
     ],
   },
   {
     Account: [
-      { label: "My Account", path: "/home" },
+      { label: "My Account", path: "/Profile" },
       { label: "Listed property", path: "/featured-rooms" },
       { label: "Wishlist", path: "/profile" },
       { label: "Private policy", path: "/blog" },
@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-sm font-medium flex flex-col gap-4 ">
-          <img src={img} alt="" className="h-32 w-48" />
+          <img src={img} alt="" className="h-24 w-44" />
           <Link>
             <label htmlFor="">
               <PhoneIcon sx={{ fontSize: 18, color: "" }} />
@@ -125,23 +125,40 @@ const Footer = () => {
           </Link>
           <div>
             <h2 className="mb-2">Contact Us</h2>
-            <div className="flex flex-row gap-3 ">
-              <div className="bg-gradient-to-r from-orange-500 to-pink-500 w-6 h-6 rounded-full text-center">
-                <InstagramIcon sx={{ fontSize: 18, color: "white" }} />
-              </div>
-              <div className=" bg-red-500  w-6 h-6 rounded-full text-center">
-                <YouTubeIcon sx={{ fontSize: 18, color: "white" }} />
-              </div>
-              <div className="bg-gradient-to-r from-blue-500 to-sky-500 w-6 h-6 rounded-full text-center">
-                <LinkedInIcon sx={{ fontSize: 18, color: "white" }} />
-              </div>
-              <div className="bg-gradient-to-r from-blue-500 to-sky-500 w-6 h-6 rounded-full text-center">
-                <FacebookIcon sx={{ fontSize: 18, color: "white" }} />
-              </div>
+            <div className="flex flex-row gap-3">
+  {/* Instagram */}
+  <a href="https://www.instagram.com" target="_blank" rel="noopener noreferrer">
+    <div className="bg-gradient-to-r from-orange-500 to-pink-500 w-6 h-6 rounded-full text-center">
+      <InstagramIcon sx={{ fontSize: 18, color: "white" }} />
+    </div>
+  </a>
+  
+  {/* YouTube */}
+  <a href="https://www.youtube.com" target="_blank" rel="noopener noreferrer">
+    <div className="bg-red-500 w-6 h-6 rounded-full text-center">
+      <YouTubeIcon sx={{ fontSize: 18, color: "white" }} />
+    </div>
+  </a>
+  
+  {/* LinkedIn */}
+  <a href="https://www.linkedin.com" target="_blank" rel="noopener noreferrer">
+    <div className="bg-gradient-to-r from-blue-500 to-sky-500 w-6 h-6 rounded-full text-center">
+      <LinkedInIcon sx={{ fontSize: 18, color: "white" }} />
+    </div>
+  </a>
+  
+  {/* Facebook */}
+  <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer">
+    <div className="bg-gradient-to-r from-blue-500 to-sky-500 w-6 h-6 rounded-full text-center">
+      <FacebookIcon sx={{ fontSize: 18, color: "white" }} />
+    </div>
+  </a>
+</div>
+
             </div>
           </div>
         </div>
-      </div>
+    
 
       <footer className=" p-6 bg-slate-200 text-white md:px-32  mb-12 md:mb-0">
         <div className="flex flex-col md:flex-row  md:justify-between  text-black font-semibold">

@@ -238,7 +238,7 @@ const Home = () => {
         </Slider>
       </section>
 
-      <section>
+      <section data-aos="fade-up">
         <AboutUs />
       </section>
 
@@ -246,7 +246,7 @@ const Home = () => {
         <LetKnow />
       </section>
 
-      <section className="bg-[#fefeff]">
+      <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
       </section>
 

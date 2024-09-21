@@ -50,7 +50,7 @@ const Home = () => {
   const settings = {
     infinite: true,
     speed: 500,
-    slidesToShow: 4,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -138,45 +138,53 @@ const Home = () => {
       )}
       {/* Hero Section */}
       <div className="mx-12 lg:mx-32" id="heroSection">
-        <section className="shadow-xl relative flex items-center justify-center h-[54vh] rounded-3xl bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
+        <section className="shadow-xl relative flex items-center justify-center h-[54vh] rounded-3xl  bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="relative mt-44 text-white z-10 hidden md:block mx-auto">
-            <div className="flex bg-yellow-50 rounded-full  px-1 gap-4 items-center justify-end  ">
+            <div className="flex bg-yellow-50/40 rounded-full  px-1 gap-4 items-center justify-end  ">
               <div className="flex justify-center items-center">
                 <label htmlFor="">
-                  <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
+                  <PlaceIcon
+                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                  />
                 </label>
                 <input
                   type="text"
                   placeholder="Search By Title"
-                  className="p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                  className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
                 />
                 <label htmlFor="">
-                  <PlaceIcon sx={{ fontSize: 30, color: "yellow" }} />
+                  <PlaceIcon
+                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                  />
                 </label>
                 <input
                   type="text"
                   placeholder=" Search for Location"
-                  className="p-2 rounded-l-full w-1/3 h-12 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                  className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-seminold text-base bg-transparent"
                 />
                 <label htmlFor="">
-                  <HomeIcon sx={{ fontSize: 30, color: "yellow" }} />
+                  <HomeIcon
+                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                  />
                 </label>
                 <input
                   type="text"
                   placeholder="Room Type"
-                  className="p-2 w-1/3 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                  className="p-2 w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
                 />
                 <label htmlFor="">
-                  <PaymentsIcon sx={{ fontSize: 30, color: "yellow" }} />
+                  <PaymentsIcon
+                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                  />
                 </label>
                 <input
                   type="text"
                   placeholder=" Select Budget"
-                  className="p-2 rounded-r-full w-1/3 text-gray-900 outline-none placeholder:text-gray-600 font-normal text-base"
+                  className="p-2 rounded-r-full w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
                 />
               </div>
-              <button className="flex text-base items-center font-bold p-3 my-1 justify-between flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
-                <SearchIcon />
+              <button className="flex text-base  font-bold p-3 px-5 my-1 justify-center flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
+                <SearchIcon sx={{ fontSize: 25, color: "white" }} />
                 <span className="hidden lg:block">Search</span>
               </button>
             </div>
@@ -201,38 +209,114 @@ const Home = () => {
         <Slider {...settings}>
           <div className="px-2">
             <FeatureRoom
-              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               roomName="Office space for rent..."
               location="Gwarko,Lalitpur"
               roomType="office"
               price="Rs25000/month"
+              owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
           <div className="px-2">
             <FeatureRoom
-              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              imageUrl="https://plus.unsplash.com/premium_photo-1678916185607-d75dbfe4f1f7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               roomName="Office space for rent..."
               location="Gwarko,Lalitpur"
               roomType="office"
               price="Rs25000/month"
+              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             />
           </div>
           <div className="px-2">
             <FeatureRoom
-              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
-              roomName="Office space for rent..."
+              imageUrl="https://images.unsplash.com/photo-1572372878072-3faf7ab85648?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName="Swornim Shrestha is best man"
               location="Gwarko,Lalitpur"
               roomType="office"
               price="Rs25000/month"
+              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
           <div className="px-2">
             <FeatureRoom
-              imageUrl="https://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2023/7/19/3/DOTY2023_Dramatic-Before-And-Afters_Hidden-Hills-11.jpg.rend.hgtvcom.791.527.suffix/1689786863909.jpeg"
+              imageUrl="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
               roomName="Office space for rent..."
               location="Gwarko,Lalitpur"
               roomType="office"
               price="Rs25000/month"
+              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://plus.unsplash.com/premium_photo-1691360599379-a5717853ab6e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName=""
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
+          </div>
+        </Slider>
+      </section>
+
+      <section className="px-12 lg:px-32 gap-7 mt-12 ">
+        <div className="flex justify-between mb-5 ">
+          <h2 className="text-xl font-semibold text-center ">Hot Deals</h2>
+          <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
+            View All <span className="ml-2 text-white font-bold">→</span>
+          </button>
+        </div>
+
+        <Slider {...settings}>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://plus.unsplash.com/premium_photo-1678916185607-d75dbfe4f1f7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://images.unsplash.com/photo-1572372878072-3faf7ab85648?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName="Swornim Shrestha is best man"
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName="Office space for rent..."
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            />
+          </div>
+          <div className="px-2">
+            <FeatureRoom
+              imageUrl="https://plus.unsplash.com/premium_photo-1691360599379-a5717853ab6e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+              roomName=""
+              location="Gwarko,Lalitpur"
+              roomType="office"
+              price="Rs25000/month"
+              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             />
           </div>
         </Slider>
@@ -246,9 +330,9 @@ const Home = () => {
         <LetKnow />
       </section>
 
-      <section className="bg-[#fefeff]" data-aos="fade-down">
+      {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
-      </section>
+      </section> */}
 
       <section data-aos="fade-up" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
@@ -259,7 +343,7 @@ const Home = () => {
           Our happy clients say about us
         </h1>
         <div className="relative flex flex-col md:flex-row gap-8 mt-5 mx-3 px-12 lg:px-32 p-8 rounded-lg justify-center">
-          <div className="absolute inset-0 bg-gradient-to-r from-white via-yellow-300 to-white blur-lg rounded-lg"></div>
+          <div className="absolute inset-0 "></div>
           <div className="relative z-10 flex flex-wrap md:flex-row gap-8 justify-center">
             {/* Testimonial 1 */}
             <Reviews

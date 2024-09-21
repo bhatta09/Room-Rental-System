@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from "../assets/home7.png";
+import img from "../assets/home9.png";
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -40,7 +40,7 @@ const footerData = [
 
 const Footer = () => {
   return (
-    <div className="  bg-[#f5f5fe]">
+    <div className="  bg-gray-100">
       <div className="flex flex-col justify-between bg-orange-400 md:flex-row p-12 lg:px-32 ">
         <div className="mb-12">
           <h3 className="text-2xl   font-semibold">
@@ -104,7 +104,7 @@ const Footer = () => {
           </div>
         </div>
         <div className="text-sm font-medium flex flex-col gap-4 ">
-          <img src={img} alt="" className="h-24 w-44" />
+          <img src={img} alt="" className="h-36 w-44 ml-[-32px]" />
           <Link>
             <label htmlFor="">
               <PhoneIcon sx={{ fontSize: 18, color: "" }} />

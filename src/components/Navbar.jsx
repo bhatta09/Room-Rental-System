@@ -45,7 +45,6 @@ const Navbar = () => {
   useEffect(() => {
     if (token) {
       extractDetails();
-     
     }
   }, [token]);
 
@@ -59,8 +58,8 @@ const Navbar = () => {
 
       const userDetails = response.data["User Details"];
 
-      if(userDetails.imageName){
-        imageData(userDetails.imageName)
+      if (userDetails.imageName) {
+        imageData(userDetails.imageName);
       }
       setUsername(userDetails.username);
     } catch (error) {
@@ -80,14 +79,12 @@ const Navbar = () => {
     setImage(imageUrl);
   };
 
-
-
   return (
-    <nav  className=" bg-white sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1 pb-2 gap-4 ">
+    <nav className=" bg-white  sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1 pb-2 gap-4 ">
       {/* logo */}
-      <div className="mb-4 md:mb-0  sm:mr-64 md:mr-4">
+      <div className=" md:mb-0  sm:mr-64 md:mr-4">
         <Link to="/">
-          <img src={logo} alt="" className="w-24" />
+          <img src={logo} alt="" className="w-16" />
         </Link>
       </div>
       {/*wishlist  */}

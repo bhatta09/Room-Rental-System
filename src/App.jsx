@@ -11,9 +11,11 @@ import EmailVerification from "./pages/EmailVerification";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Blog from "./pages/Blog";
-import FAQ from "./pages/FAQ"
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+import FAQ from "./pages/FAQ";
 import TermandCondition from "./pages/TermandCondition";
+import PP from "./pages/PP";
+import DashboardLayoutBranding from "./components/ProfileDashboard/ProfileDashboard";
+
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -63,11 +65,15 @@ const App = () => {
         },
         {
           path: "/privacy",
-          element: <PrivacyPolicy />,
+          element: <PP />,
         },
         {
           path: "/terms",
           element: <TermandCondition />,
+        },
+        {
+          path: "/profileDashboard",
+          element: <DashboardLayoutBranding />,
         },
       ],
     },

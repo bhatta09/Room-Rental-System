@@ -22,7 +22,7 @@ const footerData = [
     navigationLinks: [
       { label: "Home", path: "/home" },
       { label: "Add Rooms", path: "/postforfree" },
-      { label: "Profile", path: "/profile" },
+      { label: "About-Us", path: "/about" },
       { label: "Blog", path: "/blog" },
       { label: "FAQ", path: "/faq" },
     ],
@@ -32,8 +32,8 @@ const footerData = [
       { label: "My Account", path: "/Profile" },
       { label: "Listed property", path: "/featured-rooms" },
       { label: "Wishlist", path: "/profile" },
-      { label: "Private policy", path: "/blog" },
-      { label: "Terms & condition", path: "/add-property" },
+      { label: "Privacy policy", path: "/privacy" },
+      { label: "Terms & condition", path: "/terms" },
     ],
   },
 ];
@@ -62,12 +62,12 @@ const Footer = () => {
       {/* footer-content */}
       <div className="flex flex-wrap gap-12 p-12 md:justify-between lg:px-32 ">
         <div className="flex flex-col gap-5 text-[12px]">
-          <h3 className=" font-bold text-xl text-yellow-400">
+          <h3 className=" font-semibold text-xl text-yellow-400">
             Most Searched Locations
           </h3>
           <ul>
             {footerData[0].mostSearchedLocation.map((location, index) => (
-              <li key={index} className="mb-3 text-base font-semibold">
+              <li key={index} className="mb-3 text-base font-medium">
                 {location}
               </li>
             ))}
@@ -75,13 +75,13 @@ const Footer = () => {
         </div>
 
         <div className="  flex flex-col gap-5 ">
-          <h3 className="text-xl font-bold text-yellow-400">Quick Links</h3>
+          <h3 className="text-xl font-semibold text-yellow-400">Quick Links</h3>
           <div className="flex flex-col">
             {footerData[1].navigationLinks.map((data, index) => (
               <Link
                 key={index}
                 to={data.path}
-                className="mb-3 text-base font-semibold"
+                className="mb-3 text-base font-medium"
               >
                 {data.label}
               </Link>
@@ -90,13 +90,13 @@ const Footer = () => {
         </div>
 
         <div className=" flex flex-col gap-4 ">
-          <h3 className="text-xl font-bold text-yellow-400">Accounts</h3>
+          <h3 className="text-xl font-semibold text-yellow-400">Accounts</h3>
           <div className="flex flex-col">
             {footerData[2].Account.map((data, index) => (
               <Link
                 key={index}
                 to={data.path}
-                className="mb-3 text-base font-semibold"
+                className="mb-3 text-base font-medium"
               >
                 {data.label}
               </Link>

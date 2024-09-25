@@ -12,6 +12,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ"
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import TermandCondition from "./pages/TermandCondition";
 const App = () => {
   const router = createBrowserRouter([
     {
@@ -58,6 +60,14 @@ const App = () => {
         {
           path: "/blog",
           element: <Blog />,
+        },
+        {
+          path: "/privacy",
+          element: <PrivacyPolicy />,
+        },
+        {
+          path: "/terms",
+          element: <TermandCondition />,
         },
       ],
     },

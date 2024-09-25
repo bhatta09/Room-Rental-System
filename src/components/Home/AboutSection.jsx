@@ -5,7 +5,7 @@ const AboutUs = () => {
     <div className="bg-cover bg-center overflow-hidden w-full bg-about-pattern flex flex-col md:flex-row items-center gap-14 p-12 py-6 lg:px-32 ">
       <div className="my-16">
         <h2 className="text-2xl font-bold text-gray-100 mb-4">About Us</h2>
-        <p className="text-gray-100 tracking-normal leading-6">
+        <p className="text-gray-200 tracking-normal leading-6">
           The Room Rental System is a web application designed to streamline the
           process of finding and renting rooms, offering a user-friendly
           interface for both property owners and potential tenants. Built using

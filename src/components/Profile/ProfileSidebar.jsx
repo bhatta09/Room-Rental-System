@@ -62,9 +62,17 @@ const ProfileSidebar = () => {
     toast.error("Logged out!");
   };
   return (
-    <div className="w-60 min-w-[240px] border-r-2 border-gray-200 min-h-screen  shadow-lg ">
+    <div className="w-60 min-w-[240px] border-r-2 border-gray-200 min-h-screen  shadow-lg bg-violet-300 ">
       {/* Dashboard */}
       <div className=" bg-yellow-400">
+        <Link to="/profile">
+          <div className="flex text-white p-3 ">
+            <GridViewIcon sx={{ fontSize: 27 }} className="text-inherit" />
+
+            <h1 className=" pl-4 text-sm font-semibold   ">Dashboard</h1>
+          </div>
+        </Link>
+
         <Link to="/profile">
           <div className="flex text-white p-3 ">
             <GridViewIcon sx={{ fontSize: 27 }} className="text-inherit" />
@@ -76,7 +84,7 @@ const ProfileSidebar = () => {
           {sidebarData.map((data, index) => (
             <li
               key={index}
-              className={`cursor-pointer tracking-normal p-3 text-sm   font-semibold flex gap-2 items-center text-white hover:text-yellow-400 hover:translate-x-6 transition ease-in-out duration-300 ${
+              className={`cursor-pointer tracking-normal p-3 text-sm   font-semibold flex gap-2 items-center text-white  hover:translate-x-6 transition ease-in-out duration-300 ${
                 tab === data.tab ? " text-[#FFB200]" : ""
               }`}
             >
@@ -91,7 +99,7 @@ const ProfileSidebar = () => {
           ))}
           <li
             onClick={handleLogout}
-            className="cursor-pointer tracking-normal p-4 text-base  flex gap-2 items-center text-white hover:text-yellow-400 hover:translate-x-6 transition ease-in-out duration-300 "
+            className="cursor-pointer tracking-normal p-4 text-sm font-bold flex gap-2 items-center text-white hover:translate-x-6 transition ease-in-out duration-300 "
           >
             <LogoutIcon sx={{ fontSize: 27 }} className="text-inherit" />
             Logout
@@ -99,14 +107,14 @@ const ProfileSidebar = () => {
         </ul>
       </div>
       {/* image */}
-      <div className="flex flex-col justify-center items-center gap-1 mt-2 mb-10 pl-4 bg-yellow-400">
+      {/* <div className="flex flex-col justify-center items-center gap-1 mt-2 mb-10 pl-4 bg-yellow-400">
         <img
           className="w-20 h-20 rounded-full"
           src="https://images.pexels.com/photos/271624/pexels-photo-271624.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           alt=""
         />
         <h1 className="font-medium text-base ">Hello Swornim Shrestha</h1>
-      </div>
+      </div> */}
     </div>
   );
 };

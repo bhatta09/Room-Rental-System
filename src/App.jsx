@@ -14,7 +14,7 @@ import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import TermandCondition from "./pages/TermandCondition";
 import PP from "./pages/PP";
-import DashboardLayoutBranding from "./components/ProfileDashboard/ProfileDashboard";
+import ProfileDashboard from "./components/ProfileDashboard/ProfileDashboard";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -73,7 +73,7 @@ const App = () => {
         },
         {
           path: "/profileDashboard",
-          element: <DashboardLayoutBranding />,
+          element: <ProfileDashboard />,
         },
       ],
     },

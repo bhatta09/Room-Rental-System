@@ -8,8 +8,8 @@ body{
   font-family: 'Poppins', sans-serif;
 }
 /* For WebKit browsers (Chrome, Safari) */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
       display: none;
-    }
+    } */
     
    

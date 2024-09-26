@@ -81,35 +81,25 @@ const Drawer = styled(MuiDrawer, {
   flexShrink: 0,
   whiteSpace: "nowrap",
   boxSizing: "border-box",
-  position: "fixed", // Ensure drawer is positioned on top
-  zIndex: theme.zIndex.drawer + 2, // Increase z-index to be above AppBar
   variants: [
     {
       props: ({ open }) => open,
       style: {
         ...openedMixin(theme),
-        "& .MuiDrawer-paper": {
-          ...openedMixin(theme),
-          position: "fixed",
-          zIndex: theme.zIndex.drawer + 2,
-        },
+        "& .MuiDrawer-paper": openedMixin(theme),
       },
     },
     {
       props: ({ open }) => !open,
       style: {
         ...closedMixin(theme),
-        "& .MuiDrawer-paper": {
-          ...closedMixin(theme),
-          position: "fixed",
-          zIndex: theme.zIndex.drawer + 2,
-        },
+        "& .MuiDrawer-paper": closedMixin(theme),
       },
     },
   ],
 }));
 
-export default function ProfileDashboard() {
+export default function MiniDrawer() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
@@ -122,9 +112,8 @@ export default function ProfileDashboard() {
   };
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open} sx={{ backgroundColor: "white" }}>
+    <Box sx={{ display: "flex",  }}>
+      <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
             color="inherit"
@@ -133,62 +122,37 @@ export default function ProfileDashboard() {
             edge="start"
             sx={[
               {
-                marginLeft: 5,
                 marginRight: 5,
               },
               open && { display: "none" },
             ]}
           >
-            <MenuIcon sx={{ color: "#1E201E" }} />
+            <MenuIcon />
           </IconButton>
-          <Typography
-            variant="h7"
-            noWrap
-            component="div"
-            sx={{ color: "#1E201E", fontWeight: "bold", textShadow: "none" }}
-          >
-            Dashboard
+          <Typography variant="h6" noWrap component="div">
+            Mini variant drawer
           </Typography>
         </Toolbar>
       </AppBar>
-      <Drawer
-        variant="permanent"
-        open={open}
-        sx={{
-          "& .MuiDrawer-paper": {
-            backgroundColor: "",
-            color: "#97a1af",
-            fontWeight: "bold", // Change the left drawer background color
-          },
-        }}
-      >
+      <Drawer variant="permanent" open={open}>
         <DrawerHeader>
           <IconButton onClick={handleDrawerClose}>
             {theme.direction === "rtl" ? (
-              <ChevronRightIcon sx={{ color: "#1E201E" }} />
+              <ChevronRightIcon />
             ) : (
-              <ChevronLeftIcon sx={{ color: "#1E201E" }} />
+              <ChevronLeftIcon />
             )}
           </IconButton>
         </DrawerHeader>
-
+        <Divider />
         <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
+          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
             <ListItem key={text} disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={[
                   {
-                    fontWeight: "bold",
                     minHeight: 48,
                     px: 2.5,
-                    color: "#1E201E", // Default text color
-                    "&:hover": {
-                      color: "#ffed2e", // Text color on hover
-                      backgroundColor: "#fffdf6", // Yellow background with opacity on hover
-                      "& .MuiListItemIcon-root": {
-                        color: "#ffed2e", // Icon color on hover
-                      },
-                    },
                   },
                   open
                     ? {
@@ -204,7 +168,6 @@ export default function ProfileDashboard() {
                     {
                       minWidth: 0,
                       justifyContent: "center",
-                      color: "#1E201E", // Default icon color
                     },
                     open
                       ? {
@@ -215,27 +178,63 @@ export default function ProfileDashboard() {
                         },
                   ]}
                 >
-                  {index % 2 === 0 ? (
-                    <InboxIcon
-                      sx={{
-                        fontWeight: "bold",
-                      }}
-                    />
-                  ) : (
-                    <MailIcon
-                      sx={{
-                        fontWeight: "bold",
-                      }}
-                    />
-                  )}
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
                 </ListItemIcon>
                 <ListItemText
                   primary={text}
                   sx={[
+                    open
+                      ? {
+                          opacity: 1,
+                        }
+                      : {
+                          opacity: 0,
+                        },
+                  ]}
+                />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+        <Divider />
+        <List>
+          {["All mail", "Trash", "Spam"].map((text, index) => (
+            <ListItem key={text} disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={[
+                  {
+                    minHeight: 48,
+                    px: 2.5,
+                  },
+                  open
+                    ? {
+                        justifyContent: "initial",
+                      }
+                    : {
+                        justifyContent: "center",
+                      },
+                ]}
+              >
+                <ListItemIcon
+                  sx={[
                     {
-                      fontWeight: "bold", // Default text weight
+                      minWidth: 0,
+                      justifyContent: "center",
                     },
-
+                    open
+                      ? {
+                          mr: 3,
+                        }
+                      : {
+                          mr: "auto",
+                        },
+                  ]}
+                >
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText
+                  primary={text}
+                  sx={[
                     open
                       ? {
                           opacity: 1,
@@ -250,8 +249,50 @@ export default function ProfileDashboard() {
           ))}
         </List>
       </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+      <Box component="main" sx={{ flexGrow: 1, p: 3, height: "100%" }}>
         <DrawerHeader />
+        <Typography sx={{ marginBottom: 2 }}>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
+          dolor purus non enim praesent elementum facilisis leo vel. Risus at
+          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
+          quisque non tellus. Convallis convallis tellus id interdum velit
+          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
+          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
+          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
+          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
+          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
+          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
+          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
+          faucibus et molestie ac. Lorem ipsum dolor sit amet consectetur
+          adipisicing elit. Voluptas voluptatibus eligendi incidunt temporibus
+          dolor delectus tempora doloribus pariatur hic, dolorum sunt. Aliquam
+          doloremque voluptatum illo nihil commodi, non iste labore veritatis
+          quod quisquam ducimus temporibus at corrupti eum, natus quae dolor, ab
+          consequatur dicta maxime? Soluta facere dolorem enim exercitationem
+          hic accusamus sequi reprehenderit debitis, fugiat temporibus eum error
+          et porro vel sint ab nam ipsam, possimus reiciendis itaque maiores
+          obcaecati perspiciatis similique corrupti? Maiores laborum adipisci
+          est earum maxime laudantium. Placeat soluta nesciunt similique
+          explicabo nisi. Excepturi veniam in sed. Explicabo quasi at ut
+          quisquam in quia tempora libero nulla quam mollitia natus minima sint
+          debitis quidem, accusamus consectetur dolore hic eveniet vel. Optio
+          iste quisquam illo consectetur est?
+        </Typography>
+        <Typography sx={{ marginBottom: 2 }}>
+          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
+          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
+          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
+          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
+          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
+          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
+          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
+          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
+          morbi tristique senectus et. Adipiscing elit duis tristique
+          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
+          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
+          posuere sollicitudin aliquam ultrices sagittis orci a.
+        </Typography>
       </Box>
     </Box>
   );

@@ -1,6 +1,12 @@
-
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 
 const Blog = () => {
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
+
   const blogs = [
     {
       id: 1,
@@ -10,7 +16,7 @@ const Blog = () => {
     },
     {
       id: 2,
-      title: 'Top 5 Areas for Naya_Aawas',
+      title: 'Top 5 Areas in Kathmandu for Naya_Aawas',
       excerpt: 'Explore the top cities where room rentals are most affordable and desirable.',
       image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
     },
@@ -26,12 +32,12 @@ const Blog = () => {
     <div className="container mx-auto p-6">
       <h1 className="text-4xl font-bold text-center mb-8">Our Blog</h1>
       
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 gap-4 md:m-16 m-3" data-aos='fade-up'>
         {blogs.map((blog) => (
           <div key={blog.id} className="bg-white rounded-lg shadow-md overflow-hidden">
             <img src={blog.image} alt={blog.title} className="w-full h-48 object-cover"/>
             
-            <div className="p-6">
+            <div className="p-4">
               <h2 className="text-2xl font-semibold mb-2">{blog.title}</h2>
               <p className="text-gray-700 mb-4">{blog.excerpt}</p>
               

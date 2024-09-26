@@ -23,16 +23,7 @@ const PropertyDetails = () => {
     { label: 'Expire On', value: '2025/05/17' },
   ];
 
-  const facilities = [
-    { label: 'GYM', value: 'GYM' },
-    { label: 'Swimming Pool', value: 'Swimming Pool' },
-    { label: 'Hospital', value: 'Hospital' },
-    { label: 'School', value: 'School' },
-    { label: 'Temple', value: 'Temple' },
-    { label: 'Restaurants', value: 'Restaurants' },
-    { label: 'Super Market', value: 'Super Market' },
-    { label: 'Bus Stop', value: 'Bus Stop' },
-  ];
+
 
   return (
     <div className="bg-white shadow-md rounded-lg p-6">
@@ -40,40 +31,14 @@ const PropertyDetails = () => {
         {details.map((detail, index) => (
           <div key={index} className="flex justify-between items-center border-b border-gray-300 pb-2">
             <span className="text-gray-700 font-medium">{detail.label}</span>
-            <div className="border-l border-gray-300 mx-4 h-full"></div> 
+            <div className="border-l border-gray-300 mx-4 h-full"></div>
             <span className="text-orange-500">{detail.value}</span>
           </div>
         ))}
       </div>
 
-      <div className="mt-8">
-        <h2 className="font-bold text-lg mb-2">Overview</h2>
-        <p className="text-gray-600">
-          Kritipur Salyanthan, 10 mins walking distance from Hicast College near Sasa Restaurant
-        </p>
-      </div>
-
-      <div className="mt-8">
-        <h2 className="font-bold text-lg mb-2">Local Area Facilities</h2>
-        <div className="grid grid-cols-2 gap-y-4 gap-x-8 border border-gray-200 rounded-lg p-4">
-          {facilities.map((facility, index) => (
-            <div key={index} className="flex justify-between items-center border-b border-gray-300 pb-2">
-              <span className="text-gray-600">{facility.label}</span>
-              <div className="border-l border-gray-300 mx-4 h-full"></div> 
-              <span className="text-orange-500">{facility.value}</span>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <div className="mt-8 text-center">
-        <button className="bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition duration-200">
-          Ask anything about 2BHK flat available in Kirtipur
-        </button>
-      </div>
-    </div>
+   </div>
   );
 };
 
 export default PropertyDetails;
-

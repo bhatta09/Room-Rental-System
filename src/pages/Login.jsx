@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Button, TextField, IconButton, InputAdornment } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material"; 
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
@@ -14,7 +14,7 @@ const Login = () => {
 
   const [username, setusername] = useState("");
   const [password, setPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
   const [formErrors, setFormErrors] = useState({});
 
   const navigate = useNavigate();
@@ -66,7 +66,6 @@ const Login = () => {
     verifyToken();
   }, [token]);
 
-  
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   // Google login handler
@@ -84,7 +83,7 @@ const Login = () => {
       <div className="mt-5">
         <AuthBg />
       </div>
-      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-lg mb-4">
+      <div className="max-w-lg w-full p-5 mt-10 md:ml-10 bg-[#fafbfb] bg-opacity-80 shadow-xl rounded-lg mb-4">
         <h2 className="text-2xl font-normal mb-6 text-gray-800 text-center uppercase">
           Login
         </h2>
@@ -105,17 +104,14 @@ const Login = () => {
             <TextField
               value={password}
               onChange={(e) => setPassword(e.target.value)}
-              type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               placeholder="Password"
               error={!!formErrors.error}
               helperText={formErrors.error}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
+                    <IconButton onClick={handleClickShowPassword} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>

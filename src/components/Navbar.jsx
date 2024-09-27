@@ -9,8 +9,9 @@ import logo from "../assets/homer.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Badge from "@mui/material/Badge";
+import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -92,7 +93,7 @@ const Navbar = () => {
   return (
     <nav className=" bg-white/90 sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1  gap-4 ">
       {/* logo */}
-      <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2 ">
+      <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2  font-medium">
         <div className="flex items-center gap-28">
           <Link to="/">
             <img src={logo} alt="" className="w-36" />
@@ -101,30 +102,8 @@ const Navbar = () => {
             <FavoriteBorderIcon fontSize="small" />
           </Badge>
         </div>
-        {/* <div className="flex gap-3 items-center">
-          <span className="flex gap-3 items-center">
-            <LocalPhoneIcon fontSize="small" />
-            (+977)-096-410183
-          </span>
-          <span>|</span>
-          <span className="flex gap-3 items-center">
-            <DraftsIcon fontSize="small" />
-            hamroaawas@gmail.com
-            </span>
-        </div> */}
+
         <div className="flex gap-3 items-center ">
-          {/* <span className="flex justify-evenly items-center">
-            <IconButton size="small">
-              <FacebookIcon fontSize="inherit" />
-            </IconButton>
-            <IconButton size="small" color="#000000">
-              <InstagramIcon fontSize="inherit" />
-            </IconButton>
-            <IconButton size="small">
-              <XIcon fontSize="inherit" />
-            </IconButton>
-          </span> */}
-          {/* <span>|</span> */}
           <div className="flex gap-3 items-center">
             <div className="flex gap-4 items-center  mr-20">
               <span className="flex gap-1 items-center">
@@ -134,29 +113,27 @@ const Navbar = () => {
               <Link
                 className="text-black font-medium hover:text-yellow-300 "
                 to="/contact"
-              >
-                {/* <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
-              <h1 className=" uppercase text-xs leading-4">Promote</h1>
-            </button> */}
-              </Link>
+              ></Link>
               <Link
                 className="text-black font-medium hover:text-yellow-300 "
                 to="/about"
               >
                 <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
-                  <h1 className=" uppercase text-xs leading-4">Find me room</h1>
+                  <h1 className=" uppercase text-xs leading-4 font-medium">
+                    Find me room
+                  </h1>
                 </button>
               </Link>
               <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
                 <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
-                <h1 className=" uppercase text-xs leading-4 font-semibold text-white">
+                <h1 className=" uppercase text-xs leading-4 font- text-white">
                   shift Home
                 </h1>
               </button>
             </div>
-            <div className="flex gap-1 items-center">
+            <div className="flex gap-1 items-center ">
               <span className="flex gap-2 items-center">
-                <LoginIcon fontSize="small" />
+                <AccountCircleOutlinedIcon fontSize="small" />
                 Login
               </span>
               <span>/</span>
@@ -165,41 +142,6 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-      {/*wishlist  */}
-      {/* <div className=" text-base font-medium uppercase md:flex flex-col  items-end hidden ">
-        <FavoriteIcon sx={{ fontSize: 18 }} />
-      </div> */}
-      {/* login */}
-      {/* <div className=" mx-auto hidden md:block  ">
-        <Link to={username ? "/profile" : "/login"}>
-          <div className="flex items-center gap-1 text-base font-semibold uppercase">
-            {username ? (
-              <div className="flex items-center gap-1 text-base font-medium uppercase">
-                Hi
-                <div className="w-6 h-6 rounded-full overflow-hidden border-2 border-yellow-500 bg-gray-900">
-                  <img
-                    src={image}
-                    alt=""
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                {username}
-              </div>
-            ) : (
-              <div className="flex items-center gap-1 text-base font-medium uppercase">
-                Login <PersonIcon sx={{ fontSize: 20 }} />
-              </div>
-            )}
-          </div>
-        </Link>
-      </div> */}
-      {/* 
-      <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
-        <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
-        <h1 className=" uppercase text-xs leading-4 font-semibold text-white">
-          shift Home
-        </h1>
-      </button> */}
 
       {/* mobileResponsive */}
       {/* <div className="w-full fixed bg-white shadow-2xl   bottom-0 z-[100] md:hidden rounded-t-full  ">

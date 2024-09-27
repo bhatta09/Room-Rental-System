@@ -5,9 +5,12 @@ import PersonIcon from "@mui/icons-material/Person";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import HomeIcon from "@mui/icons-material/Home";
-import logo from "../assets/home9.png";
+import logo from "../assets/homer.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
+import Badge from "@mui/material/Badge";
 import XIcon from "@mui/icons-material/X";
 import InstagramIcon from "@mui/icons-material/Instagram";
 import FacebookIcon from "@mui/icons-material/Facebook";
@@ -15,6 +18,7 @@ import DraftsIcon from "@mui/icons-material/Drafts";
 import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
 import LoginIcon from "@mui/icons-material/Login";
 import { IconButton } from "@mui/material";
+import AddIcon from "@mui/icons-material/Add";
 const mobileNavData = [
   {
     id: 1,
@@ -86,10 +90,18 @@ const Navbar = () => {
   };
 
   return (
-    <nav className=" bg-white sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1 pb-2 gap-4 ">
+    <nav className=" bg-white/90 sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1  gap-4 ">
       {/* logo */}
-      <div className="bg--500 w-full flex justify-between  text-xs font-medium py-2 ">
-        <div className="flex gap-3 items-center">
+      <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2 ">
+        <div className="flex items-center gap-28">
+          <Link to="/">
+            <img src={logo} alt="" className="w-36" />
+          </Link>
+          <Badge badgeContent={4} color="warning">
+            <FavoriteBorderIcon fontSize="small" />
+          </Badge>
+        </div>
+        {/* <div className="flex gap-3 items-center">
           <span className="flex gap-3 items-center">
             <LocalPhoneIcon fontSize="small" />
             (+977)-096-410183
@@ -98,10 +110,10 @@ const Navbar = () => {
           <span className="flex gap-3 items-center">
             <DraftsIcon fontSize="small" />
             hamroaawas@gmail.com
-          </span>
-        </div>
+            </span>
+        </div> */}
         <div className="flex gap-3 items-center ">
-          <span className="flex justify-evenly items-center">
+          {/* <span className="flex justify-evenly items-center">
             <IconButton size="small">
               <FacebookIcon fontSize="inherit" />
             </IconButton>
@@ -111,32 +123,54 @@ const Navbar = () => {
             <IconButton size="small">
               <XIcon fontSize="inherit" />
             </IconButton>
-          </span>
-          <span>|</span>
+          </span> */}
+          {/* <span>|</span> */}
           <div className="flex gap-3 items-center">
-            <span className="flex gap-3 items-center">
-              <LoginIcon fontSize="small" />
-              Login
-            </span>
-            <span>|</span>
-            <span className="flex gap-3 items-center">
-              <LoginIcon fontSize="small" />
-              Register
-            </span>
+            <div className="flex gap-4 items-center  mr-20">
+              <span className="flex gap-1 items-center">
+                Add Room
+                <AddIcon fontSize="small" />
+              </span>
+              <Link
+                className="text-black font-medium hover:text-yellow-300 "
+                to="/contact"
+              >
+                {/* <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
+              <h1 className=" uppercase text-xs leading-4">Promote</h1>
+            </button> */}
+              </Link>
+              <Link
+                className="text-black font-medium hover:text-yellow-300 "
+                to="/about"
+              >
+                <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
+                  <h1 className=" uppercase text-xs leading-4">Find me room</h1>
+                </button>
+              </Link>
+              <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
+                <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
+                <h1 className=" uppercase text-xs leading-4 font-semibold text-white">
+                  shift Home
+                </h1>
+              </button>
+            </div>
+            <div className="flex gap-1 items-center">
+              <span className="flex gap-2 items-center">
+                <LoginIcon fontSize="small" />
+                Login
+              </span>
+              <span>/</span>
+              <span>Register</span>
+            </div>
           </div>
         </div>
       </div>
-      <div className=" md:mb-0  sm:mr-64 md:mr-4">
-        <Link to="/">
-          <img src={logo} alt="" className="w-16" />
-        </Link>
-      </div>
       {/*wishlist  */}
-      <div className=" text-base font-medium uppercase md:flex flex-col  items-end hidden ">
+      {/* <div className=" text-base font-medium uppercase md:flex flex-col  items-end hidden ">
         <FavoriteIcon sx={{ fontSize: 18 }} />
-      </div>
+      </div> */}
       {/* login */}
-      <div className=" mx-auto hidden md:block  ">
+      {/* <div className=" mx-auto hidden md:block  ">
         <Link to={username ? "/profile" : "/login"}>
           <div className="flex items-center gap-1 text-base font-semibold uppercase">
             {username ? (
@@ -158,24 +192,7 @@ const Navbar = () => {
             )}
           </div>
         </Link>
-      </div>
-
-      <Link
-        className="text-black font-medium hover:text-yellow-300 "
-        to="/contact"
-      >
-        <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
-          <h1 className=" uppercase text-xs leading-4">Promote</h1>
-        </button>
-      </Link>
-      <Link
-        className="text-black font-medium hover:text-yellow-300 "
-        to="/about"
-      >
-        <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
-          <h1 className=" uppercase text-xs leading-4">Find me room</h1>
-        </button>
-      </Link>
+      </div> */}
       {/* 
       <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
         <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />

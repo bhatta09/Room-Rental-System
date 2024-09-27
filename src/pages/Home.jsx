@@ -138,7 +138,7 @@ const Home = () => {
       )}
       {/* Hero Section */}
       <div className="" id="heroSection">
-        <section className="shadow-xl relative flex items-center justify-center h-[84vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
+        <section className="shadow-xl relative flex items-center justify-center h-[89vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="relative mt-44 text-white z-10 hidden md:block mx-auto">
             <div className="flex bg-yellow-50/40 rounded-full  px-1 gap-4 items-center justify-end  ">
               <div className="flex justify-center items-center">

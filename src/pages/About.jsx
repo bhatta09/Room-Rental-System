@@ -1,7 +1,15 @@
 import { useEffect, useState } from 'react';
 import img from "../assets/room1.jpg";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const About = () => {
+
+  useEffect(() => {
+    AOS.init({ duration: 1500 });
+  }, []);
+
+
   const [customers, setCustomers] = useState(0);
   const [researchers, setResearchers] = useState(0);
   const [agents, setAgents] = useState(0);
@@ -29,7 +37,7 @@ const About = () => {
   return (
     <div className="flex flex-col space-y-10 mb-5 md:mb-16">
       <div className="bg-white flex flex-col md:flex-row items-center md:items-start gap-8 md:gap-20 md:px-16 px-6">
-        <div className="flex-1 w-full h-[300px] md:h-[380px] rounded-4xl p-4">
+        <div className="flex-1 w-full h-[300px] md:h-[380px] rounded-4xl p-4" data-aos="fade-right">
           <img
             src={img}
             alt="About Us"
@@ -37,7 +45,7 @@ const About = () => {
           />
         </div>
 
-        <div className="flex-1 p-6 md:p-12 text-center md:text-left text-base font-medium tracking-normal">
+        <div data-aos="fade-left" className="flex-1 p-6 md:p-12 text-center md:text-left text-base font-medium tracking-normal">
           <h2 className='text-center  md:text-center text-3xl font-semibold mb-4 md:mb-8'>About-Us</h2>
           <p className="text-gray-800 leading-relaxed pb-4 md:pb-6">
             The Room Rental System is a web application designed to streamline

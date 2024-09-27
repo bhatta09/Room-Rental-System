@@ -13,6 +13,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
 import ShiftHome from "./pages/ShiftHome"
+import FindRoom from "./pages/FindRoom"
 import TermandCondition from "./pages/TermandCondition";
 import PP from "./pages/PP";
 import ProfileDashboard from "./components/ProfileDashboard/ProfileDashboard";
@@ -84,6 +85,10 @@ const App = () => {
         {
           path: "/online-payment",
           element: <OnlinePayment />,
+        },
+        {
+          path: "/find-room",
+          element: <FindRoom />,
         },
       ],
     },

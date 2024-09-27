@@ -10,30 +10,29 @@ import YouTubeIcon from "@mui/icons-material/YouTube";
 
 const footerData = [
   {
-    mostSearchedLocation: [
-      "Pulchowk, Lalitpur",
-      "Koteshwor",
-      "Tikathali, Bhaktapur",
-      "Tokha, Kathmandu",
-      "Mhepi, Samakhushi",
+    Aawas: [
+     { label: "Profile", path: "/Profile" },
+     { label: "Blog", path: "/blog" },
+      { label: "FAQ", path: "/faq" },
+      { label: "Privacy policy", path: "/privacy" },
+      { label: "Terms & condition", path: "/terms" },
     ],
   },
   {
     navigationLinks: [
-      { label: "Home", path: "/home" },
-      { label: "Add Rooms", path: "/postforfree" },
+      { label: "Home", path: "/" },
+      { label: "Add Rooms", path: "/profile" },
       { label: "About-Us", path: "/about" },
-      { label: "Blog", path: "/blog" },
-      { label: "FAQ", path: "/faq" },
+      { label: "Send us Message", path: "/contact" },
+      { label: "Shift Home", path: "/shift-home" },
     ],
   },
   {
     Account: [
       { label: "My Account", path: "/Profile" },
-      { label: "Listed property", path: "/featured-rooms" },
+      { label: "Listed property", path: "/profile" },
       { label: "Wishlist", path: "/profile" },
-      { label: "Privacy policy", path: "/privacy" },
-      { label: "Terms & condition", path: "/terms" },
+      { label: "Online Payment", path: "/online-payment" },
     ],
   },
 ];
@@ -61,17 +60,19 @@ const Footer = () => {
       </div>
       {/* footer-content */}
       <div className="flex flex-wrap gap-12 p-12 md:justify-between lg:px-32 ">
-        <div className="flex flex-col gap-5 text-[12px]">
-          <h3 className=" font-semibold text-xl text-yellow-400">
-            Most Searched Locations
-          </h3>
-          <ul>
-            {footerData[0].mostSearchedLocation.map((location, index) => (
-              <li key={index} className="mb-3 text-base font-medium">
-                {location}
-              </li>
+      <div className="  flex flex-col gap-5 ">
+          <h3 className="text-xl font-semibold text-yellow-400">Naya_Aawas</h3>
+          <div className="flex flex-col">
+            {footerData[0].Aawas.map((data, index) => (
+              <Link
+                key={index}
+                to={data.path}
+                className="mb-3 text-base font-medium"
+              >
+                {data.label}
+              </Link>
             ))}
-          </ul>
+          </div>
         </div>
 
         <div className="  flex flex-col gap-5 ">

@@ -12,9 +12,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import Blog from "./pages/Blog";
 import FAQ from "./pages/FAQ";
+import ShiftHome from "./pages/ShiftHome"
 import TermandCondition from "./pages/TermandCondition";
 import PP from "./pages/PP";
 import ProfileDashboard from "./components/ProfileDashboard/ProfileDashboard";
+import OnlinePayment from "./pages/OnlinePayment";
 
 const App = () => {
   const router = createBrowserRouter([
@@ -74,6 +76,14 @@ const App = () => {
         {
           path: "/profileDashboard",
           element: <ProfileDashboard />,
+        },
+        {
+          path: "/shift-home",
+          element: <ShiftHome />,
+        },
+        {
+          path: "/online-payment",
+          element: <OnlinePayment />,
         },
       ],
     },

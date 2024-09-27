@@ -1,54 +1,14 @@
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import SearchIcon from "@mui/icons-material/Search";
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
-import PersonIcon from "@mui/icons-material/Person";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import HomeIcon from "@mui/icons-material/Home";
 import logo from "../assets/homer.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import Badge from "@mui/material/Badge";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import XIcon from "@mui/icons-material/X";
-import InstagramIcon from "@mui/icons-material/Instagram";
-import FacebookIcon from "@mui/icons-material/Facebook";
-import DraftsIcon from "@mui/icons-material/Drafts";
-import LocalPhoneIcon from "@mui/icons-material/LocalPhone";
-import LoginIcon from "@mui/icons-material/Login";
-import { IconButton } from "@mui/material";
 import AddIcon from "@mui/icons-material/Add";
-const mobileNavData = [
-  {
-    id: 1,
-    name: "Home",
-    path: "/contact",
-    icon: <HomeIcon sx={{ fontSize: 18 }} />,
-  },
-  {
-    id: 2,
 
-    name: "Find me room",
-    path: "/about",
-    icon: <SearchIcon sx={{ fontSize: 18 }} />,
-  },
-  {
-    id: 3,
-
-    name: "Login/Signup",
-    path: "/contact",
-    icon: <PersonIcon sx={{ fontSize: 18 }} />,
-  },
-  {
-    id: 4,
-
-    name: "Shift room",
-    path: "/about",
-    icon: <AirportShuttleIcon sx={{ fontSize: 18 }} />,
-  },
-];
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
   const [username, setUsername] = useState("");
@@ -125,51 +85,32 @@ const Navbar = () => {
                 </button>
               </Link>
               <Link to="/shift-home">
-              <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
-                <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
-                <h1 className=" uppercase text-xs leading-4 font- text-white">
-                  shift Home
-                </h1>
-              </button>
+                <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
+                  <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
+                  <h1 className=" uppercase text-xs leading-4 font- text-white">
+                    shift Home
+                  </h1>
+                </button>
               </Link>
             </div>
 
             <div className="flex gap-1 items-center">
-              <Link to="/login">
-            <div className="flex gap-1 items-center ">
-              <span className="flex gap-2 items-center">
-                <AccountCircleOutlinedIcon fontSize="small" />
-                Login
-              </span>
-              </Link>
+              {/* profile name */}
+              <div className="flex gap-1 items-center ">
+                <span className="flex gap-2 items-center">
+                  <AccountCircleOutlinedIcon fontSize="small" />
+                  <Link to="/login">Login</Link>
+                </span>
+              </div>
+
               <span>/</span>
               <Link to="/sign-up">
-              <span>Register</span>
+                <span>Register</span>
               </Link>
             </div>
           </div>
         </div>
       </div>
-
-      {/* mobileResponsive */}
-      {/* <div className="w-full fixed bg-white shadow-2xl   bottom-0 z-[100] md:hidden rounded-t-full  ">
-        <div className="flex flex-row mx-8 my-3 justify-between gap-5 items-center">
-          {mobileNavData.map((data) => (
-            <div
-              key={data.id}
-              className=" uppercase text-xs flex flex-col items-center "
-            >
-              {data.icon}
-              <Link
-                className="text-black font-medium hover:text-yellow-300 "
-                to={data.path}
-              >
-                <h1 className="text-[10px] font-bold">{data.name}</h1>
-              </Link>
-            </div>
-          ))}
-        </div>
-      </div> */}
     </nav>
   );
 };

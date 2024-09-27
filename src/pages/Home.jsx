@@ -26,6 +26,7 @@ import WhereToVoteOutlinedIcon from "@mui/icons-material/WhereToVoteOutlined";
 import NorthIcon from "@mui/icons-material/North";
 import PriceCheckOutlinedIcon from "@mui/icons-material/PriceCheckOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
+import FAQ from "./FAQ";
 const NextArrow = ({ onClick }) => (
   <div
     className=" text-gray-100 text-base bg-white border-[3px]  border-yellow-300 p-1 absolute left-16 bottom-[-50px]  transform -translate-y-1/2 cursor-pointer rounded-full"
@@ -322,17 +323,18 @@ const Home = () => {
         </Slider>
       </section>
 
-      <section data-aos="fade-up">
+      {/* <section data-aos="fade-up">
         <AboutUs />
-      </section>
-
-      <section>
+        </section>
+        
+        
+        <section>
         <LetKnow />
-      </section>
+        </section> */}
 
       {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
-      </section> */}
+        </section> */}
 
       <section data-aos="fade-up" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
@@ -351,27 +353,31 @@ const Home = () => {
               work="React Developer"
               star="4"
               desc="The room rental system offers a streamlined and intuitive experience,
-        making it easy for users to browse, compare, and book rooms
-        effortlessly. With clear room details and a responsive design"
+              making it easy for users to browse, compare, and book rooms
+              effortlessly. With clear room details and a responsive design"
             />
             <Reviews
               name="Sandesh Shrestha"
               work="React Developer"
               star="3"
               desc="The room rental system offers a streamlined and intuitive experience,
-        making it easy for users to browse, compare, and book rooms
-        effortlessly. With clear room details and a responsive design, it
-        provides a hassle-free solution for finding accommodations quickly."
+              making it easy for users to browse, compare, and book rooms
+              effortlessly. With clear room details and a responsive design, it
+              provides a hassle-free solution for finding accommodations quickly."
             />
             <Reviews
               name="Pritam Shrestha"
               work="Java Developer"
               star="5"
               desc="The best room renting website i have ever discover, it
-        provides a hassle-free solution for finding accommodations quickly."
+              provides a hassle-free solution for finding accommodations quickly."
             />
           </div>
         </div>
+      </section>
+
+      <section>
+        <FAQ />
       </section>
 
       <section className="my-10">

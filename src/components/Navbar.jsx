@@ -1,5 +1,5 @@
 import AirportShuttleIcon from "@mui/icons-material/AirportShuttle";
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/homer.png";
 import { useSelector } from "react-redux";
@@ -59,11 +59,12 @@ const Navbar = () => {
       });
 
       const userDetails = response.data["User Details"];
-
+console.log(userDetails)
       if (userDetails.imageName) {
         imageData(userDetails.imageName);
       }
       setUsername(userDetails.profileName);
+      console.log(username)
     } catch (error) {
       console.error("Error fetching user details:", error);
     }

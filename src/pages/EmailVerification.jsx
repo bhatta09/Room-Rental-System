@@ -1,5 +1,5 @@
 import React from "react";
-import logo from "../assets/image.png";
+import logo from "../assets/home0.png";
 const EmailVerification = () => {
   return (
     <section className="flex flex-col gap-4 items-center mb-24 mt-10 ">

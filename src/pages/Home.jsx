@@ -1,7 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import FeatureRoom from "../components/Home/FeatureRoom";
 import AboutUs from "../components/Home/AboutSection";
-import LetKnow from "../components/Home/Letknow";
 import Agent from "../components/Home/Agent";
 import Reviews from "../components/Home/Reviews";
 import img from "../assets/swornim.jpg";

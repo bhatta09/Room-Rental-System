@@ -25,9 +25,9 @@ const Profile = () => {
   }, [location.pathname, location.search]);
 
   return (
-    <div className="flex flex-row">
+    <div className="flex flex-row overflow-hidden max-h-screen">
       <ProfileSidebar />
-      <div className="flex  flex-col">
+      <div className="flex  flex-col ">
         <div className="text-2xl font-bold h-16 p-5 bg-slate-100 sticky top-0 z-50 flex ">
           <Link to="/">
             Lo<span className="text-yellow-400">go</span>

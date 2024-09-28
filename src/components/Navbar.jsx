@@ -5,10 +5,41 @@ import logo from "../assets/homer.png";
 import { useSelector } from "react-redux";
 import axios from "axios";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
+
+import { styled } from "@mui/material/styles";
 import Badge from "@mui/material/Badge";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
 import AddIcon from "@mui/icons-material/Add";
+import { Avatar } from "@mui/material";
 
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  "& .MuiBadge-badge": {
+    backgroundColor: "#44b700",
+    color: "#44b700",
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    "&::after": {
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: "100%",
+      height: "100%",
+      borderRadius: "50%",
+      animation: "ripple 1.2s infinite ease-in-out",
+      border: "1px solid currentColor",
+      content: '""',
+    },
+  },
+  "@keyframes ripple": {
+    "0%": {
+      transform: "scale(.8)",
+      opacity: 1,
+    },
+    "100%": {
+      transform: "scale(2.4)",
+      opacity: 0,
+    },
+  },
+}));
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
   const [username, setUsername] = useState("");
@@ -94,20 +125,29 @@ const Navbar = () => {
               </Link>
             </div>
 
-            <div className="flex gap-1 items-center">
-              {/* profile name */}
-              <div className="flex gap-1 items-center ">
+            {username ? (
+              <>
+                <StyledBadge
+                  overlap="circular"
+                  anchorOrigin={{ vertical: "bottom", horizontal: "right" }}
+                  variant="dot"
+                >
+                  <Avatar alt="Remy Sharp" src={image} />
+                </StyledBadge>
                 <span className="flex gap-2 items-center">
-                  <AccountCircleOutlinedIcon fontSize="small" />
-                  <Link to="/login">Login</Link>
+                  <Link to="/profile">{username}</Link>
                 </span>
-              </div>
+              </>
+            ) : (
+              /* login */
 
-              <span>/</span>
-              <Link to="/sign-up">
-                <span>Register</span>
-              </Link>
-            </div>
+              <div className="flex gap-2 items-center">
+                <AccountCircleOutlinedIcon fontSize="small" />
+                <Link to="/login">Login</Link>
+                <span>/</span>
+                <Link to="/sign-up">Register</Link>
+              </div>
+            )}
           </div>
         </div>
       </div>

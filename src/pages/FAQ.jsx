@@ -35,7 +35,7 @@ const FAQ = () => {
         </div>
       </div>
 
-      <div className="mt-10 w-full">
+      <div className="mt-6 w-full">
         <h2 className="text-3xl font-bold mb-6">Frequently Asked Questions</h2>
         <div className="space-y-7">
           {faqData.map((faq, index) => (

@@ -20,9 +20,10 @@ const footerData = [
   },
   {
     navigationLinks: [
-      { label: "Home", path: "/" },
-      { label: "Add Rooms", path: "/profile" },
       { label: "About-Us", path: "/about" },
+      { label: "Add Rooms", path: "/profile/post-room" },
+      { label: "Blog", path: "/blog" },
+      { label: "FAQ", path: "/faq" },
       { label: "Send us Message", path: "/contact" },
       { label: "Shift Home", path: "/shift-home" },
     ],
@@ -31,7 +32,9 @@ const footerData = [
     Account: [
       { label: "My Account", path: "/Profile" },
       { label: "Listed property", path: "/profile" },
-      { label: "Wishlist", path: "/profile" },
+      { label: "Wishlist", path: "/profile/wishlist" },
+      { label: "Privacy policy", path: "/privacy" },
+      { label: "Terms & condition", path: "/terms" },
       { label: "Online Payment", path: "/online-payment" },
     ],
   },
@@ -61,21 +64,6 @@ const Footer = () => {
       {/* footer-content */}
       <div className="flex flex-wrap gap-12 p-12 md:justify-between lg:px-32 ">
       <div className="  flex flex-col gap-5 ">
-          <h3 className="text-xl font-semibold text-yellow-400">Naya_Aawas</h3>
-          <div className="flex flex-col">
-            {footerData[0].Aawas.map((data, index) => (
-              <Link
-                key={index}
-                to={data.path}
-                className="mb-3 text-base font-medium"
-              >
-                {data.label}
-              </Link>
-            ))}
-          </div>
-        </div>
-
-        <div className="  flex flex-col gap-5 ">
           <h3 className="text-xl font-semibold text-yellow-400">Quick Links</h3>
           <div className="flex flex-col">
             {footerData[1].navigationLinks.map((data, index) => (
@@ -89,6 +77,26 @@ const Footer = () => {
             ))}
           </div>
         </div>
+
+        <div className=" text-black w-1/4">
+  <h2 className="text-xl font-semibold text-yellow-400">Subscription</h2>
+  <div className="h-1 w-8 bg-yellow-500 mb-4 font-medium"></div>
+  <p className="mb-4 font-medium">Sign up for our mailing list to get latest updates and offers</p>
+  <form>
+    <input
+      type="email"
+      placeholder="Enter your Email"
+      className="w-full py-2 px-4 mb-4 rounded-lg text-black font-medium"
+    />
+    <button
+      type="submit"
+      className="w-full bg-yellow-400 text-white py-2 px-4 rounded-lg hover:bg-yellow-600 transition-colors font-medium"
+    >
+      Subscribe
+    </button>
+  </form>
+</div>
+
 
         <div className=" flex flex-col gap-4 ">
           <h3 className="text-xl font-semibold text-yellow-400">Accounts</h3>
@@ -104,7 +112,7 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="text-sm font-medium flex flex-col gap-4 ">
+        <div className="text-sm font-medium flex flex-col gap-4  ">
           <img src={img} alt="" className="h-32 w-64 ml-[-32px]" />
           <Link>
             <label htmlFor="">

@@ -10,7 +10,7 @@ const FAQ = () => {
   };
 
   return (
-    <div className="flex flex-col lg:flex-row gap-32 p-7 md:p-16">
+    <div className="flex flex-col lg:flex-row gap-32 p-7 md:px-32">
       <div className="md:grid grid-cols-1 lg:grid-cols-2 lg:max-w-lg mx-auto lg:mx-0 lg:mt-10 gap-2 w-full max-h-[40vh] hidden" >
         <div className="col-span-2 ">
           <img

@@ -59,12 +59,12 @@ const Navbar = () => {
       });
 
       const userDetails = response.data["User Details"];
-console.log(userDetails)
+      console.log(userDetails);
       if (userDetails.imageName) {
         imageData(userDetails.imageName);
       }
       setUsername(userDetails.profileName);
-      console.log(username)
+      console.log(username);
     } catch (error) {
       console.error("Error fetching user details:", error);
     }
@@ -85,7 +85,7 @@ console.log(userDetails)
   return (
     <nav className=" bg-white/90 sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1  gap-4 ">
       {/* logo */}
-      <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2  font-medium">
+      <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2 ">
         <div className="flex items-center gap-28">
           <Link to="/">
             <img src={logo} alt="" className="w-36" />

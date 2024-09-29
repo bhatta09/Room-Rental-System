@@ -19,7 +19,7 @@ import { Typography } from "@mui/material";
 const sidebarData = [
   {
     name: "Post For Free",
-    tab: "postforfree",
+    tab: "post-room",
     icon: <AddHomeIcon />,
   },
   {
@@ -29,37 +29,27 @@ const sidebarData = [
   },
   {
     name: "Profile",
-    tab: "changeprofile",
+    tab: "change-profile",
     icon: <AccountCircleOutlinedIcon sx={{ fontSize: 33 }} />,
   },
   {
     name: "Write Review",
-    tab: "writeReview",
+    tab: "write-review",
     icon: <RateReviewOutlinedIcon sx={{ fontSize: 33 }} />,
   },
   {
     name: "Change Password",
-    tab: "changepassword",
+    tab: "change-password",
     icon: <PasswordIcon sx={{ fontSize: 33 }} />,
   },
   {
     name: "Forum Replies",
-    tab: "forumReplies",
+    tab: "forum-replies",
     icon: <ReplyIcon sx={{ fontSize: 33 }} />,
   },
 ];
 
-const ProfileSidebar = ({ open, close }) => {
-  const location = useLocation();
-
-  const [tab, setTab] = useState("");
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const tabFromUrl = urlParams.get("tab");
-    if (tabFromUrl) {
-      setTab(tabFromUrl);
-    }
-  }, [location.search]);
+const ProfileSidebar = ({ open }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
@@ -98,7 +88,7 @@ const ProfileSidebar = ({ open, close }) => {
                   key={index}
                   className={`relative cursor-pointer  p-3     hover:translate-x-6 transition ease-in-out duration-300 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
                 >
-                  <Link to={`/profile/?tab=${data.tab}`}>
+                  <Link to={`/profile/${data.tab}`}>
                     <div className="flex">
                       <IconButton
                         sx={{
@@ -148,7 +138,7 @@ const ProfileSidebar = ({ open, close }) => {
                   key={index}
                   className={`relative cursor-pointer  p-3 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
                 >
-                  <Link to={`/profile/?tab=${data.tab}`}>
+                  <Link to={`/profile/${data.tab}`}>
                     <div className="flex">
                       <IconButton
                         sx={{

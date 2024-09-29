@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import ProfileSidebar from "../components/Profile/ProfileSidebar";
-import Avatar from "@mui/material/Avatar";
-import { Link, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import PostForFree from "../components/Profile/PostForFree";
 import WriteReview from "../components/Profile/WriteReview";
 import Wishlist from "../components/Profile/Wishlist";
@@ -24,20 +23,6 @@ import SearchIcon from "@mui/icons-material/Search";
 import ClearIcon from "@mui/icons-material/Clear";
 import ProfileCard from "../components/Profile/ProfileCard";
 const Profile = () => {
-  const location = useLocation();
-  const [tab, setTab] = useState("");
-
-  useEffect(() => {
-    const urlParams = new URLSearchParams(location.search);
-    const tabFromUrl = urlParams.get("tab");
-
-    if (location.pathname === "/profile") {
-      setTab("");
-    } else if (tabFromUrl) {
-      setTab(tabFromUrl);
-    }
-  }, [location.pathname, location.search]);
-
   const [openSidebar, setOpenSidebar] = useState(true);
 
   const handleOpenSidebar = () => {
@@ -81,7 +66,7 @@ const Profile = () => {
               sx={{
                 "& .MuiBadge-badge": {
                   backgroundColor: "#f1c94e",
-                  color: "black", // Change background color
+                  color: "black",
                 },
               }}
             >
@@ -92,7 +77,7 @@ const Profile = () => {
               sx={{
                 "& .MuiBadge-badge": {
                   backgroundColor: "#f1c94e",
-                  color: "black", // Change background color
+                  color: "black",
                 },
               }}
             >
@@ -101,13 +86,7 @@ const Profile = () => {
             <ProfileCard />
           </div>
         </div>
-        {location.pathname === "/profile" && <Dashboard />}
-        {tab === "postforfree" && <PostForFree />}
-        {tab === "changeprofile" && <ChangeProfile />}
-        {tab === "forumReplies" && <ForumReplies />}
-        {tab === "changepassword" && <ChangePassword />}
-        {tab === "wishlist" && <Wishlist />}
-        {tab === "writeReview" && <WriteReview />}
+        <Outlet />
       </div>
     </div>
   );

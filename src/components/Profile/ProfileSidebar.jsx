@@ -134,10 +134,10 @@ const ProfileSidebar = ({ open, close }) => {
           {/* Dashboard */}
           <div className=" bg-slate-100  mt-20">
             <Link to="/profile">
-              <div className="flex gap-4 items-center p-3 text-yellow-400 hover:bg-yellow-100 rounded-lg transition duration-300 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-yellow-400 before:rounded-tr-lg before:rounded-br-lg relative">
+              <div className="flex gap-4 items-center p-3 text-[#FFB200]  before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-[#FFB200] before:rounded-tr-lg before:rounded-br-lg relative">
                 <GridViewIcon
                   sx={{ fontSize: 20, fontWeight: "bold" }}
-                  className="text-yellow-400"
+                  className="text-[#FFB200]"
                 />
               </div>
             </Link>
@@ -146,7 +146,7 @@ const ProfileSidebar = ({ open, close }) => {
               {sidebarData.map((data, index) => (
                 <li
                   key={index}
-                  className={`relative cursor-pointer  p-3     hover:translate-x-6 transition ease-in-out duration-300 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
+                  className={`relative cursor-pointer  p-3 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
                 >
                   <Link to={`/profile/?tab=${data.tab}`}>
                     <div className="flex">
@@ -170,9 +170,9 @@ const ProfileSidebar = ({ open, close }) => {
 
               <div
                 onClick={handleLogout}
-                className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-4 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 "
+                className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-4 items-center text-slate-600  "
               >
-                <LogoutIcon sx={{ fontSize: 20 }} className="text-inherit" />
+                <LogoutIcon sx={{ fontSize: 20 }} className="text-red-500" />
               </div>
             </ul>
           </div>

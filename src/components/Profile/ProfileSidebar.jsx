@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import AddHomeIcon from "@mui/icons-material/AddHome";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import Person4Icon from "@mui/icons-material/Person4";
 import PasswordIcon from "@mui/icons-material/Password";
 import ReplyIcon from "@mui/icons-material/Reply";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -13,14 +11,16 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import ProfileCard from "./ProfileCard";
+
+import IconButton from "@mui/material/IconButton";
 
 import logo from "../../assets/homer.png";
+import { Typography } from "@mui/material";
 const sidebarData = [
   {
     name: "Post For Free",
     tab: "postforfree",
-    icon: <AddHomeIcon sx={{ fontSize: 10 }} />,
+    icon: <AddHomeIcon />,
   },
   {
     name: "Wishlist",
@@ -49,8 +49,9 @@ const sidebarData = [
   },
 ];
 
-const ProfileSidebar = () => {
+const ProfileSidebar = ({ open, close }) => {
   const location = useLocation();
+
   const [tab, setTab] = useState("");
   useEffect(() => {
     const urlParams = new URLSearchParams(location.search);
@@ -67,49 +68,117 @@ const ProfileSidebar = () => {
     toast.error("Logged out!");
   };
   return (
-    <div className="w-60 min-w-[240px] border-r-2 border-gray-200 h-screen  shadow-lg bg-slate-100 overflow-y-scroll  overflow-x-hidden">
-      {/* Dashboard */}
-      <div className=" bg-slate-100">
-       <Link to="/">
-            <img src={logo} alt="" className="w-32 m-3" />
-          </Link>
+    <>
+      {open ? (
+        <div className="w-60 min-w-[240px] border-r-2 border-gray-200 h-screen  shadow-lg bg-slate-100    overflow-x-hidden  ">
+          {/* Dashboard */}
+          <div className=" bg-slate-100">
+            <Link to="/">
+              <img src={logo} alt="" className="w-32 m-3" />
+            </Link>
 
-        <Link to="/profile">
-          <div className="flex text-slate-600 p-3 ">
-            <GridViewIcon sx={{ fontSize: 27 }} className="text-inherit" />
-
-            <h1 className=" pl-4 text-lg font-normal   ">Dashboard</h1>
-          </div>
-        </Link>
-        <ul>
-          {sidebarData.map((data, index) => (
-            <li
-              key={index}
-              className={`cursor-pointer tracking-normal p-3 text-lg   font-normal flex gap-2 items-center text-slate-600  hover:translate-x-6 transition ease-in-out duration-300 ${
-                tab === data.tab ? " text-[#FFB200]" : ""
-              }`}
-            >
-              <Link to={`/profile/?tab=${data.tab}`}>
-                <data.icon.type
-                  sx={{ fontSize: 27 }}
-                  className="text-inherit mr-3"
+            <Link to="/profile">
+              <div className="flex gap-4 items-center p-3 text-yellow-400 hover:bg-yellow-100 rounded-lg transition duration-300 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-[#FFB200] before:rounded-tr-lg before:rounded-br-lg relative">
+                <GridViewIcon
+                  sx={{ fontSize: 20, fontWeight: "bold" }}
+                  className="text-[#FFB200]"
                 />
-                {data.name}
-              </Link>
-            </li>
-          ))}
+                <Typography
+                  sx={{ fontWeight: "bold" }}
+                  className=" text-[#FFB200]"
+                >
+                  Dashboard
+                </Typography>
+              </div>
+            </Link>
 
-          <li
-            onClick={handleLogout}
-            className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-2 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 "
-          >
-            <LogoutIcon sx={{ fontSize: 27 }} className="text-inherit" />
-            Logout
-          </li>
-          <ProfileCard />
-        </ul>
-      </div>
-    </div>
+            <ul>
+              {sidebarData.map((data, index) => (
+                <li
+                  key={index}
+                  className={`relative cursor-pointer  p-3     hover:translate-x-6 transition ease-in-out duration-300 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
+                >
+                  <Link to={`/profile/?tab=${data.tab}`}>
+                    <div className="flex">
+                      <IconButton
+                        sx={{
+                          borderRadius: "2px",
+                          marginRight: "12px",
+                          padding: "2px",
+                          "&:hover": {
+                            backgroundColor: "rgba(255, 178, 0, 0.2)",
+                            color: "#FFB200",
+                          },
+                        }}
+                      >
+                        <data.icon.type className="text-inherit " />
+                      </IconButton>
+                      <Typography>{data.name}</Typography>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+
+              <div
+                onClick={handleLogout}
+                className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-4 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 "
+              >
+                <LogoutIcon sx={{ fontSize: 20 }} className="text-inherit" />
+                <Typography sx={{ fontWeight: "bold" }}>Logout</Typography>
+              </div>
+            </ul>
+          </div>
+        </div>
+      ) : (
+        <div className="w-16  border-r-2 border-gray-200 h-screen  shadow-lg   bg-slate-100  overflow-x-hidden">
+          {/* Dashboard */}
+          <div className=" bg-slate-100  mt-20">
+            <Link to="/profile">
+              <div className="flex gap-4 items-center p-3 text-yellow-400 hover:bg-yellow-100 rounded-lg transition duration-300 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-yellow-400 before:rounded-tr-lg before:rounded-br-lg relative">
+                <GridViewIcon
+                  sx={{ fontSize: 20, fontWeight: "bold" }}
+                  className="text-yellow-400"
+                />
+              </div>
+            </Link>
+
+            <ul>
+              {sidebarData.map((data, index) => (
+                <li
+                  key={index}
+                  className={`relative cursor-pointer  p-3     hover:translate-x-6 transition ease-in-out duration-300 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
+                >
+                  <Link to={`/profile/?tab=${data.tab}`}>
+                    <div className="flex">
+                      <IconButton
+                        sx={{
+                          borderRadius: "2px",
+                          marginRight: "12px",
+                          padding: "2px",
+                          "&:hover": {
+                            backgroundColor: "rgba(255, 178, 0, 0.2)",
+                            color: "#FFB200",
+                          },
+                        }}
+                      >
+                        <data.icon.type className="text-inherit " />
+                      </IconButton>
+                    </div>
+                  </Link>
+                </li>
+              ))}
+
+              <div
+                onClick={handleLogout}
+                className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-4 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 "
+              >
+                <LogoutIcon sx={{ fontSize: 20 }} className="text-inherit" />
+              </div>
+            </ul>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 

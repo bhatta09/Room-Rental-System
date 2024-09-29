@@ -139,7 +139,40 @@ const Home = () => {
       {/* Hero Section */}
       <div className="" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[89vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
-          <div className="relative mt-44 text-white z-10 hidden md:block mx-auto">
+         <div className="flex flex-col m-5 md:m-32 gap-5 md:gap-14">
+         <div className="text-left z-0 my-10 mx-10">
+          <div className="bg-yellow-100 inline-flex items-center px-3 py-1.5 rounded-full mb-4">
+            <span role="img" aria-label="thumbs up">
+              👍
+            </span>
+            <span className="ml-2 text-sm font-semibold">
+              100% Trusted car rental platform in the World
+            </span>
+          </div>
+
+          <h1 className="text-5xl font-bold tracking-tight text-white">
+            Naya Aawas
+          </h1>
+          <h2 className="mt-2 text-4xl font-extrabold text-yellow-400">
+            Find Your Perfect Room
+          </h2>
+          <p className="mt-4 text-lg text-gray-100 font-medium">
+            Experience the ultimate in comfort, performance, and sophistication
+            with our luxury car rentals. From sleek sedans and stylish coupes to
+            spacious SUVs and elegant convertibles, we offer a range of premium
+            vehicles to suit your preferences and lifestyle.
+          </p>
+
+          <a
+            href="#"
+            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-yellow-500 hover:bg-yellow-600"
+          >
+            View All Rooms &rarr;
+          </a>
+        </div>
+        
+
+          <div className="text-white hidden md:flex md:justify-center ">
             <div className="flex bg-yellow-50/40 rounded-full  px-1 gap-4 items-center justify-end  ">
               <div className="flex justify-center items-center">
                 <label htmlFor="">
@@ -188,6 +221,7 @@ const Home = () => {
                 <span className="hidden lg:block">Search</span>
               </button>
             </div>
+          </div>
           </div>
         </section>
       </div>
@@ -322,18 +356,17 @@ const Home = () => {
         </Slider>
       </section>
 
-      {/* <section data-aos="fade-up">
+     <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
         <AboutUs />
         </section>
         
-        
-        <section>
-        <LetKnow />
-        </section> */}
 
       {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
         </section> */}
+          <section className="">
+        <FAQ />
+      </section>
 
       <section data-aos="fade-up" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
@@ -375,9 +408,7 @@ const Home = () => {
         </div>
       </section>
 
-      <section>
-        <FAQ />
-      </section>
+    
 
       <section className="my-10">
         <h2 className="text-3xl  font-semibold  mb-8  text-center ml-[-40px] ">

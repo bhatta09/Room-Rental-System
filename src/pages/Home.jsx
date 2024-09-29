@@ -139,89 +139,88 @@ const Home = () => {
       {/* Hero Section */}
       <div className="" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[89vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
-         <div className="flex flex-col m-5 md:m-32 gap-5 md:gap-14">
-         <div className="text-left z-0 my-10 mx-10">
-          <div className="bg-yellow-100 inline-flex items-center px-3 py-1.5 rounded-full mb-4">
-            <span role="img" aria-label="thumbs up">
-              👍
-            </span>
-            <span className="ml-2 text-sm font-semibold">
-              100% Trusted car rental platform in the World
-            </span>
-          </div>
-
-          <h1 className="text-5xl font-bold tracking-tight text-white">
-            Naya Aawas
-          </h1>
-          <h2 className="mt-2 text-4xl font-extrabold text-yellow-400">
-            Find Your Perfect Room
-          </h2>
-          <p className="mt-4 text-lg text-gray-100 font-medium">
-            Experience the ultimate in comfort, performance, and sophistication
-            with our luxury car rentals. From sleek sedans and stylish coupes to
-            spacious SUVs and elegant convertibles, we offer a range of premium
-            vehicles to suit your preferences and lifestyle.
-          </p>
-
-          <a
-            href="#"
-            className="mt-6 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-yellow-500 hover:bg-yellow-600"
-          >
-            View All Rooms &rarr;
-          </a>
-        </div>
-        
-
-          <div className="text-white hidden md:flex md:justify-center ">
-            <div className="flex bg-yellow-50/40 rounded-full  px-1 gap-4 items-center justify-end  ">
-              <div className="flex justify-center items-center">
-                <label htmlFor="">
-                  <PlaceIcon
-                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
-                  />
-                </label>
-                <input
-                  type="text"
-                  placeholder="Search By Title"
-                  className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
-                />
-                <label htmlFor="">
-                  <PlaceIcon
-                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
-                  />
-                </label>
-                <input
-                  type="text"
-                  placeholder=" Search for Location"
-                  className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-seminold text-base bg-transparent"
-                />
-                <label htmlFor="">
-                  <HomeIcon
-                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
-                  />
-                </label>
-                <input
-                  type="text"
-                  placeholder="Room Type"
-                  className="p-2 w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
-                />
-                <label htmlFor="">
-                  <PaymentsIcon
-                    sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
-                  />
-                </label>
-                <input
-                  type="text"
-                  placeholder=" Select Budget"
-                  className="p-2 rounded-r-full w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
+          <div className="flex flex-col m-5 md:m-32 gap-5 md:gap-14">
+            <div className="text-left  z-0 my-10 mr-10 ">
+              <div className="bg-yellow-100 inline-flex items-center px-3 py-1.5 rounded-full mb-4">
+                <span role="img" aria-label="thumbs up">
+                  👍
+                </span>
+                <span className="ml-2 text-sm font-semibold">
+                  100% Trusted room rental platform in the Nepal
+                  <span></span>
+                </span>
+                <img
+                  className="w-3 ml-1"
+                  src="https://img.icons8.com/?size=100&id=60249&format=png&color=000000"
+                  alt=""
                 />
               </div>
-              <button className="flex text-base  font-bold p-3 px-5 my-1 justify-center flex-wrap  bg-yellow-400 text-white rounded-full hover:bg-yellow-400 transition">
-                <SearchIcon sx={{ fontSize: 25, color: "white" }} />
-                <span className="hidden lg:block">Search</span>
-              </button>
+
+              <h1 className="text-5xl font-bold tracking-tight text-white">
+                Naya Aawas
+              </h1>
+              <h2 className="mt-2 text-4xl font-extrabold text-[#FFB200]">
+                Find Your Perfect Room
+              </h2>
+
+              <a
+                href="#"
+                className="mt-16 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-[#FFB200] hover:bg-yellow-600"
+              >
+                View All Rooms &rarr;
+              </a>
             </div>
-          </div>
+
+            <div className="text-white hidden md:flex md:justify-center ">
+              <div className="flex bg-yellow-50/40 rounded-full  px-1 gap-4 items-center justify-end  ">
+                <div className="flex justify-center items-center">
+                  <label htmlFor="">
+                    <PlaceIcon
+                      sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                    />
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Search By Title"
+                    className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
+                  />
+                  <label htmlFor="">
+                    <PlaceIcon
+                      sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                    />
+                  </label>
+                  <input
+                    type="text"
+                    placeholder=" Search for Location"
+                    className="p-2 rounded-l-full w-1/3 h-12 text-white outline-none placeholder:text-gray-100 font-seminold text-base bg-transparent"
+                  />
+                  <label htmlFor="">
+                    <HomeIcon
+                      sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                    />
+                  </label>
+                  <input
+                    type="text"
+                    placeholder="Room Type"
+                    className="p-2 w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
+                  />
+                  <label htmlFor="">
+                    <PaymentsIcon
+                      sx={{ fontSize: 30, color: "rgba(255, 255, 255, 0.5)" }}
+                    />
+                  </label>
+                  <input
+                    type="text"
+                    placeholder=" Select Budget"
+                    className="p-2 rounded-r-full w-1/3 text-white outline-none placeholder:text-gray-100 font-semibold text-base bg-transparent"
+                  />
+                </div>
+                <button className="flex text-base  font-bold p-3 px-5 my-1 justify-center flex-wrap  bg-[#FFB200] text-white rounded-full hover:bg-yellow-400 transition">
+                  <SearchIcon sx={{ fontSize: 25, color: "white" }} />
+                  <span className="hidden lg:block">Search</span>
+                </button>
+              </div>
+            </div>
           </div>
         </section>
       </div>
@@ -356,15 +355,14 @@ const Home = () => {
         </Slider>
       </section>
 
-     <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
+      <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
         <AboutUs />
-        </section>
-        
+      </section>
 
       {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
         </section> */}
-          <section className="">
+      <section className="">
         <FAQ />
       </section>
 
@@ -407,8 +405,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
-    
 
       <section className="my-10">
         <h2 className="text-3xl  font-semibold  mb-8  text-center ml-[-40px] ">

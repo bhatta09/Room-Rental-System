@@ -107,17 +107,17 @@ const Navbar = () => {
                 to="/contact"
               ></Link>
               <Link
-                className="text-black font-medium hover:text-yellow-300 "
+                className="text-black font-medium hover:text-[#FFB200] "
                 to="/find-room"
               >
-                <button className="hidden md:block border-2 border-gray-500  p-2 px-5 rounded-md ">
+                <button className="hidden md:block border-2 border-[#]  p-2 px-5 rounded-md ">
                   <h1 className=" uppercase text-xs leading-4 font-medium">
                     Find me room
                   </h1>
                 </button>
               </Link>
               <Link to="/shift-home">
-                <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-yellow-400">
+                <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-[#FFB200]">
                   <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
                   <h1 className=" uppercase text-xs leading-4 font- text-white">
                     shift Home

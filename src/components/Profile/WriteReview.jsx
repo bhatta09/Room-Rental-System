@@ -1,9 +1,46 @@
 import { useState } from "react";
-import { TextField, Select, MenuItem } from "@mui/material"
+import { TextField, Select, MenuItem } from "@mui/material";
+import axios from "axios";
 
 const WriteReview = () => {
+  const [title, setTitle] = useState('');
+  
   const [message, setMessage] = useState('');
+  const [rating, setRating] = useState("");
+  const [activity, setActivity] = useState("");
+  const [photo, setPhoto] = useState(null);
   const maxChars = 160;
+  const token = "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJiaGF0dGEwMSIsImlhdCI6MTcyNzY5NDE1NSwiZXhwIjoxNzI5MTM0MTU1fQ.0_V9MLE_qJJiDNERL5a8ixbuSg9TE9hkaeZ6lGbYbMA";
+
+  const handleSubmit = async () => {
+    const formData = new FormData();
+    
+    formData.append('title', title);
+    formData.append('rating', rating);
+    formData.append('activity', activity);
+    formData.append('message', message);
+    
+    if (photo) {
+      formData.append('image', photo);
+    }
+
+    console.log("Sending form data:", Object.fromEntries(formData));
+
+    try {
+      const response = await axios.post("/api/review", formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+
+      console.log("Response from server:", response.data);
+      alert(response.data);
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('Error submitting review. Please try again.');
+    }
+  };
 
   return (
     <div className="p-6 ">
@@ -23,6 +60,7 @@ const WriteReview = () => {
               <TextField
                 type="file"
                 id="photo"
+                onChange={(e) => setPhoto(e.target.files[0])}
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
@@ -33,9 +71,10 @@ const WriteReview = () => {
               </label>
               <TextField
                 type="text"
-                value="Sandesh Bhatta"
+                value={title}
                 readOnly
-                id="fullName"
+                id="title"
+                onChange={(e) => setTitle(e.target.value)}
                 className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none"
               />
             </div>
@@ -48,15 +87,17 @@ const WriteReview = () => {
               </label>
               <Select
                 id="rating"
+                value={rating}
+                onChange={(e) => setRating(e.target.value)}
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
-                <option>Select Your Rating</option>
+                <MenuItem value="">Select Your Rating</MenuItem>
                 <MenuItem value={1}>1</MenuItem>
                 <MenuItem value={2}>2</MenuItem>
                 <MenuItem value={3}>3</MenuItem>
                 <MenuItem value={4}>4</MenuItem>
                 <MenuItem value={5}>5</MenuItem>
-             </Select>
+              </Select>
             </div>
 
             <div>
@@ -66,6 +107,8 @@ const WriteReview = () => {
               <TextField
                 type="text"
                 id="activity"
+                value={activity}
+                onChange={(e) => setActivity(e.target.value)}
                 className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
@@ -88,10 +131,13 @@ const WriteReview = () => {
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto  p-10  mt-10">
- <button className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
- Submit for Approval <span className="ml-2">→</span></button>
-</div>
+          <div className="max-w-4xl mx-auto p-10 mt-10">
+            <button 
+              onClick={handleSubmit}
+              className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+              Submit for Approval <span className="ml-2">→</span>
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -99,7 +145,3 @@ const WriteReview = () => {
 };
 
 export default WriteReview;
-
-
-
-

@@ -48,7 +48,7 @@ const WriteReview = () => {
         <h2 className="text-2xl font-semibold ml-96">Add New Review</h2>
       </div>
 
-      <div className="bg-white shadow-lg rounded-2xl p-6 ml-96">
+      <div className="bg-white shadow-lg rounded-2xl p-6 w-2/4">
         <h3 className="text-xl font-semibold mb-5">Your Review</h3>
 
         <div className="flex flex-col gap-6">
@@ -66,7 +66,7 @@ const WriteReview = () => {
             </div>
 
             <div>
-              <label htmlFor="fullName" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="fullName" className="block text-gray-700 font-semibold mb-2 w-full">
                 Full Name
               </label>
               <TextField
@@ -82,7 +82,7 @@ const WriteReview = () => {
 
           <div className="flex flex-row gap-10">
             <div>
-              <label htmlFor="rating" className="block text-gray-700 font-semibold mb-2">
+              <label htmlFor="rating" className="block text-gray-700 font-semibold">
                 Rating
               </label>
               <Select
@@ -134,7 +134,7 @@ const WriteReview = () => {
           <div className="max-w-4xl mx-auto p-10 mt-10">
             <button 
               onClick={handleSubmit}
-              className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+              className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600 font-semibold">
               Submit for Approval <span className="ml-2">→</span>
             </button>
           </div>

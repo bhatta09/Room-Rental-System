@@ -3,7 +3,7 @@ import AddHomeIcon from "@mui/icons-material/AddHome";
 import PasswordIcon from "@mui/icons-material/Password";
 import ReplyIcon from "@mui/icons-material/Reply";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { clearToken } from "../../redux/auth/authSlice";
 import { toast } from "react-toastify";
@@ -16,7 +16,13 @@ import IconButton from "@mui/material/IconButton";
 
 import logo from "../../assets/homer.png";
 import { Typography } from "@mui/material";
+import { Dashboard, Margin } from "@mui/icons-material";
 const sidebarData = [
+  {
+    name: "Dashboard",
+    tab: "",
+    icon: <Dashboard />,
+  },
   {
     name: "Post For Free",
     tab: "post-room",
@@ -25,27 +31,27 @@ const sidebarData = [
   {
     name: "Wishlist",
     tab: "wishlist",
-    icon: <FavoriteBorderOutlinedIcon sx={{ fontSize: 33 }} />,
+    icon: <FavoriteBorderOutlinedIcon />,
   },
   {
     name: "Profile",
     tab: "change-profile",
-    icon: <AccountCircleOutlinedIcon sx={{ fontSize: 33 }} />,
+    icon: <AccountCircleOutlinedIcon />,
   },
   {
     name: "Write Review",
     tab: "write-review",
-    icon: <RateReviewOutlinedIcon sx={{ fontSize: 33 }} />,
+    icon: <RateReviewOutlinedIcon />,
   },
   {
     name: "Change Password",
     tab: "change-password",
-    icon: <PasswordIcon sx={{ fontSize: 33 }} />,
+    icon: <PasswordIcon />,
   },
   {
     name: "Forum Replies",
     tab: "forum-replies",
-    icon: <ReplyIcon sx={{ fontSize: 33 }} />,
+    icon: <ReplyIcon />,
   },
 ];
 
@@ -67,54 +73,51 @@ const ProfileSidebar = ({ open }) => {
               <img src={logo} alt="" className="w-32 m-3" />
             </Link>
 
-            <Link to="/profile">
-              <div className="flex gap-4 items-center p-3 text-yellow-400 hover:bg-yellow-100 rounded-lg transition duration-300 before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-[#FFB200] before:rounded-tr-lg before:rounded-br-lg relative">
-                <GridViewIcon
-                  sx={{ fontSize: 20, fontWeight: "bold" }}
-                  className="text-[#FFB200]"
-                />
-                <Typography
-                  sx={{ fontWeight: "bold" }}
-                  className=" text-[#FFB200]"
-                >
-                  Dashboard
-                </Typography>
-              </div>
-            </Link>
-
             <ul>
               {sidebarData.map((data, index) => (
-                <li
+                <div
                   key={index}
-                  className={`relative cursor-pointer  p-3     hover:translate-x-6 transition ease-in-out duration-300 hover:bg-yellow-400/10 hover:text-yellow-400  before:content-[''] before:absolute before:top-1/2 before:left-[-0.5rem] before:transform before:-translate-y-1/2 before:w-0 before:h-0 before:bg-[#FFB200] hover:before:w-2 hover:before:h-full hover:before:rounded-r-md`}
+                  className="cursor-pointer p-3  
+                  relative hover:translate-x-6 
+                  transition ease-in-out duration-300  
+                  before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 
+                  before:w-2 hover:before:bg-[#FFB200] before:rounded-tr-lg before:rounded-br-lg  "
                 >
-                  <Link to={`/profile/${data.tab}`}>
-                    <div className="flex">
-                      <IconButton
+                  <NavLink
+                    to={`/profile/${data.tab}`}
+                    end={data.tab === ""}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "active-link before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 before:bg-[#FFB200] before:rounded-tr-lg before:rounded-br-lg text-[#FFB200] "
+                        : "inactive-link text-gray-500  bg-yellow-400!"
+                    }
+                  >
+                    <div className="flex gap-4 pl-2 ">
+                      <data.icon.type
                         sx={{
-                          borderRadius: "2px",
-                          marginRight: "12px",
-                          padding: "2px",
-                          "&:hover": {
-                            backgroundColor: "rgba(255, 178, 0, 0.2)",
-                            color: "#FFB200",
-                          },
+                          fontSize: 20,
+                          fontWeight: "bold",
                         }}
-                      >
-                        <data.icon.type className="text-inherit " />
-                      </IconButton>
-                      <Typography>{data.name}</Typography>
+                      />
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        {data.name}
+                      </Typography>
                     </div>
-                  </Link>
-                </li>
+                  </NavLink>
+                </div>
               ))}
 
               <div
                 onClick={handleLogout}
-                className="cursor-pointer tracking-normal p-4 text-lg font-normal flex gap-4 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 "
+                className="cursor-pointer tracking-normal p-4  pl-6 text-lg font-normal flex gap-4 items-center text-slate-600 hover:translate-x-6 transition ease-in-out duration-300 relative before:content-[''] before:absolute before:left-0 before:top-0 before:bottom-0 before:w-2 hover:before:bg-[red] before:rounded-tr-lg before:rounded-br-lg "
               >
-                <LogoutIcon sx={{ fontSize: 20 }} className="text-inherit" />
-                <Typography sx={{ fontWeight: "bold" }}>Logout</Typography>
+                <LogoutIcon
+                  sx={{ fontSize: 20, color: "red" }}
+                  className="text-inherit"
+                />
+                <Typography sx={{ fontWeight: "bold", color: "red" }}>
+                  Logout
+                </Typography>
               </div>
             </ul>
           </div>

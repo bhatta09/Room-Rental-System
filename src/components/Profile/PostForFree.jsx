@@ -1,7 +1,35 @@
 import { TextField, Select, MenuItem } from "@mui/material";
+import axios from "axios";
+import { useForm } from "react-hook-form";
+
 const PostForFree = () => {
+  const {
+    register,
+    handleSubmit,
+    watch,
+    formState: { errors },
+  } = useForm();
+  const token =
+    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2RlbG9yZCIsImlhdCI6MTcyNzc0NDk4MSwiZXhwIjoxNzI5MTg0OTgxfQ.9H5OQpSl9QNxHWzVHQbNmWbuVnz5dK-YLroELpBVpeg";
+  const onSubmit = async (data) => {
+    try {
+      const response = await axios.post("/api/room", data, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log("Success:", response.data); // Handle success
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
-    <div className="bg-gray-50 ml-72 overflow-scroll">
+    <form
+      className="bg-gray-50 ml-72 overflow-scroll"
+      onSubmit={handleSubmit(onSubmit)}
+    >
       <div className="flex justify-center py-10">
         <h2 className="text-3xl font-semibold text-gray-800">Add Room</h2>
       </div>
@@ -20,11 +48,15 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Purpose*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <MenuItem>Rent</MenuItem>
-              <MenuItem>Salet</MenuItem>
-              <MenuItem>Lease</MenuItem>
-              <MenuItem>Paying Guest</MenuItem>
+            <Select
+              defaultValue="RENT"
+              {...register("purpose")}
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
+            >
+              <MenuItem value="RENT">Rent</MenuItem>
+              <MenuItem value="SALE">Sale</MenuItem>
+              <MenuItem value="LEASE">Lease</MenuItem>
+              <MenuItem value="PAYING_GUEST">Paying Guest</MenuItem>
             </Select>
           </div>
 
@@ -33,8 +65,9 @@ const PostForFree = () => {
               Your Title*
             </label>
             <TextField
+              {...register("title")}
               type=""
-              placeholder="Password"
+              placeholder="title"
               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
@@ -43,14 +76,20 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Category*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <MenuItem>Single Room</MenuItem>
-              <MenuItem>Two Rooms</MenuItem>
-              <MenuItem>1 BHK</MenuItem>
-              <MenuItem>2 BHK</MenuItem>
-              <MenuItem>3 / 4 BHK</MenuItem>
-              <MenuItem>House</MenuItem>
-              <MenuItem>Apartment</MenuItem>
+            <Select
+              {...register("category")}
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
+            >
+              <MenuItem value="SINGLE_ROOM">Single Room</MenuItem>
+              <MenuItem value="TWO_ROOM">Two Rooms</MenuItem>
+              <MenuItem value="ONE_BHK">1 BHK</MenuItem>
+              <MenuItem value="TWO_BHK">2 BHK</MenuItem>
+              <MenuItem value="THREE_BHK">3 BHK</MenuItem>
+              <MenuItem value="FOUR_BHK"> 4 BHK</MenuItem>
+              <MenuItem value="FLAT">Flat</MenuItem>
+
+              <MenuItem value="HOUSE">House</MenuItem>
+              <MenuItem value="APARTMENT">Apartment</MenuItem>
             </Select>
           </div>
 
@@ -59,8 +98,10 @@ const PostForFree = () => {
               Main Photo
             </label>
             <TextField
+              {...register("imageFileUrl")}
               type="file"
-              placeholder="Password"
+              inputProps={{ accept: "image/*" }}
+              placeholder=""
               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
@@ -72,7 +113,8 @@ const PostForFree = () => {
               Price*
             </label>
             <TextField
-              type=""
+              {...register("price")}
+              type="number"
               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
               placeholder="e.g., 5000 per month"
             />
@@ -82,9 +124,12 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Price Negotiable*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <MenuItem>No</MenuItem>
-              <MenuItem>Yes</MenuItem>
+            <Select
+              {...register("negotiable")}
+              className="w-full border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
             </Select>
           </div>
         </div>
@@ -102,7 +147,7 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Date of Build*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <Select className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
               <MenuItem>2081</MenuItem>
               <MenuItem>2080</MenuItem>
               <MenuItem>2079</MenuItem>
@@ -114,8 +159,9 @@ const PostForFree = () => {
               Bed*
             </label>
             <TextField
-              type=""
-              placeholder="Password"
+              {...register("bedRoom")}
+              type="number"
+              placeholder="bed"
               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
@@ -124,9 +170,12 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Select Kitchen*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-              <MenuItem>No</MenuItem>
-              <MenuItem>Yes</MenuItem>
+            <Select
+              {...register("kitchen")}
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
             </Select>
           </div>
 
@@ -134,18 +183,20 @@ const PostForFree = () => {
             <label className="block text-gray-700 font-semibold mb-2">
               Bath*
             </label>
-            <TextField
-              type=""
-              placeholder="Password"
-              className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-            />
+            <Select
+              {...register("bathRoom")}
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+            >
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
+            </Select>
           </div>
 
           <div>
             <label className="block text-gray-700 font-semibold mb-2">
               Furnishing*
             </label>
-            <Select className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
+            <Select className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
               <MenuItem>No</MenuItem>
               <MenuItem>Yes</MenuItem>v <MenuItem>Semi</MenuItem>
             </Select>
@@ -156,13 +207,14 @@ const PostForFree = () => {
               Faced
             </label>
             <Select
+              {...register("face")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <MenuItem>East</MenuItem>
-              <MenuItem>West</MenuItem>
-              <MenuItem>South</MenuItem>
-              <MenuItem>North</MenuItem>
+              <MenuItem value="EAST">East</MenuItem>
+              <MenuItem value="WEST">West</MenuItem>
+              <MenuItem value="SOUTH">South</MenuItem>
+              <MenuItem value="NORTH">North</MenuItem>
             </Select>
           </div>
 
@@ -171,11 +223,12 @@ const PostForFree = () => {
               Parking
             </label>
             <Select
+              {...register("parking")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <MenuItem>No</MenuItem>
-              <MenuItem>Yes</MenuItem>
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
             </Select>
           </div>
 
@@ -184,11 +237,12 @@ const PostForFree = () => {
               Balcony
             </label>
             <Select
+              {...register("balcony")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <MenuItem>No</MenuItem>
-              <MenuItem>Yes</MenuItem>
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
             </Select>
           </div>
 
@@ -197,12 +251,13 @@ const PostForFree = () => {
               Rental Floor
             </label>
             <Select
+              {...register("floor")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <MenuItem>Ground</MenuItem>
-              <MenuItem>1st</MenuItem>
-              <MenuItem>2nd</MenuItem>
+              <MenuItem value="GROUND">Ground</MenuItem>
+              <MenuItem value="FIRST_FLOOR">1st</MenuItem>
+              <MenuItem value="SECOND_FLOOR">2nd</MenuItem>
             </Select>
           </div>
 
@@ -212,7 +267,7 @@ const PostForFree = () => {
             </label>
             <Select
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
               <MenuItem>Blacked Pitched</MenuItem>
               <MenuItem>Gorato Bato</MenuItem>
@@ -224,11 +279,12 @@ const PostForFree = () => {
               Water Facility
             </label>
             <Select
+              {...register("waterFacility")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
             >
-              <MenuItem>No</MenuItem>
-              <MenuItem>Yes</MenuItem>
+              <MenuItem value="false">No</MenuItem>
+              <MenuItem value="true">Yes</MenuItem>
             </Select>
           </div>
         </div>
@@ -248,7 +304,18 @@ const PostForFree = () => {
               Contact Number*
             </label>
             <TextField
-              type=""
+              {...register("phoneNumber")}
+              type="number"
+              className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label className="block text-gray-700 font-semibold mb-2">
+              Description*
+            </label>
+            <TextField
+              {...register("description")}
+              type="text"
               className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
             />
           </div>
@@ -257,12 +324,13 @@ const PostForFree = () => {
               Propperty Location
             </label>
             <Select
+              {...register("location")}
               placeholder="select option"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
             >
-              <MenuItem>Lalitpur</MenuItem>
-              <MenuItem>Bhaktpur</MenuItem>
-              <MenuItem>Kathmandu</MenuItem>
+              <MenuItem value="Lalitpur">Lalitpur</MenuItem>
+              <MenuItem value="Bhaktpur">Bhaktpur</MenuItem>
+              <MenuItem value="Kathmandu">Kathmandu</MenuItem>
             </Select>
           </div>
         </div>
@@ -270,11 +338,14 @@ const PostForFree = () => {
       {/*more detail end*/}
 
       <div className="max-w-4xl mx-auto  p-10  mt-10">
-        <button className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+        <button
+          type="submit"
+          className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600"
+        >
           Submit for Approval <span className="ml-2">→</span>
         </button>
       </div>
-    </div>
+    </form>
   );
 };
 

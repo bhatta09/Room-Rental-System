@@ -67,7 +67,7 @@ const ChangeProfile = () => {
     e.preventDefault();
     console.log("button clicked");
     const postData = async () => {
-      const response = await axios.put(`/api/user/${id}`, formData, {
+      const response = await axios.post(`/api/user/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
@@ -86,7 +86,11 @@ const ChangeProfile = () => {
             <h2 className="text-2xl">Personal Details</h2>
           </div>
           <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-yellow-500 bg-gray-900">
-            <img src={image} alt="Profile" className="w-full h-full object-cover" />
+            <img
+              src={image}
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
           </div>
           <button className="rounded-md bg-yellow-400 px-4 py-2">
             Add Image

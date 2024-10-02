@@ -43,9 +43,9 @@ const App = () => {
 
           <Route path="post-room" element={<PostForFree />} />
           <Route path="wishlist" element={<Wishlist />} />
-          <Route path="change-password" element={<ChangeProfile />} />
+          <Route path="change-password" element={<ChangePassword />} />
           <Route path="write-review" element={<WriteReview />} />
-          <Route path="change-profile" element={<ChangePassword />} />
+          <Route path="change-profile" element={<ChangeProfile />} />
           <Route path="forum-replies" element={<ForumReplies />} />
         </Route>
         <Route path="roomdetail" element={<RoomDetail />} />

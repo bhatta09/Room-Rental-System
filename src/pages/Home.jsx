@@ -224,12 +224,10 @@ const Home = () => {
           </div>
         </section>
       </div>
-
       <div className="flex mx-auto  flex-wrap  justify-center lg:justify-between px-9  items-center  md:mx-0 lg:mx-32 ">
         <img src={banner} alt="" className="h-32 " />
         <img src={banner1} alt="" className="h-32 " />
       </div>
-
       {/* Featured Rooms Section */}
       <section className="px-12 lg:px-32 gap-7  ">
         <div className="flex justify-between mb-5 ">
@@ -292,7 +290,6 @@ const Home = () => {
           </div>
         </Slider>
       </section>
-
       <section className="px-12 lg:px-32 gap-7 mt-12 ">
         <div className="flex justify-between mb-5 ">
           <h2 className="text-xl font-semibold text-center ">Hot Deals</h2>
@@ -353,19 +350,16 @@ const Home = () => {
             />
           </div>
         </Slider>
-      </section>
-
+      </section>{" "}
       <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
         <AboutUs />
       </section>
-
       {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />
-        </section> */}
+      </section> */}
       <section className="">
         <FAQ />
       </section>
-
       <section data-aos="fade-up" className="">
         <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
           3,012 people have said how good NayaAawas
@@ -405,13 +399,12 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       <section className="my-10">
-        <h2 className="text-3xl  font-semibold  mb-8  text-center ml-[-40px] ">
+        <h2 className="text-3xl  font-semibold  mb-8  text-center  ">
           Why Choose Us?
         </h2>
-        <div className="flex  justify-between  mx-12 lg:mx-32">
-          <div className="flex flex-col items-center" data-aos="fade-right">
+        <div className="flex flex-wrap justify-between  mx-12 lg:mx-32  ">
+          <div className="flex flex-col items-center">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <WhereToVoteOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -420,7 +413,7 @@ const Home = () => {
               All our rooms are in prime locations.
             </p>
           </div>
-          <div className="flex flex-col items-center " data-aos="fade-up">
+          <div className="flex flex-col items-center ">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <ShoppingBagOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -429,7 +422,7 @@ const Home = () => {
               We offer competitive prices for all room types.
             </p>
           </div>
-          <div className="flex flex-col items-center" data-aos="fade-left">
+          <div className="flex flex-col items-center">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <VerifiedOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>

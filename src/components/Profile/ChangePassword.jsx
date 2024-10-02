@@ -99,7 +99,7 @@ const ChangePassword = () => {
               required
               placeholder=" Your New Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              InputProps={{
+              slotProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} edge="end">

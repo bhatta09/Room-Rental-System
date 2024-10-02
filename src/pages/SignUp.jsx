@@ -1,6 +1,12 @@
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
-import { Button, TextField, IconButton, InputAdornment, Grid2 } from "@mui/material";
+import {
+  Button,
+  TextField,
+  IconButton,
+  InputAdornment,
+  Grid2,
+} from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
 import axios from "axios";
@@ -16,8 +22,8 @@ const SignUp = () => {
     confirmPassword: "",
   });
 
-  const [formErrors, setFormErrors] = useState({}); // State for form validation errors
-  const [showPassword, setShowPassword] = useState(false); 
+  const [formErrors, setFormErrors] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -28,7 +34,6 @@ const SignUp = () => {
     }));
   };
 
-  
   const handleClickShowPassword = () => setShowPassword(!showPassword);
 
   // Google login handler
@@ -36,21 +41,16 @@ const SignUp = () => {
     window.location.href = "http://localhost:9090/oauth2/authorization/google";
   };
 
-  // GitHub login handler
-  const handleGithubLogin = () => {
-    window.location.href = "http://localhost:9090/oauth2/authorization/github";
-  };
-
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const response = await axios.post("/api/v1/auth/signUp", formData);
       console.log(response.data);
-      navigate("/emailverification");
+      navigate("/emailverification", { state: { email: formData.email } });
     } catch (error) {
       if (error.response && error.response.data) {
         const errors = error.response.data;
-        setFormErrors(errors); // Populate formErrors with API validation errors
+        setFormErrors(errors);
       } else {
         setFormErrors({
           general: "An unexpected error occurred",
@@ -141,7 +141,7 @@ const SignUp = () => {
             </Grid2>
             <Grid2 size={6}>
               <TextField
-               type={showPassword ? "text" : "password"} 
+                type={showPassword ? "text" : "password"}
                 variant="standard"
                 required
                 fullWidth
@@ -154,10 +154,7 @@ const SignUp = () => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        edge="end"
-                      >
+                      <IconButton onClick={handleClickShowPassword} edge="end">
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -167,7 +164,7 @@ const SignUp = () => {
             </Grid2>
             <Grid2 size={6}>
               <TextField
-               type={showPassword ? "text" : "password"} 
+                type={showPassword ? "text" : "password"}
                 variant="standard"
                 required
                 fullWidth
@@ -180,10 +177,7 @@ const SignUp = () => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton
-                        onClick={handleClickShowPassword}
-                        edge="end"
-                      >
+                      <IconButton onClick={handleClickShowPassword} edge="end">
                         {showPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
@@ -220,14 +214,6 @@ const SignUp = () => {
                 alt="Google"
               />
               Google
-            </Button>
-            <Button variant="outlined" onClick={handleGithubLogin}>
-              <img
-                className="w-7"
-                src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
-                alt="GitHub"
-              />
-              GitHub
             </Button>
           </div>
         </div>

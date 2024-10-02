@@ -1,6 +1,11 @@
 import React from "react";
+
+import { useLocation } from "react-router-dom";
 import logo from "../assets/home0.png";
 const EmailVerification = () => {
+  const location = useLocation();
+  const { email } = location.state || {}; // Get the email from the state
+
   return (
     <section className="flex flex-col gap-4 items-center mb-24 mt-10 ">
       <div>
@@ -15,8 +20,8 @@ const EmailVerification = () => {
         </h3>
         <h1 className="text-2xl font-semibold tracking-normal">
           We have sent a confirmation link to{" "}
-          <span className="text-[#FFB200]">[user-email]</span>. Please check
-          your inbox and click on the link to verify your account.
+          <span className="text-[#FFB200]">{email || "your email"}</span>.
+          Please check your inbox and click on the link to verify your account.
         </h1>
       </div>
 

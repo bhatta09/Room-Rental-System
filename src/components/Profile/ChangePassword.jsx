@@ -11,6 +11,7 @@ const ChangePassword = () => {
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [formErrors, setFormErrors] = useState({});
 
   const token = useSelector((state) => state.auth.token);
 
@@ -54,12 +55,19 @@ const ChangePassword = () => {
         },
       });
       toast.success("Password Changed Successfully");
-      console.log(response.data);
+
       setNewPassword("");
       setCurrentPassword("");
       setConfirmPassword("");
     } catch (error) {
-      console.error("Error", error);
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        setFormErrors(errors);
+      } else {
+        setFormErrors({
+          general: "An unexpected error occurred",
+        });
+      }
     }
   };
 
@@ -77,6 +85,8 @@ const ChangePassword = () => {
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               placeholder="Your Old Password"
+              error={!!formErrors.error}
+              helperText={formErrors.error}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
               slotProps={{
                 endAdornment: (
@@ -98,6 +108,8 @@ const ChangePassword = () => {
               name=""
               required
               placeholder=" Your New Password"
+              error={!!formErrors.error}
+              helperText={formErrors.error}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
               slotProps={{
                 endAdornment: (
@@ -120,7 +132,9 @@ const ChangePassword = () => {
               required
               placeholder=" Confirm Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              InputProps={{
+              error={!!formErrors.error}
+              helperText={formErrors.error}
+              slotProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} edge="end">

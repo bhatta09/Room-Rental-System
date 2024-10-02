@@ -1,4 +1,5 @@
-import { TextField, Select, MenuItem } from "@mui/material";
+import { TextField, Select, MenuItem, Checkbox, FormControlLabel } from "@mui/material";
+
 import axios from "axios";
 import { useForm } from "react-hook-form";
 
@@ -27,7 +28,7 @@ const PostForFree = () => {
 
   return (
     <form
-      className="bg-gray-50 ml-72 overflow-scroll"
+      className="bg-gray-50 overflow-scroll"
       onSubmit={handleSubmit(onSubmit)}
     >
       <div className="flex justify-center py-10">
@@ -35,7 +36,8 @@ const PostForFree = () => {
       </div>
 
       {/* Basic Details */}
-      <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md">
+      <div className="flex flex-col lg:flex-row gap-8 mx-5">
+<div className="w-full md:w-1/2 mx-auto bg-white shadow-lg p-10 rounded-md">
         <h2 className="text-xl font-semibold text-gray-700">
           1. Basic Details
         </h2>
@@ -136,7 +138,7 @@ const PostForFree = () => {
       </div>
 
       {/* Amenities */}
-      <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md mt-10">
+      <div className="w-full md:w-1/2 mx-auto bg-white shadow-lg p-10 rounded-md">
         <h2 className="text-xl font-semibold text-gray-700">2. Amenities</h2>
         <p className="text-sm text-gray-500">
           All fields marked with * are mandatory
@@ -289,6 +291,7 @@ const PostForFree = () => {
           </div>
         </div>
       </div>
+      </div>
       {/*basic detail end*/}
 
       {/*more detail*/}
@@ -334,13 +337,32 @@ const PostForFree = () => {
             </Select>
           </div>
         </div>
+        <div>
+          <h3 className="text-lg font-semibold text-gray-700 mb-4">Local Area Facilities</h3>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            {[
+              "GYM", "Swimming Pool", "Playing Court", "Hospital", "School",
+              "Montessori Nursery", "College", "Temple", "Restaurants",
+              "Super Market", "Bus Stop", "Taxi Stand", "Police Station",
+              "Bank", "Banquet Hall", "Gas Station"
+            ].map((facility) => (
+              <FormControlLabel
+                key={facility}
+                control={<Checkbox />}
+                label={facility}
+                className="text-sm text-gray-700"
+              />
+            ))}
+          </div>
+        </div>
       </div>
+     
       {/*more detail end*/}
 
       <div className="max-w-4xl mx-auto  p-10  mt-10">
         <button
           type="submit"
-          className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600"
+          className="w-full px-6 py-3 bg-yellow-400 text-white rounded font-medium hover:bg-yellow-600"
         >
           Submit for Approval <span className="ml-2">→</span>
         </button>

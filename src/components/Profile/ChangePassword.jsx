@@ -1,13 +1,40 @@
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { useSelector } from "react-redux";
+import { toast } from "react-toastify";
 
 const ChangePassword = () => {
+  const [id, setId] = useState("");
   const [currentPassword, setCurrentPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [showPassword, setShowPassword] = useState(false); 
+  const [showPassword, setShowPassword] = useState(false);
+
+  const token = useSelector((state) => state.auth.token);
+
+  useEffect(() => {
+    if (token) {
+      extractDetails();
+    }
+  }, [token]);
+  console.log(token);
+  const extractDetails = async () => {
+    try {
+      const response = await axios.get("/api/user/extract-details", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userDetails = response.data["User Details"];
+      setId(userDetails.id);
+      console.log(userDetails.id);
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
 
   const formData = {
     currentPassword,
@@ -21,10 +48,12 @@ const ChangePassword = () => {
     e.preventDefault();
     console.log(formData);
     try {
-      const response = await axios.post(
-        "http://localhost:9090/api/v1/auth/66d6a822f05b756cb475f29d",
-        formData
-      );
+      const response = await axios.post(`/api/user/${id}`, formData, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+      toast.success("Password Changed Successfully");
       console.log(response.data);
       setNewPassword("");
       setCurrentPassword("");
@@ -33,7 +62,6 @@ const ChangePassword = () => {
       console.error("Error", error);
     }
   };
-
 
   return (
     <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
@@ -45,18 +73,15 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
             <TextField
-             type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}
               placeholder="Your Old Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              InputProps={{
+              slotProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
+                    <IconButton onClick={handleClickShowPassword} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -67,7 +92,7 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">New Password</label>
             <TextField
-             type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={newPassword}
               onChange={(e) => setNewPassword(e.target.value)}
               name=""
@@ -77,10 +102,7 @@ const ChangePassword = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
+                    <IconButton onClick={handleClickShowPassword} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>
@@ -91,7 +113,7 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">Confirm Password</label>
             <TextField
-             type={showPassword ? "text" : "password"} 
+              type={showPassword ? "text" : "password"}
               value={confirmPassword}
               onChange={(e) => setConfirmPassword(e.target.value)}
               name=""
@@ -101,10 +123,7 @@ const ChangePassword = () => {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <IconButton
-                      onClick={handleClickShowPassword}
-                      edge="end"
-                    >
+                    <IconButton onClick={handleClickShowPassword} edge="end">
                       {showPassword ? <VisibilityOff /> : <Visibility />}
                     </IconButton>
                   </InputAdornment>

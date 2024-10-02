@@ -79,9 +79,8 @@ const ChangeProfile = () => {
   };
 
   return (
-    <div className="max-w-lg w-full p-8 mt-2 ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg">
-      <div className="w-full h-full rounded-md shadow-md p-10">
-        <div className="flex flex-col items-center w-full gap-6">
+    <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
+   <div className="flex flex-col items-center w-full gap-6">
           <div>
             <h2 className="text-2xl">Personal Details</h2>
           </div>
@@ -144,13 +143,13 @@ const ChangeProfile = () => {
         <div className="mt-6">
           <button
             onClick={handleSubmit}
-            className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600 transition-colors"
+            className="w-full px-6 py-3 bg-yellow-400 font-medium text-white rounded hover:bg-yellow-600 transition-colors"
           >
             Update <span className="ml-2">→</span>
           </button>
         </div>
       </div>
-    </div>
+  
   );
 };
 

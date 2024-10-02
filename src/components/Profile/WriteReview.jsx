@@ -43,16 +43,13 @@ const WriteReview = () => {
   };
 
   return (
-    <div className="p-6 ">
-      <div className="mb-6">
+  <div className="mb-6">
         <h2 className="text-2xl font-semibold ml-96">Add New Review</h2>
-      </div>
-
-      <div className="bg-white shadow-lg rounded-2xl p-6 ml-96">
+   
+  <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md mt-10">
         <h3 className="text-xl font-semibold mb-5">Your Review</h3>
 
-        <div className="flex flex-col gap-6">
-          <div className="flex flex-row gap-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div>
               <label htmlFor="photo" className="block text-gray-700 font-semibold mb-2">
                 Photo
@@ -61,7 +58,7 @@ const WriteReview = () => {
                 type="file"
                 id="photo"
                 onChange={(e) => setPhoto(e.target.files[0])}
-                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
 
@@ -75,12 +72,12 @@ const WriteReview = () => {
                 readOnly
                 id="title"
                 onChange={(e) => setTitle(e.target.value)}
-                className="w-full border border-gray-300 p-2 rounded-md bg-gray-100 focus:outline-none"
+                className="w-full border border-gray-300 rounded-md bg-gray-100 focus:outline-none"
               />
             </div>
           </div>
 
-          <div className="flex flex-row gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
             <div>
               <label htmlFor="rating" className="block text-gray-700 font-semibold mb-2">
                 Rating
@@ -89,7 +86,7 @@ const WriteReview = () => {
                 id="rating"
                 value={rating}
                 onChange={(e) => setRating(e.target.value)}
-                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               >
                 <MenuItem value="">Select Your Rating</MenuItem>
                 <MenuItem value={1}>1</MenuItem>
@@ -109,12 +106,12 @@ const WriteReview = () => {
                 id="activity"
                 value={activity}
                 onChange={(e) => setActivity(e.target.value)}
-                className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
+                className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
               />
             </div>
           </div>
 
-          <div>
+          <div className="mt-6">
             <label htmlFor="message" className="block text-gray-700 font-semibold mb-2">
               Message
             </label>
@@ -124,23 +121,23 @@ const WriteReview = () => {
               maxLength={maxChars}
               value={message}
               placeholder="Write your message here"
-              className="w-full border border-gray-300 p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+              className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
             />
             <div className="text-right text-gray-500 mt-1">
               {message.length} of {maxChars} Characters
             </div>
           </div>
 
-          <div className="max-w-4xl mx-auto p-10 mt-10">
+          <div className="mt-6">
             <button 
               onClick={handleSubmit}
-              className="w-full px-6 py-3 bg-yellow-400 text-white rounded hover:bg-yellow-600">
+              className="w-full px-6 py-3 bg-yellow-400 text-white rounded font-medium hover:bg-yellow-600">
               Submit for Approval <span className="ml-2">→</span>
             </button>
           </div>
         </div>
       </div>
-    </div>
+
   );
 };
 

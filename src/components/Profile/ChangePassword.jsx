@@ -36,7 +36,7 @@ const ChangePassword = () => {
 
 
   return (
-    <div className="max-w-lg w-full p-8 mt-2 ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
+    <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
       <form onSubmit={handleSubmit}>
         <h2 className="text-2xl font-normal mb-6 text-gray-800 text-center">
           Change Password

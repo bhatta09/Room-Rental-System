@@ -97,7 +97,7 @@ const Navbar = () => {
 
         <div className="flex gap-3 items-center ">
           <div className="flex gap-3 items-center">
-            <div className="flex gap-4 items-center  mr-20">
+            <div className="hidden md:flex gap-4 items-center  mr-20 ">
               <span className="flex gap-1 items-center">
                 Add Room
                 <AddIcon fontSize="small" />

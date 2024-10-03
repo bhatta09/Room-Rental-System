@@ -149,8 +149,9 @@ const SignUp = () => {
                 label="Password"
                 value={formData.password}
                 onChange={handleChange}
-                error={!!formErrors.password}
-                helperText={formErrors.password}
+                
+                error={!!formErrors.password || !!formErrors.error }
+                helperText={formErrors.password || formErrors.error}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
@@ -172,8 +173,8 @@ const SignUp = () => {
                 label="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                error={!!formErrors.password}
-                helperText={formErrors.password}
+                error={!!formErrors.password || !!formErrors.error }
+                helperText={formErrors.password || formErrors.error}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">

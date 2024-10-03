@@ -89,6 +89,7 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
             <TextField
+            required
               type={showPassword ? "text" : "password"}
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}

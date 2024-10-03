@@ -34,20 +34,7 @@ const ChangePassword = () => {
       setId(userDetails.id);
       console.log(userDetails.id);
     } catch (error) {
-      if (error.response && error.response.data) {
-        const errors = error.response.data;
-        setFormErrors(errors);
-        setTimeout(() => {
-          setFormErrors({});
-        }, 3000);
-      } else {
-        setFormErrors({
-          general: "An unexpected error occurred",
-        });
-        setTimeout(() => {
-          setFormErrors({});
-        }, 3000);
-      }
+      console.error("Error fetching user details:", error);
     }
   };
 
@@ -73,14 +60,21 @@ const ChangePassword = () => {
       setNewPassword("");
       setCurrentPassword("");
       setConfirmPassword("");
+      setFormErrors({});
     } catch (error) {
       if (error.response && error.response.data) {
         const errors = error.response.data;
         setFormErrors(errors);
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
       } else {
         setFormErrors({
           general: "An unexpected error occurred",
         });
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
       }
     }
   };

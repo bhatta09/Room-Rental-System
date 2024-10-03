@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextField } from "@mui/material";
+import { toast } from "react-toastify";
 
 const ChangeProfile = () => {
   const [formData, setFormData] = useState({
@@ -11,6 +12,8 @@ const ChangeProfile = () => {
   });
   const [image, setImage] = useState("");
   const [id, setId] = useState("");
+  const [formErrors, setFormErrors] = useState({});
+
   const token = useSelector((state) => state.auth.token);
   console.log(token);
 
@@ -62,19 +65,34 @@ const ChangeProfile = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("button clicked");
-    const postData = async () => {
-      const response = await axios.post(`/api/user/${id}`, formData, {
+    try {
+      const response = await axios.put(`/api/user/${id}`, formData, {
         headers: {
           Authorization: `Bearer ${token}`,
           "Content-Type": "multipart/form-data",
         },
       });
       console.log(response.data);
-    };
-    postData();
+      toast.success("Profile Updated!");
+      setFormErrors({});
+    } catch (error) {
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        setFormErrors(errors);
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
+      } else {
+        setFormErrors({
+          general: "An unexpected error occurred",
+        });
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
+      }
+    }
   };
 
   return (
@@ -118,8 +136,10 @@ const ChangeProfile = () => {
             value={formData.phoneNumber || ""}
             onChange={handleChange}
             name="phoneNumber"
-            type="text"
+            type="number"
             placeholder="New Phone Number"
+            error={!!formErrors.phoneNumber}
+            helperText={formErrors.phoneNumber}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
           />
         </div>

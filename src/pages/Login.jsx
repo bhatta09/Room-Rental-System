@@ -95,8 +95,8 @@ const Login = () => {
               value={username}
               onChange={(e) => setusername(e.target.value)}
               placeholder="Your Email or Username"
-              error={!!formErrors.error}
-              helperText={formErrors.error}
+              error={!!formErrors.errorMsg}
+              helperText={formErrors.errorMsg}
             />
           </div>
           <div className="mb-3 font-semibold flex flex-col gap-2">
@@ -106,8 +106,8 @@ const Login = () => {
               onChange={(e) => setPassword(e.target.value)}
               type={showPassword ? "text" : "password"}
               placeholder="Password"
-              error={!!formErrors.error}
-              helperText={formErrors.error}
+              error={!!formErrors.errorMsg}
+              helperText={formErrors.errorMsg}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">

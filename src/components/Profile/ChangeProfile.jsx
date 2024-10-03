@@ -5,7 +5,6 @@ import { TextField } from "@mui/material";
 
 const ChangeProfile = () => {
   const [formData, setFormData] = useState({
-    username: "",
     email: "",
     phoneNumber: "",
     address: "",
@@ -80,76 +79,61 @@ const ChangeProfile = () => {
 
   return (
     <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
-   <div className="flex flex-col items-center w-full gap-6">
-          <div>
-            <h2 className="text-2xl">Personal Details</h2>
-          </div>
-          <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-yellow-500 bg-gray-900">
-            <img
-              src={image}
-              alt="Profile"
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <button className="rounded-md bg-yellow-400 px-4 py-2">
-            Add Image
-          </button>
+      <div className="flex flex-col items-center w-full gap-6">
+        <div>
+          <h2 className="text-2xl">Personal Details</h2>
+        </div>
+        <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-yellow-500 bg-gray-900">
+          <img
+            src={image}
+            alt="Profile"
+            className="w-full h-full object-cover"
+          />
+        </div>
+        <button className="rounded-md bg-yellow-400 px-4 py-2">
+          Add Image
+        </button>
+      </div>
+
+      <div className="mt-8 flex flex-col gap-6">
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700">
+            Address
+          </label>
+          <TextField
+            value={formData.address || ""}
+            onChange={handleChange}
+            name="address"
+            type="text"
+            placeholder="Your Address"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+          />
         </div>
 
-        <div className="mt-8 flex flex-col gap-6">
-          <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700">
-              Email
-            </label>
-            <TextField
-              value={formData.email}
-              onChange={handleChange}
-              name="email"
-              type="email"
-              placeholder="Your Email"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-            />
-          </div>
-
-          <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700">
-              Address
-            </label>
-            <TextField
-              value={formData.address || ""}
-              onChange={handleChange}
-              name="address"
-              type="text"
-              placeholder="Your Address"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-            />
-          </div>
-
-          <div className="w-full">
-            <label className="block text-sm font-medium text-gray-700">
-              Phone Number
-            </label>
-            <TextField
-              value={formData.phoneNumber || ""}
-              onChange={handleChange}
-              name="phoneNumber"
-              type="text"
-              placeholder="New Phone Number"
-              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-            />
-          </div>
-        </div>
-
-        <div className="mt-6">
-          <button
-            onClick={handleSubmit}
-            className="w-full px-6 py-3 bg-yellow-400 font-medium text-white rounded hover:bg-yellow-600 transition-colors"
-          >
-            Update <span className="ml-2">→</span>
-          </button>
+        <div className="w-full">
+          <label className="block text-sm font-medium text-gray-700">
+            Phone Number
+          </label>
+          <TextField
+            value={formData.phoneNumber || ""}
+            onChange={handleChange}
+            name="phoneNumber"
+            type="text"
+            placeholder="New Phone Number"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
+          />
         </div>
       </div>
-  
+
+      <div className="mt-6">
+        <button
+          onClick={handleSubmit}
+          className="w-full px-6 py-3 bg-yellow-400 font-medium text-white rounded hover:bg-yellow-600 transition-colors"
+        >
+          Update <span className="ml-2">→</span>
+        </button>
+      </div>
+    </div>
   );
 };
 

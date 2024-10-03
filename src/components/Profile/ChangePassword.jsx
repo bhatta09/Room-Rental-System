@@ -4,8 +4,6 @@ import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector } from "react-redux";
 
-const [formErrors, setFormErrors] = useState({});
-
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {

@@ -73,11 +73,6 @@ const Login = () => {
     window.location.href = "http://localhost:9090/oauth2/authorization/google";
   };
 
-  // GitHub login handler
-  const handleGithubLogin = () => {
-    window.location.href = "http://localhost:9090/oauth2/authorization/github";
-  };
-
   return (
     <div className="flex mx-auto justify-center flex-wrap mb-24">
       <div className="mt-5">
@@ -150,14 +145,6 @@ const Login = () => {
                 alt="Google"
               />
               Google
-            </Button>
-            <Button variant="outlined" onClick={handleGithubLogin}>
-              <img
-                className="w-7"
-                src="https://img.icons8.com/?size=100&id=62856&format=png&color=000000"
-                alt="GitHub"
-              />
-              GitHub
             </Button>
           </div>
         </div>

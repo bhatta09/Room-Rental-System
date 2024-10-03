@@ -19,11 +19,8 @@ const WriteReview = () => {
     formData.append('rating', rating);
     formData.append('activity', activity);
     formData.append('message', message);
-    
-    if (photo) {
-      formData.append('image', photo);
-    }
-
+    formData.append('image', photo);
+ 
     console.log("Sending form data:", Object.fromEntries(formData));
 
     try {

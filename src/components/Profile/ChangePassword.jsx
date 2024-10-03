@@ -37,10 +37,16 @@ const ChangePassword = () => {
       if (error.response && error.response.data) {
         const errors = error.response.data;
         setFormErrors(errors);
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
       } else {
         setFormErrors({
           general: "An unexpected error occurred",
         });
+        setTimeout(() => {
+          setFormErrors({});
+        }, 3000);
       }
     }
   };
@@ -89,7 +95,7 @@ const ChangePassword = () => {
           <div className="mb-10 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
             <TextField
-            required
+              required
               type={showPassword ? "text" : "password"}
               value={currentPassword}
               onChange={(e) => setCurrentPassword(e.target.value)}

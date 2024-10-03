@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
 import { TextField } from "@mui/material";
 import { toast } from "react-toastify";
@@ -10,9 +10,13 @@ const ChangeProfile = () => {
     phoneNumber: "",
     address: "",
   });
+
   const [image, setImage] = useState("");
+  const [imagePreview, setImagePreview] = useState("");
+
   const [id, setId] = useState("");
   const [formErrors, setFormErrors] = useState({});
+  const fileInputRef = useRef(null); // Reference to file input
 
   const token = useSelector((state) => state.auth.token);
   console.log(token);
@@ -95,20 +99,74 @@ const ChangeProfile = () => {
     }
   };
 
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      // Preview the selected image in the img tag
+      const imageUrl = URL.createObjectURL(file);
+      setImagePreview(imageUrl); // Set preview URL for displaying
+      setImage(file); // Store the file to upload later
+    }
+  };
+
+  const handleImageSubmit = async (e) => {
+    e.preventDefault();
+    if (!image) {
+      toast.error("Please select an image first.");
+      return;
+    }
+
+    const formData1 = new FormData();
+    formData1.append("image", image); // Append the image to FormData
+
+    console.log(formData1);
+    try {
+      const response = await axios.put(`/api/user/${id}`, formData1, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response.data);
+      toast.success("Image Updated!");
+    } catch (error) {
+      console.log("An unexpected error occurred");
+      toast.error("An error occurred while updating the image.");
+    }
+  };
+  const triggerFileInput = () => {
+    fileInputRef.current.click();
+  };
+
   return (
     <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
       <div className="flex flex-col items-center w-full gap-6">
         <div>
           <h2 className="text-2xl">Personal Details</h2>
         </div>
-        <div className="w-24 h-24 rounded-full overflow-hidden border-4 border-yellow-500 bg-gray-900">
+        <div
+          onClick={triggerFileInput} // Trigger file input on click
+          className="w-24 h-24 rounded-full overflow-hidden border-4 border-yellow-500 bg-gray-900"
+        >
           <img
-            src={image}
+            // Reference the img tag with useRef
+            src={imagePreview || image}
             alt="Profile"
             className="w-full h-full object-cover"
           />
         </div>
-        <button className="rounded-md bg-yellow-400 px-4 py-2">
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleImageChange}
+          ref={fileInputRef} // Reference to the input
+          className="hidden w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none"
+        />
+
+        <button
+          onClick={handleImageSubmit}
+          className="rounded-md bg-yellow-400 px-4 py-2"
+        >
           Add Image
         </button>
       </div>

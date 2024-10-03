@@ -3,6 +3,9 @@ import { useEffect, useState } from "react";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector } from "react-redux";
+
+const [formErrors, setFormErrors] = useState({});
+
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {
@@ -33,7 +36,14 @@ const ChangePassword = () => {
       setId(userDetails.id);
       console.log(userDetails.id);
     } catch (error) {
-      console.error("Error fetching user details:", error);
+      if (error.response && error.response.data) {
+        const errors = error.response.data;
+        setFormErrors(errors);
+      } else {
+        setFormErrors({
+          general: "An unexpected error occurred",
+        });
+      }
     }
   };
 
@@ -88,7 +98,7 @@ const ChangePassword = () => {
               error={!!formErrors.error}
               helperText={formErrors.error}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              slotProps={{
+              InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} edge="end">
@@ -108,10 +118,10 @@ const ChangePassword = () => {
               name=""
               required
               placeholder=" Your New Password"
-              error={!!formErrors.error}
-              helperText={formErrors.error}
+              error={!!formErrors.newPassword}
+              helperText={formErrors.newPassword}
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              slotProps={{
+              InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} edge="end">
@@ -132,9 +142,9 @@ const ChangePassword = () => {
               required
               placeholder=" Confirm Password"
               className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
-              error={!!formErrors.error}
-              helperText={formErrors.error}
-              slotProps={{
+              error={!!formErrors.newPassword}
+              helperText={formErrors.newPassword}
+              InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
                     <IconButton onClick={handleClickShowPassword} edge="end">
@@ -145,6 +155,9 @@ const ChangePassword = () => {
               }}
             />
           </div>
+          <h1 className=" text-red-400 font-normal text-sm my-4 text-center">
+            {formErrors.errorMsg}
+          </h1>
 
           <button
             type="submit"

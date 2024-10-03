@@ -11,12 +11,11 @@ import GridViewIcon from "@mui/icons-material/GridView";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-
 import IconButton from "@mui/material/IconButton";
-
 import logo from "../../assets/homer.png";
 import { Typography } from "@mui/material";
 import { Dashboard, Margin } from "@mui/icons-material";
+import ConfirmLogoutBtn from "./ConfirmLogoutBtn";
 const sidebarData = [
   {
     name: "Dashboard",
@@ -56,10 +55,18 @@ const sidebarData = [
 ];
 
 const ProfileSidebar = ({ open }) => {
+  const [openDialog, setopenDialog] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(clearToken());
+    setopenDialog(true);
+  };
+
+  const confirmLogout = () => {
+    dispatch(clearToken());
+    setopenDialog(false);
     navigate("/");
     toast.error("Logged out!");
   };
@@ -171,6 +178,11 @@ const ProfileSidebar = ({ open }) => {
           </div>
         </div>
       )}
+      <ConfirmLogoutBtn
+        openDialog={openDialog}
+        setopenDialog={setopenDialog}
+        confirmLogout={confirmLogout}
+      />
     </>
   );
 };

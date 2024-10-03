@@ -182,6 +182,8 @@ const ChangeProfile = () => {
             name="address"
             type="text"
             placeholder="Your Address"
+            error={!!formErrors.address}
+            helperText={formErrors.address}
             className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring focus:ring-blue-200"
           />
         </div>

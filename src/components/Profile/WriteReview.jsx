@@ -102,7 +102,7 @@ const WriteReview = () => {
             error={!!formErrors.message}
             helperText={formErrors.message}
             placeholder="Write your message here"
-            className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+            className="w-full border border-gray-300 rounded-md py-5 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
           />
           <div className="text-right text-gray-500 mt-1">
             {message.length} of {maxChars} Characters

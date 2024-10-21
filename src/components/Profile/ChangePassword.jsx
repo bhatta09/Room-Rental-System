@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { TextField, IconButton, InputAdornment } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useSelector } from "react-redux";
-
+import img from "../../assets/changeP.png"
 import { toast } from "react-toastify";
 
 const ChangePassword = () => {
@@ -80,13 +80,17 @@ const ChangePassword = () => {
   };
 
   return (
-    <div className="max-w-lg w-full p-8 mt-2 md:ml-96 bg-white bg-opacity-80 shadow-xl rounded-lg ">
+    <div className="w-full ml-72 mt-20 gap-10 bg-white  flex flex-row">
+    <div>
+      <img src={img} alt="" className="h-96 w-full"/>
+    </div>
+    <div className="p-8 bg-white">
       <form onSubmit={handleSubmit}>
         <h2 className="text-2xl font-normal mb-6 text-gray-800 text-center">
           Change Password
         </h2>
         <div>
-          <div className="mb-10 font-semibold  flex flex-col gap-2">
+          <div className="mb-3 font-semibold  flex flex-col gap-2">
             <label className="text-xs font-bold">Old Password</label>
             <TextField
               required
@@ -108,7 +112,7 @@ const ChangePassword = () => {
               }}
             />
           </div>
-          <div className="mb-10 font-semibold flex flex-col gap-2">
+          <div className="mb-3 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">New Password</label>
             <TextField
               type={showPassword ? "text" : "password"}
@@ -131,7 +135,7 @@ const ChangePassword = () => {
               }}
             />
           </div>
-          <div className="mb-10 font-semibold flex flex-col gap-2">
+          <div className="mb-3 font-semibold flex flex-col gap-2">
             <label className="text-xs font-bold">Confirm Password</label>
             <TextField
               type={showPassword ? "text" : "password"}
@@ -158,14 +162,27 @@ const ChangePassword = () => {
             {formErrors.errorMsg}
           </h1>
 
+<div className="flex flex-row gap-9 p-3 w-full">
+  <div>
           <button
             type="submit"
-            className=" w-full  font-semibold bg-yellow-400 rounded h-10  text-base font-sm text-gray-800"
+            className=" w-full  font-semibold bg-yellow-400 rounded h-10 px-9 text-base font-sm text-gray-800"
           >
             Update
           </button>
+          </div>
+          <div>
+          <button
+            type="submit"
+            className=" w-full  font-semibold bg-red-400 rounded h-10 px-9 text-base font-sm text-gray-800"
+          >
+            close
+          </button>
+          </div>
+          </div>
         </div>
       </form>
+      </div>
     </div>
   );
 };

@@ -162,24 +162,13 @@ const ChangePassword = () => {
             {formErrors.errorMsg}
           </h1>
 
-<div className="flex flex-row gap-9 p-3 w-full">
-  <div>
           <button
             type="submit"
             className=" w-full  font-semibold bg-yellow-400 rounded h-10 px-9 text-base font-sm text-gray-800"
           >
             Update
           </button>
-          </div>
-          <div>
-          <button
-            type="submit"
-            className=" w-full  font-semibold bg-red-400 rounded h-10 px-9 text-base font-sm text-gray-800"
-          >
-            close
-          </button>
-          </div>
-          </div>
+        
         </div>
       </form>
       </div>

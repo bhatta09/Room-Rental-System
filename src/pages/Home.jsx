@@ -403,8 +403,8 @@ const Home = () => {
         <h2 className="text-3xl  font-semibold  mb-8  text-center  ">
           Why Choose Us?
         </h2>
-        <div className="flex flex-wrap justify-between  mx-12 lg:mx-32  ">
-          <div className="flex flex-col items-center">
+        <div className="flex flex-wrap justify-between  mx-12 lg:mx-32  font-medium">
+          <div className="flex flex-col items-center" data-aos="fade-right">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <WhereToVoteOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -413,7 +413,7 @@ const Home = () => {
               All our rooms are in prime locations.
             </p>
           </div>
-          <div className="flex flex-col items-center ">
+          <div className="flex flex-col items-center "data-aos="fade-up">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <ShoppingBagOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>
@@ -422,7 +422,7 @@ const Home = () => {
               We offer competitive prices for all room types.
             </p>
           </div>
-          <div className="flex flex-col items-center">
+          <div className="flex flex-col items-center" data-aos="fade-left">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <VerifiedOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>

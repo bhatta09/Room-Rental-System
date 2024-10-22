@@ -90,18 +90,24 @@ const Navbar = () => {
           <Link to="/">
             <img src={logo} alt="" className="w-36" />
           </Link>
+          <Link to="/profile/wishlist">
           <Badge badgeContent={4} color="warning">
             <FavoriteBorderIcon fontSize="small" />
           </Badge>
+          </Link>
         </div>
 
         <div className="flex gap-3 items-center ">
           <div className="flex gap-3 items-center">
             <div className="hidden md:flex gap-4 items-center  mr-20 ">
+              
               <span className="flex gap-1 items-center">
+              <Link to="/profile/post-room">
                 Add Room
                 <AddIcon fontSize="small" />
+                </Link>
               </span>
+             
               <Link
                 className="text-black font-medium hover:text-yellow-300 "
                 to="/contact"

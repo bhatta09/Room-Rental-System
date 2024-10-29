@@ -1,18 +1,53 @@
+import { Avatar, Text, Button, Paper, Group } from "@mantine/core";
+import React from "react";
+import { IconBookmark, IconMessage } from "@tabler/icons-react";
+
 const SellerProfile = () => {
   return (
-    <div className="border p-4 rounded-lg">
-      <div className="flex items-center mb-4">
-        <img src="" alt="Profile" className="rounded-full mr-4" />
-        <div>
-          <h4 className="text-lg font-semibold">Swornim Shrestha</h4>
-          <p className="text-gray-600">9869348462</p>
-          <p className="text-gray-600">swornim@academiacollege.edu.np</p>
-        </div>
+    <Paper
+      shadow="xl"
+      radius="md"
+      withBorder
+      p="xs"
+      bg="var(--mantine-color-body)"
+      style={{ height: 330 }}
+    >
+      <Text ta="center" fz="lg" fw={500} mt="md" mb="lg">
+        Meet Your Owner
+      </Text>
+      <Avatar
+        src="https://raw.githubusercontent.com/mantinedev/mantine/master/.demo/avatars/avatar-8.png"
+        size={120}
+        radius={120}
+        mx="auto"
+      />
+      <Text ta="center" fz="lg" fw={500} mt="md">
+        Jane Fingerlicker
+      </Text>
+
+      <div className="flex  gap-4">
+        <Button
+          color="green"
+          radius="md"
+          leftSection={<IconBookmark size={14} />}
+          variant="light"
+          fullWidth
+          mt="md"
+        >
+          Save
+        </Button>
+        <Button
+          color="yellow"
+          radius="md"
+          leftSection={<IconMessage size={14} />}
+          variant="light"
+          fullWidth
+          mt="md"
+        >
+          Chat Now
+        </Button>
       </div>
-      <button className="bg-yellow-400 text-white px-4 py-2 rounded-md w-full">
-        View Profile
-      </button>
-    </div>
+    </Paper>
   );
 };
 

@@ -1,34 +1,39 @@
+import React, { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import Home from "./pages/Home";
-import Contact from "./pages/Contact";
-import Login from "./pages/Login";
-import SignUp from "./pages/SignUp";
 import Layout from "./Layout";
-import About from "./pages/About";
-import Profile from "./pages/Profile";
-import RoomDetail from "./pages/RoomDetails";
-import EmailVerification from "./pages/EmailVerification";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Blog from "./pages/Blog";
-import FAQ from "./pages/FAQ";
-import ShiftHome from "./pages/ShiftHome";
-import FindRoom from "./pages/FindRoom";
-import TermandCondition from "./pages/TermandCondition";
-import PP from "./pages/PP";
-import OnlinePayment from "./pages/OnlinePayment";
-import PostForFree from "./components/Profile/PostForFree";
-import Wishlist from "./components/Profile/Wishlist";
-import ChangeProfile from "./components/Profile/ChangeProfile";
-import WriteReview from "./components/Profile/WriteReview";
-import ChangePassword from "./components/Profile/ChangePassword";
-import ForumReplies from "./components/Profile/ForumReplies";
-import Dashboard from "./components/Profile/Dashboard";
+
+const Home = lazy(() => import("./pages/Home"));
+const Contact = lazy(() => import("./pages/Contact"));
+const Login = lazy(() => import("./pages/Login"));
+const SignUp = lazy(() => import("./pages/SignUp"));
+const About = lazy(() => import("./pages/About"));
+const Profile = lazy(() => import("./pages/Profile"));
+const RoomDetail = lazy(() => import("./pages/RoomDetails"));
+const EmailVerification = lazy(() => import("./pages/EmailVerification"));
+const Blog = lazy(() => import("./pages/Blog"));
+const FAQ = lazy(() => import("./pages/FAQ"));
+const ShiftHome = lazy(() => import("./pages/ShiftHome"));
+const FindRoom = lazy(() => import("./pages/FindRoom"));
+const TermandCondition = lazy(() => import("./pages/TermandCondition"));
+const PP = lazy(() => import("./pages/PP"));
+const OnlinePayment = lazy(() => import("./pages/OnlinePayment"));
+const PostForFree = lazy(() => import("./components/Profile/PostForFree"));
+const Wishlist = lazy(() => import("./components/Profile/Wishlist"));
+const ChangeProfile = lazy(() => import("./components/Profile/ChangeProfile"));
+const WriteReview = lazy(() => import("./components/Profile/WriteReview"));
+const ChangePassword = lazy(() =>
+  import("./components/Profile/ChangePassword")
+);
+const ForumReplies = lazy(() => import("./components/Profile/ForumReplies"));
+const Dashboard = lazy(() => import("./components/Profile/Dashboard"));
+
 const App = () => {
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -40,7 +45,6 @@ const App = () => {
         <Route path="contact" element={<Contact />} />
         <Route path="profile" element={<Profile />}>
           <Route path="" element={<Dashboard />} />
-
           <Route path="post-room" element={<PostForFree />} />
           <Route path="wishlist" element={<Wishlist />} />
           <Route path="change-password" element={<ChangePassword />} />
@@ -60,9 +64,12 @@ const App = () => {
       </Route>
     )
   );
+
   return (
     <>
-      <RouterProvider router={router} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <RouterProvider router={router} />
+      </Suspense>
       <ToastContainer
         position="top-right"
         autoClose={5000}

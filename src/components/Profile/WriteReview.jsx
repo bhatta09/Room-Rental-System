@@ -1,12 +1,13 @@
 import { useState } from "react";
-import { TextField, Select, MenuItem, FormControl, FormHelperText } from "@mui/material";
+import { TextField, FormControl, FormHelperText } from "@mui/material";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { toast } from "react-toastify";
-
+import { FaStar } from "react-icons/fa"; 
 const WriteReview = () => {
   const [message, setMessage] = useState("");
-  const [rating, setRating] = useState("");
+  const [rating, setRating] = useState(0); 
+  const [hover, setHover] = useState(null); 
   const [formErrors, setFormErrors] = useState({});
 
   const token = useSelector((state) => state.auth.token);
@@ -30,7 +31,7 @@ const WriteReview = () => {
 
       console.log("Response from server:", response.data);
       toast.success("Review Added!");
-      setRating("");
+      setRating(0);
       setMessage("");
     } catch (error) {
       if (error.response && error.response.data) {
@@ -51,70 +52,67 @@ const WriteReview = () => {
   };
 
   return (
-    <div className="mb-6">
-      <h2 className="text-2xl font-semibold ml-96">Add New Review</h2>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
+      <div className="bg-white p-8 rounded-lg shadow-md w-full sm:w-[400px] md:w-[500px] lg:w-[600px] mb-16"> 
+        <h2 className="text-xl font-semibold text-center mb-4">Rate and review</h2>
 
-      <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md mt-10">
-        <h3 className="text-xl font-semibold mb-5">Your Review</h3>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mt-6">
-          <div>
-            <FormControl    error={!!formErrors.rating}>
-
-            <label
-              htmlFor="rating"
-              className="block text-gray-700 font-semibold mb-2"
-            >
-              Rating
-            </label>
-            <Select
-           
-              id="rating"
-              value={rating}
-              onChange={(e) => setRating(e.target.value)}
-              className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-            >
-              <MenuItem value="">Select Your Rating</MenuItem>
-              <MenuItem value={1}>1</MenuItem>
-              <MenuItem value={2}>2</MenuItem>
-              <MenuItem value={3}>3</MenuItem>
-              <MenuItem value={4}>4</MenuItem>
-              <MenuItem value={5}>5</MenuItem>
-            </Select>
-            <FormHelperText>{formErrors.rating}</FormHelperText>
-    
-            </FormControl>
-          </div>
+        <div className="flex justify-center mb-4">
+          {[1, 2, 3, 4, 5].map((star) => (
+            <FaStar
+              key={star}
+              className={`cursor-pointer transition-colors duration-200 ${
+                (hover || rating) >= star ? "text-yellow-500" : "text-gray-300"
+              }`}
+              onClick={() => setRating(star)}
+              onMouseEnter={() => setHover(star)}
+              onMouseLeave={() => setHover(null)}
+            />
+          ))}
         </div>
 
-        <div className="mt-6">
+        <FormControl fullWidth error={!!formErrors.rating} className="mb-4">
+          <FormHelperText className="text-center">{formErrors.rating}</FormHelperText>
+        </FormControl>
+
+      
+        <div className="mb-4">
           <label
             htmlFor="message"
-            className="block text-gray-700 font-semibold mb-2"
+            className="block text-gray-700 font-medium mb-1"
           >
-            Message
+            Review
           </label>
           <TextField
             id="message"
             onChange={(e) => setMessage(e.target.value)}
-            maxLength={maxChars}
             value={message}
             error={!!formErrors.message}
             helperText={formErrors.message}
-            placeholder="Write your message here"
-            className="w-full border border-gray-300 rounded-md py-5 focus:outline-none focus:ring-2 focus:ring-yellow-500 resize-none"
+            placeholder="Write your review here..."
+            multiline
+            rows={4}
+            className="w-full border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 resize-none"
           />
           <div className="text-right text-gray-500 mt-1">
             {message.length} of {maxChars} Characters
           </div>
         </div>
 
-        <div className="mt-6">
+        <div className="flex items-center justify-between mt-6">
+          <button
+            onClick={() => {
+              setRating(0);
+              setMessage("");
+            }}
+            className="px-4 py-2 bg-gray-200 text-gray-600 rounded-md hover:bg-gray-300"
+          >
+            Cancel
+          </button>
           <button
             onClick={handleSubmit}
-            className="w-full px-6 py-3 bg-yellow-400 text-white rounded font-medium hover:bg-yellow-600"
+            className="px-6 py-2 bg-yellow-500 text-white rounded-md hover:bg-yellow-700"
           >
-            Submit for Approval <span className="ml-2">→</span>
+            Submit
           </button>
         </div>
       </div>

@@ -1,9 +1,6 @@
 import SearchIcon from "@mui/icons-material/Search";
 import FeatureRoom from "../components/Home/FeatureRoom";
 import AboutUs from "../components/Home/AboutSection";
-import Agent from "../components/Home/Agent";
-import Reviews from "../components/Home/Reviews";
-import img from "../assets/swornim.jpg";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
@@ -23,7 +20,6 @@ import { setToken } from "../redux/auth/authSlice";
 import VerifiedOutlinedIcon from "@mui/icons-material/VerifiedOutlined";
 import WhereToVoteOutlinedIcon from "@mui/icons-material/WhereToVoteOutlined";
 import NorthIcon from "@mui/icons-material/North";
-import PriceCheckOutlinedIcon from "@mui/icons-material/PriceCheckOutlined";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FAQ from "./FAQ";
 const NextArrow = ({ onClick }) => (
@@ -46,7 +42,7 @@ const PrevArrow = ({ onClick }) => (
   </div>
 );
 
-const Home = () => {
+const Home = ({ reviewId }) => {
   const settings = {
     infinite: true,
     speed: 500,
@@ -78,6 +74,14 @@ const Home = () => {
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const [isVisible, setIsVisible] = useState(false);
+  const [reviews, setReviews] = useState([]);
+
+
+
+  console.log(token);
+    const renderStars = (stars) => {
+    return "⭐".repeat(stars);
+  };
 
   useEffect(() => {
     const queryParams = new URLSearchParams(location.search);
@@ -86,6 +90,7 @@ const Home = () => {
       dispatch(setToken(tokenFromUrl));
     }
     extractDetails();
+    extractReview()
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -120,6 +125,20 @@ const Home = () => {
       console.error("Error fetching details:", error);
     }
   };
+
+
+  
+  const extractReview = async () => {
+    try {
+      const response = await axios.get("/api/review/favorite"
+      );
+      console.log(response.data);
+      setReviews(response.data)
+    } catch (error) {
+      console.error("Error fetching details:", error);
+    }
+  };
+
 
   useEffect(() => {
     AOS.init({ duration: 1500 });
@@ -360,42 +379,40 @@ const Home = () => {
       <section className="">
         <FAQ />
       </section>
-      <section data-aos="fade-up" className="">
-        <h1 className="text-lg font-semibold text-center text-gray-500 pt-10 ">
+      <section data-aos="fade-up" className="py-10">
+        <h1 className="text-lg font-semibold text-center text-gray-500">
           3,012 people have said how good NayaAawas
         </h1>
-
         <h1 className="text-4xl font-semibold text-center pb-10">
           Our happy clients say about us
         </h1>
         <div className="relative flex flex-col md:flex-row gap-8 mt-5 mx-3 px-12 lg:px-32 p-8 rounded-lg justify-center">
           <div className="absolute inset-0 "></div>
           <div className="relative z-10 flex flex-wrap md:flex-row gap-8 justify-center">
-            {/* Testimonial 1 */}
-            <Reviews
-              name="Swornim Shrestha"
-              work="React Developer"
-              star="4"
-              desc="The room rental system offers a streamlined and intuitive experience,
-              making it easy for users to browse, compare, and book rooms
-              effortlessly. With clear room details and a responsive design"
-            />
-            <Reviews
-              name="Sandesh Shrestha"
-              work="React Developer"
-              star="3"
-              desc="The room rental system offers a streamlined and intuitive experience,
-              making it easy for users to browse, compare, and book rooms
-              effortlessly. With clear room details and a responsive design, it
-              provides a hassle-free solution for finding accommodations quickly."
-            />
-            <Reviews
-              name="Pritam Shrestha"
-              work="Java Developer"
-              star="5"
-              desc="The best room renting website i have ever discover, it
-              provides a hassle-free solution for finding accommodations quickly."
-            />
+            {reviews.map((review) => (
+              <div
+                key={review.reviewId}
+                className="flex flex-col p-6 bg-white rounded-lg shadow-lg"
+              >
+                <div className="flex items-center space-x-2">
+                  <span>{renderStars(review.rating)}</span>
+                </div>
+                <p className="mt-4 text-sm font-normal italic text-justify text-gray-500 w-80 h-36">
+                  {review.message}
+                </p>
+                <div className="flex items-center mt-4 space-x-2 border-t-2 pt-4">
+                  <img
+                    src="https://plus.unsplash.com/premium_photo-1687989650423-49cf039fe80a?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                    alt="User profile"
+                    className="w-10 h-10 rounded-full"
+                  />
+                  <div>
+                    <h4 className="font-semibold">{review.user.username}</h4>
+                    <p className="text-sm text-gray-500">{review.message}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       </section>
@@ -413,7 +430,7 @@ const Home = () => {
               All our rooms are in prime locations.
             </p>
           </div>
-          <div className="flex flex-col items-center "data-aos="fade-up">
+          <div className="flex flex-col items-center " data-aos="fade-up">
             <div className="text-5xl mb-4 border-[4px] border-yellow-400 rounded-full w-20 h-20 flex items-center justify-center ">
               <ShoppingBagOutlinedIcon sx={{ fontSize: 50, color: "black" }} />
             </div>

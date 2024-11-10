@@ -5,7 +5,7 @@ import { Provider } from "react-redux";
 import { store, persistor } from "./redux/store.js";
 import { PersistGate } from "redux-persist/integration/react";
 import "@mantine/core/styles.css";
-
+import "@mantine/dates/styles.css";
 import { MantineProvider } from "@mantine/core";
 
 createRoot(document.getElementById("root")).render(

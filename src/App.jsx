@@ -8,7 +8,7 @@ import {
 import Layout from "./Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import LoaderAnimation from "./components/Loader";
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Login = lazy(() => import("./pages/Login"));
@@ -67,7 +67,13 @@ const App = () => {
 
   return (
     <>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense
+        fallback={
+          <div>
+            <LoaderAnimation />
+          </div>
+        }
+      >
         <RouterProvider router={router} />
       </Suspense>
       <ToastContainer

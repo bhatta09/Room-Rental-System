@@ -14,7 +14,7 @@ const Contact = () => {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26L12 15.5l1.11-.74L21 8m-6.75 9.88v.01M3 21V7m18 0v14m-9 0h.01" />
               </svg>
               <h3 className="text-xl font-semibold mt-4">Email Us</h3>
-              <p className="mt-2 text-gray-600">swornim@academiacollege.edu.np</p>
+              <p className="mt-2 text-gray-600">noreply.aawas@gmail.com</p>
             </div>
           </div>
           <div className="text-center">

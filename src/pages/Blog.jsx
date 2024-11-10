@@ -18,13 +18,13 @@ const Blog = () => {
       id: 2,
       title: 'Top 5 Areas in Kathmandu for Naya_Aawas',
       excerpt: 'Explore the top cities where room rentals are most affordable and desirable.',
-      image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
+      image: 'https://images.pexels.com/photos/101808/pexels-photo-101808.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
     },
     {
       id: 3,
       title: 'Benefits of Renting a Room vs. Apartment',
       excerpt: 'Learn why renting a room could be a better option compared to getting an entire apartment.',
-      image: 'https://images.pexels.com/photos/186077/pexels-photo-186077.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
+      image: 'https://images.pexels.com/photos/21638177/pexels-photo-21638177/free-photo-of-wide-angle-view-house-in-a-forest.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1', 
     },
   ];
 

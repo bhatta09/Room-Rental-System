@@ -1,393 +1,362 @@
-import {
-  TextField,
-  Select,
-  MenuItem,
-  Checkbox,
-  FormControlLabel,
-} from "@mui/material";
-
 import axios from "axios";
-import { useForm } from "react-hook-form";
+import {
+  Button,
+  Checkbox,
+  Group,
+  TextInput,
+  Select,
+  NumberInput,
+  FileButton,
+  ScrollArea,
+  Switch,
+  MultiSelect,
+} from "@mantine/core";
+import { useForm } from "@mantine/form";
+import { useState } from "react";
+import { DateInput, Day } from "@mantine/dates";
+import { useSelector } from "react-redux";
+import dayjs from "dayjs";
 
 const PostForFree = () => {
-  const {
-    register,
-    handleSubmit,
-    watch,
-    formState: { errors },
-  } = useForm();
-  const token =
-    "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJjb2RlbG9yZCIsImlhdCI6MTcyNzc0NDk4MSwiZXhwIjoxNzI5MTg0OTgxfQ.9H5OQpSl9QNxHWzVHQbNmWbuVnz5dK-YLroELpBVpeg";
-  const onSubmit = async (data) => {
-    try {
-      const response = await axios.post("/api/room", data, {
-        headers: {
-          Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      console.log("Success:", response.data); // Handle success
-    } catch (error) {
-      console.error("Error:", error);
-    }
-  };
+  const form = useForm({
+    mode: "uncontrolled",
+    initialValues: {},
 
+    validate: {
+      // email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
+    },
+  });
+  const token = useSelector((state) => state.auth.token);
   return (
-    <form
-      className="bg-gray-50 overflow-scroll"
-      onSubmit={handleSubmit(onSubmit)}
-    >
-      <div className="flex justify-center py-10">
-        <h2 className="text-3xl font-semibold text-gray-800">Add Room</h2>
-      </div>
+    <>
+      <ScrollArea>
+        <form
+          onSubmit={form.onSubmit(async (values) => {
+            console.log(token);
+            const formattedValues = {
+              ...values,
+              dateOfBuild: dayjs(values.dateOfBuild).format("YYYY-MM-DD"),
+            };
+            console.log(values);
 
-      {/* Basic Details */}
-      <div className="flex flex-col lg:flex-row gap-8 mx-5">
-        <div className="w-full md:w-1/2 mx-auto bg-white shadow-lg p-10 rounded-md">
-          <h2 className="text-xl font-semibold text-gray-700">
-            1. Basic Details
-          </h2>
-          <p className="text-sm text-gray-500">
-            All fields marked with * are mandatory
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Purpose*
-              </label>
-              <Select
-                defaultValue="RENT"
-                {...register("purpose")}
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
-              >
-                <MenuItem value="RENT">Rent</MenuItem>
-                <MenuItem value="SALE">Sale</MenuItem>
-                <MenuItem value="LEASE">Lease</MenuItem>
-                <MenuItem value="PAYING_GUEST">Paying Guest</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Your Title*
-              </label>
-              <TextField
-                {...register("title")}
-                type=""
-                placeholder="title"
-                className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Category*
-              </label>
-              <Select
-                {...register("category")}
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
-              >
-                <MenuItem value="SINGLE_ROOM">Single Room</MenuItem>
-                <MenuItem value="TWO_ROOM">Two Rooms</MenuItem>
-                <MenuItem value="ONE_BHK">1 BHK</MenuItem>
-                <MenuItem value="TWO_BHK">2 BHK</MenuItem>
-                <MenuItem value="THREE_BHK">3 BHK</MenuItem>
-                <MenuItem value="FOUR_BHK"> 4 BHK</MenuItem>
-                <MenuItem value="FLAT">Flat</MenuItem>
-
-                <MenuItem value="HOUSE">House</MenuItem>
-                <MenuItem value="APARTMENT">Apartment</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Main Photo
-              </label>
-              <TextField
-                {...register("imageFileUrl")}
-                type="file"
-                inputProps={{ accept: "image/*" }}
-                placeholder=""
-                className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-              />
-            </div>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Price*
-              </label>
-              <TextField
-                {...register("price")}
-                type="number"
-                className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-                placeholder="e.g., 5000 per month"
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Price Negotiable*
-              </label>
-              <Select
-                {...register("negotiable")}
-                className="w-full border border-gray-300 bg-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-          </div>
-        </div>
-
-        {/* Amenities */}
-        <div className="w-full md:w-1/2 mx-auto bg-white shadow-lg p-10 rounded-md">
-          <h2 className="text-xl font-semibold text-gray-700">2. Amenities</h2>
-          <p className="text-sm text-gray-500">
-            All fields marked with * are mandatory
-          </p>
-
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Date of Build*
-              </label>
-              <Select className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                <MenuItem>2081</MenuItem>
-                <MenuItem>2080</MenuItem>
-                <MenuItem>2079</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Bed*
-              </label>
-              <TextField
-                {...register("bedRoom")}
-                type="number"
-                placeholder="bed"
-                className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-              />
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Select Kitchen*
-              </label>
-              <Select
-                {...register("kitchen")}
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Bath*
-              </label>
-              <Select
-                {...register("bathRoom")}
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Furnishing*
-              </label>
-              <Select className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500">
-                <MenuItem>No</MenuItem>
-                <MenuItem>Yes</MenuItem>v <MenuItem>Semi</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Faced
-              </label>
-              <Select
-                {...register("face")}
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="EAST">East</MenuItem>
-                <MenuItem value="WEST">West</MenuItem>
-                <MenuItem value="SOUTH">South</MenuItem>
-                <MenuItem value="NORTH">North</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Parking
-              </label>
-              <Select
-                {...register("parking")}
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Balcony
-              </label>
-              <Select
-                {...register("balcony")}
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Rental Floor
-              </label>
-              <Select
-                {...register("floor")}
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="GROUND">Ground</MenuItem>
-                <MenuItem value="FIRST_FLOOR">1st</MenuItem>
-                <MenuItem value="SECOND_FLOOR">2nd</MenuItem>
-              </Select>
-            </div>
-
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Road type
-              </label>
-              <Select
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem>Blacked Pitched</MenuItem>
-                <MenuItem>Gorato Bato</MenuItem>
-                <MenuItem>Gravel</MenuItem>
-              </Select>
-            </div>
-            <div>
-              <label className="block text-gray-700 font-semibold mb-2">
-                Water Facility
-              </label>
-              <Select
-                {...register("waterFacility")}
-                placeholder="select option"
-                className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500"
-              >
-                <MenuItem value="false">No</MenuItem>
-                <MenuItem value="true">Yes</MenuItem>
-              </Select>
-            </div>
-          </div>
-        </div>
-      </div>
-      {/*basic detail end*/}
-
-      {/*more detail*/}
-      <div className="max-w-4xl mx-auto bg-white shadow-lg p-10 rounded-md mt-10">
-        <h2 className="text-xl font-semibold text-gray-700">3. More details</h2>
-        <p className="text-sm text-gray-500">
-          All fields marked with * are mandatory
-        </p>
-
-        <div className="flex flex-col gap-8">
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Contact Number*
-            </label>
-            <TextField
-              {...register("phoneNumber")}
-              type="number"
-              className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Description*
-            </label>
-            <TextField
-              {...register("description")}
-              type="text"
-              className="w-full border border-gray-300 py-2 px-5 rounded-md bg-gray-100 focus:outline-none"
-            />
-          </div>
-          <div>
-            <label className="block text-gray-700 font-semibold mb-2">
-              Propperty Location
-            </label>
-            <Select
-              {...register("location")}
-              placeholder="select option"
-              className="w-full border border-gray-300  rounded-md focus:outline-none focus:ring-2 focus:ring-yellow-500 bg-gray-100"
-            >
-              <MenuItem value="Lalitpur">Lalitpur</MenuItem>
-              <MenuItem value="Bhaktpur">Bhaktpur</MenuItem>
-              <MenuItem value="Kathmandu">Kathmandu</MenuItem>
-            </Select>
-          </div>
-        </div>
-        <div>
-          <h3 className="text-lg font-semibold text-gray-700 mb-4">
-            Local Area Facilities
-          </h3>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-            {[
-              "GYM",
-              "Swimming Pool",
-              "Playing Court",
-              "Hospital",
-              "School",
-              "Montessori Nursery",
-              "College",
-              "Temple",
-              "Restaurants",
-              "Super Market",
-              "Bus Stop",
-              "Taxi Stand",
-              "Police Station",
-              "Bank",
-              "Banquet Hall",
-              "Gas Station",
-            ].map((facility) => (
-              <FormControlLabel
-                key={facility}
-                control={<Checkbox />}
-                label={facility}
-                className="text-sm text-gray-700"
-              />
-            ))}
-          </div>
-        </div>
-      </div>
-
-      {/*more detail end*/}
-
-      <div className="max-w-4xl mx-auto  p-10  mt-10">
-        <button
-          type="submit"
-          className="w-full px-6 py-3 bg-yellow-400 text-white rounded font-medium hover:bg-yellow-600"
+            try {
+              const response = await axios.post("/api/room", formattedValues, {
+                headers: {
+                  Authorization: `Bearer ${token}`,
+                  "Content-Type": "multipart/form-data",
+                },
+              });
+              console.log("Success:", response.data);
+            } catch (error) {
+              console.error("Error:", error);
+            }
+          })}
         >
-          Submit for Approval <span className="ml-2">→</span>
-        </button>
-      </div>
-    </form>
+          <div className="flex justify-center py-10">
+            <h2 className="text-3xl font-semibold text-gray-800">Add Room</h2>
+          </div>
+
+          <div className="flex flex-col lg:flex-row gap-8 mx-5">
+            {/* 1 */}
+            <div className="w-full md:w-1/2 mx-auto bg-white shadow-lg p-10 rounded-md">
+              <h2 className="text-xl font-semibold text-gray-700">
+                1. Basic Details
+              </h2>
+              <p className="text-sm text-gray-500">
+                All fields marked with * are mandatory
+              </p>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-4">
+                <div>
+                  <Select
+                    description="Enter Purpose"
+                    label="Purpose"
+                    required
+                    defaultValue="RENT"
+                    placeholder="Pick value"
+                    data={["RENT", "SALE", "LEASE", "PAYING_GUEST"]}
+                    key={form.key("purpose")}
+                    {...form.getInputProps("purpose")}
+                  ></Select>
+                </div>
+
+                <div>
+                  <TextInput
+                    label="Title"
+                    placeholder="title"
+                    description="Enter Title"
+                    key={form.key("title")}
+                    {...form.getInputProps("title")}
+                  />
+                </div>
+
+                <div>
+                  <Select
+                    description="Enter Category"
+                    label="Category"
+                    defaultValue="SINGLE_ROOM"
+                    placeholder="Pick value"
+                    data={[
+                      "SINGLE_ROOM",
+                      "TWO_ROOM",
+                      "ONE_BHK",
+                      "TWO_BHK",
+                      "THREE_BHK",
+                      "FOUR_BHK",
+                      "FLAT",
+                      "HOUSE",
+                      "APARTMENT",
+                    ]}
+                    key={form.key("category")}
+                    {...form.getInputProps("category")}
+                  ></Select>
+                </div>
+
+                <div></div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6">
+                <div>
+                  <NumberInput
+                    label="Price"
+                    withAsterisk
+                    description="Enter Price"
+                    placeholder="Enter Price"
+                    key={form.key("price")}
+                    {...form.getInputProps("price")}
+                  />
+                </div>
+                <div>
+                  <Select
+                    description=" Enter Price Negotiate"
+                    label="Price Negotiate"
+                    defaultValue="YES"
+                    placeholder="Pick value"
+                    data={["YES", "NO"]}
+                    key={form.key("negotiable")}
+                    {...form.getInputProps("negotiable")}
+                  ></Select>
+                </div>
+              </div>
+
+              {/* 2 */}
+              <div className="w-full   bg-white  rounded-md mt-12">
+                <h2 className="text-xl font-semibold text-gray-700">
+                  2. Amenities
+                </h2>
+                <p className="text-sm text-gray-500">
+                  All fields marked with * are mandatory
+                </p>
+
+                <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mt-4">
+                  <div>
+                    <DateInput
+                      valueFormat="YYYY MMM DD"
+                      description="Enter date of build"
+                      label="Date of Build"
+                      placeholder="Date input"
+                      key={form.key("dateOfBuild")}
+                      {...form.getInputProps("dateOfBuild")}
+                    />
+                  </div>
+                  <div>
+                    <NumberInput
+                      description=" Enter  BedRoom"
+                      label="BedRoom"
+                      placeholder="Pick BedRoom "
+                      key={form.key("bedRoom")}
+                      {...form.getInputProps("bedRoom")}
+                    ></NumberInput>
+                  </div>
+                  <div>
+                    <Select
+                      description=" Enter  Kitchen"
+                      label="Furnishing"
+                      defaultValue="YES"
+                      placeholder="Pick Kitchen "
+                      data={["YES", "NO"]}
+                      key={form.key("kitchen")}
+                      {...form.getInputProps("kitchen")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description=" Enter  BathRoom"
+                      label="BathRoom"
+                      defaultValue="YES"
+                      placeholder="Pick BathRoom "
+                      data={["YES", "NO"]}
+                      key={form.key("bathRoom")}
+                      {...form.getInputProps("bathRoom")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description=" Enter  Furnishing"
+                      label="Furnishing"
+                      defaultValue="YES"
+                      placeholder="Pick Furnishing "
+                      data={["YES", "NO"]}
+                      key={form.key("furnishing")}
+                      {...form.getInputProps("furnishing")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description=" Enter  Faced"
+                      label="Faced"
+                      defaultValue="YES"
+                      placeholder="Pick Faced "
+                      data={["SOUTH", "WEST", "NORTH", "EAST"]}
+                      key={form.key("face")}
+                      {...form.getInputProps("face")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description="Enter  Parking"
+                      label="Parking"
+                      defaultValue="YES"
+                      placeholder="Pick Parking "
+                      data={["YES", "NO"]}
+                      key={form.key("parking")}
+                      {...form.getInputProps("parking")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description="Enter  Balcony"
+                      label="Balcony"
+                      defaultValue="YES"
+                      placeholder="Pick Balcony "
+                      data={["YES", "NO"]}
+                      key={form.key("balcony")}
+                      {...form.getInputProps("balcony")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description="Enter Rental Floor "
+                      label="Rental Floor"
+                      defaultValue="GROUND_FLOOR"
+                      placeholder="Pick Rental Floor"
+                      data={[
+                        "GROUND_FLOOR",
+                        "FIRST_FLOOR",
+                        "SECOND_FLOOR",
+                        "THIRD_FLOOR",
+                      ]}
+                      key={form.key("floor")}
+                      {...form.getInputProps("floor")}
+                    ></Select>
+                  </div>
+
+                  <div>
+                    <Select
+                      description="Enter Road Type "
+                      label="Road Type"
+                      defaultValue="GORETO_BATO"
+                      placeholder="Pick Road Type"
+                      data={[
+                        "GORETO_BATO",
+                        "BLACK_PICHED",
+                        "GRAVEL_ROAD",
+                        "DHALAN_ROAD",
+                        "MUDDY_ROAD",
+                      ]}
+                      key={form.key("roodType")}
+                      {...form.getInputProps("roodType")}
+                    ></Select>
+                  </div>
+                  <div>
+                    <Select
+                      description="Enter Water Facility "
+                      label="Water Facility"
+                      defaultValue="YES"
+                      placeholder="Pick Water Facility"
+                      data={["YES", "NO"]}
+                      key={form.key("waterFacility")}
+                      {...form.getInputProps("waterFacility")}
+                    ></Select>
+                  </div>
+                </div>
+              </div>
+
+              {/* 3 */}
+              <div className="max-w-4xl mx-auto bg-white   rounded-md mt-10">
+                <h2 className="text-xl font-semibold text-gray-700">
+                  3. More details
+                </h2>
+                <p className="text-sm text-gray-500">
+                  All fields marked with * are mandatory
+                </p>
+
+                <div className="flex flex-col gap-8">
+                  <div>
+                    <NumberInput
+                      required
+                      label="Contact Number"
+                      placeholder="Contact Number"
+                      description="Enter Contact Number"
+                      key={form.key("phoneNumber")}
+                      {...form.getInputProps("phoneNumber")}
+                    />
+                  </div>
+                  <div>
+                    <TextInput
+                      label="Description"
+                      placeholder="Description"
+                      description="Enter Description"
+                      key={form.key("description")}
+                      {...form.getInputProps("description")}
+                    />
+                  </div>
+                  <div>
+                    <TextInput
+                      label=" Property Location"
+                      placeholder=" Property Location"
+                      description="Enter  Property Location"
+                      key={form.key("location")}
+                      {...form.getInputProps("location")}
+                    />
+                  </div>
+                  <div>
+                    <MultiSelect
+                      label="Local Area Facilities"
+                      description="Enter Local Area Facilities"
+                      placeholder="Pick localArea"
+                      data={[
+                        "GYM",
+                        "SWIMMING_POOL",
+                        "PLAYING_COURT",
+                        "HOSPITAL",
+                        "SCHOOL",
+                        "MONTESSORI",
+                        "COLLEGE",
+                        "TEMPLE",
+                        "RESTAURANTS",
+                        "SUPER_MARKET",
+                        "BUS_STOP",
+                        "POLICE_STATION",
+                        "BANK",
+                        "TAXI_STAND",
+                        "GAS_STATION",
+                      ]}
+                      key={form.key("localArea")}
+                      {...form.getInputProps("localArea")}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <Group justify="flex-end" mt="md">
+                <Button type="submit">Submit</Button>
+              </Group>
+            </div>
+          </div>
+        </form>
+      </ScrollArea>
+    </>
   );
 };
 

@@ -47,6 +47,7 @@ const PostForFree = () => {
                 },
               });
               console.log("Success:", response.data);
+              form.reset();
             } catch (error) {
               console.error("Error:", error);
             }

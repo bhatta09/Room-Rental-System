@@ -1,10 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
-import { TextField, IconButton, InputAdornment } from "@mui/material";
-import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useSelector } from "react-redux";
-import img from "../../assets/changeP.png";
-import { toast } from "react-toastify";
+// import axios from "axios";
+// import { useEffect, useState } from "react";
+// import { TextField, IconButton, InputAdornment } from "@mui/material";
+// import { Visibility, VisibilityOff } from "@mui/icons-material";
+// import { useSelector } from "react-redux";
+// import img from "../../assets/changeP.png";
+// import { toast } from "react-toastify";
 
 const ChangePassword = () => {
   // const [id, setId] = useState("");

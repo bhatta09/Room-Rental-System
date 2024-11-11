@@ -39,15 +39,60 @@
 //   );
 // }
 
-import React from "react";
+
+import axios from "axios";
+import { useSelector } from "react-redux";
+import { useState, useEffect} from "react";
 
 const ProfileCard = () => {
+
+ 
+  const token = useSelector((state) => state.auth.token);
+
+  const [image, setImage] = useState("");
+  useEffect(() => {
+    if (token) {
+      extractDetails();
+    }
+  }, [token]);
+
+  const extractDetails = async () => {
+    try {
+      const response = await axios.get("/api/user/extract-details", {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
+
+      const userDetails = response.data["User Details"];
+      console.log(userDetails);
+      if (userDetails.imageName) {
+        imageData(userDetails.imageName);
+      }
+    } catch (error) {
+      console.error("Error fetching user details:", error);
+    }
+  };
+
+  const imageData = async (imageData) => {
+    const response = await axios.get(`/api/user/${imageData}`, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      responseType: "blob",
+    });
+
+    const imageUrl = URL.createObjectURL(response.data);
+    setImage(imageUrl);
+  };
+
+
   return (
     <div>
       <div className="">
         <img
-          className="mb-2 w-10 h-10 rounded-md shadow-sm shadow-gray-300 object-cover"
-          src="https://images.unsplash.com/photo-1721332149274-586f2604884d?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxmZWF0dXJlZC1waG90b3MtZmVlZHwxfHx8ZW58MHx8fHx8"
+          className="mb-2 w-14 h-14 rounded-full shadow-sm shadow-gray-300 object-cover"
+          src={image}
           alt="Jese portrait"
         />
       </div>

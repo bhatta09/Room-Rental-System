@@ -408,7 +408,6 @@ const Home = ({ reviewId }) => {
                   />
                   <div>
                     <h4 className="font-semibold">{review.user.username}</h4>
-                    <p className="text-sm text-gray-500">{review.message}</p>
                   </div>
                 </div>
               </div>

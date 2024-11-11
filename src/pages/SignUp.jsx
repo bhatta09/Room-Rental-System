@@ -5,7 +5,7 @@ import {
   TextField,
   IconButton,
   InputAdornment,
-  Grid2,
+  Grid,
 } from "@mui/material";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useState } from "react";
@@ -24,6 +24,7 @@ const SignUp = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -35,8 +36,8 @@ const SignUp = () => {
   };
 
   const handleClickShowPassword = () => setShowPassword(!showPassword);
+  const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
 
-  // Google login handler
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:9090/oauth2/authorization/google";
   };
@@ -67,10 +68,10 @@ const SignUp = () => {
       <div className="max-w-lg w-full p-4 mt-10 md:ml-10 bg-white bg-opacity-80 shadow-xl rounded-2xl mb-5">
         <h2 className="uppercase text-2xl font-semibold text-gray-800 text-center">
           Signup
-        </h2>{" "}
-        <form>
-          <Grid2 container spacing={2}>
-            <Grid2 size={6}>
+        </h2>
+        <form onSubmit={handleSubmit}>
+          <Grid container spacing={2}>
+            <Grid item xs={6}>
               <TextField
                 variant="standard"
                 required
@@ -83,8 +84,8 @@ const SignUp = () => {
                 error={!!formErrors.fullName}
                 helperText={formErrors.fullName}
               />
-            </Grid2>
-            <Grid2 size={6}>
+            </Grid>
+            <Grid item xs={6}>
               <TextField
                 variant="standard"
                 required
@@ -96,8 +97,8 @@ const SignUp = () => {
                 error={!!formErrors.username}
                 helperText={formErrors.username}
               />
-            </Grid2>
-            <Grid2 size={16}>
+            </Grid>
+            <Grid item xs={12}>
               <TextField
                 variant="standard"
                 required
@@ -110,8 +111,8 @@ const SignUp = () => {
                 error={!!formErrors.email}
                 helperText={formErrors.email}
               />
-            </Grid2>
-            <Grid2 size={6}>
+            </Grid>
+            <Grid item xs={6}>
               <TextField
                 variant="standard"
                 required
@@ -123,9 +124,9 @@ const SignUp = () => {
                 error={!!formErrors.address}
                 helperText={formErrors.address}
               />
-            </Grid2>
+            </Grid>
 
-            <Grid2 size={6}>
+            <Grid item xs={6}>
               <TextField
                 variant="standard"
                 type="number"
@@ -138,8 +139,8 @@ const SignUp = () => {
                 error={!!formErrors.phoneNumber}
                 helperText={formErrors.phoneNumber}
               />
-            </Grid2>
-            <Grid2 size={6}>
+            </Grid>
+            <Grid item xs={6}>
               <TextField
                 type={showPassword ? "text" : "password"}
                 variant="standard"
@@ -149,8 +150,7 @@ const SignUp = () => {
                 label="Password"
                 value={formData.password}
                 onChange={handleChange}
-                
-                error={!!formErrors.password || !!formErrors.error }
+                error={!!formErrors.password || !!formErrors.error}
                 helperText={formErrors.password || formErrors.error}
                 InputProps={{
                   endAdornment: (
@@ -162,10 +162,10 @@ const SignUp = () => {
                   ),
                 }}
               />
-            </Grid2>
-            <Grid2 size={6}>
+            </Grid>
+            <Grid item xs={6}>
               <TextField
-                type={showPassword ? "text" : "password"}
+                type={showConfirmPassword ? "text" : "password"}
                 variant="standard"
                 required
                 fullWidth
@@ -173,22 +173,22 @@ const SignUp = () => {
                 label="Confirm Password"
                 value={formData.confirmPassword}
                 onChange={handleChange}
-                error={!!formErrors.password || !!formErrors.error }
-                helperText={formErrors.password || formErrors.error}
+                error={!!formErrors.confirmPassword || !!formErrors.error}
+                helperText={formErrors.confirmPassword || formErrors.error}
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={handleClickShowPassword} edge="end">
-                        {showPassword ? <VisibilityOff /> : <Visibility />}
+                      <IconButton onClick={handleClickShowConfirmPassword} edge="end">
+                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
                       </IconButton>
                     </InputAdornment>
                   ),
                 }}
               />
-            </Grid2>
-          </Grid2>
+            </Grid>
+          </Grid>
           <button
-            onClick={handleSubmit}
+            type="submit"
             className="mt-5 w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-gray-800"
           >
             Signup

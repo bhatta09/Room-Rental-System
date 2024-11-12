@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from "react";
+import { lazy, Suspense } from "react";
 import {
   createBrowserRouter,
   createRoutesFromElements,
@@ -17,7 +17,8 @@ const About = lazy(() => import("./pages/About"));
 const Profile = lazy(() => import("./pages/Profile"));
 const RoomDetail = lazy(() => import("./pages/RoomDetails"));
 const EmailVerification = lazy(() => import("./pages/EmailVerification"));
-const Blog = lazy(() => import("./pages/Blog"));
+const Blog = lazy(() => import("./components/Blog/Blog"));
+const BlogDetails = lazy(() => import("./components/Blog/BlogDetails"));
 const FAQ = lazy(() => import("./pages/FAQ"));
 const ShiftHome = lazy(() => import("./pages/ShiftHome"));
 const FindRoom = lazy(() => import("./pages/FindRoom"));
@@ -56,6 +57,7 @@ const App = () => {
         <Route path="emailverification" element={<EmailVerification />} />
         <Route path="faq" element={<FAQ />} />
         <Route path="blog" element={<Blog />} />
+        <Route path="/blogdetails/:id" element={<BlogDetails />} />
         <Route path="privacy" element={<PP />} />
         <Route path="terms" element={<TermandCondition />} />
         <Route path="shift-home" element={<ShiftHome />} />

@@ -34,6 +34,7 @@ const ChangePassword = lazy(() =>
 );
 const ForumReplies = lazy(() => import("./components/Profile/ForumReplies"));
 const Dashboard = lazy(() => import("./components/Profile/Dashboard"));
+const AllRoom = lazy(() => import("./pages/AllRoom"));
 
 const App = () => {
   const router = createBrowserRouter(
@@ -63,6 +64,7 @@ const App = () => {
         <Route path="shift-home" element={<ShiftHome />} />
         <Route path="online-payment" element={<OnlinePayment />} />
         <Route path="find-room" element={<FindRoom />} />
+        <Route path="all-room" element={<AllRoom />} />
       </Route>
     )
   );

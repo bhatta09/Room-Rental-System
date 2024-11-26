@@ -1,17 +1,13 @@
 import SearchIcon from "@mui/icons-material/Search";
-import FeatureRoom from "../components/Home/FeatureRoom";
 import AboutUs from "../components/Home/AboutSection";
 import PaymentsIcon from "@mui/icons-material/Payments";
 import PlaceIcon from "@mui/icons-material/Place";
 import HomeIcon from "@mui/icons-material/Home";
 import banner from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner.png";
 import banner1 from "../assets/Blue Ecommerce Online Shopping LinkedIn Banner (1).png";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import Carousel from "../components/Slider/Carousel";
 import AOS from "aos";
 import "aos/dist/aos.css";
-import { MdArrowForwardIos, MdArrowBackIos } from "react-icons/md";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
@@ -22,64 +18,18 @@ import WhereToVoteOutlinedIcon from "@mui/icons-material/WhereToVoteOutlined";
 import NorthIcon from "@mui/icons-material/North";
 import ShoppingBagOutlinedIcon from "@mui/icons-material/ShoppingBagOutlined";
 import FAQ from "./FAQ";
-const NextArrow = ({ onClick }) => (
-  <div
-    className=" text-gray-100 text-base bg-white border-[3px]  border-yellow-300 p-1 absolute left-16 bottom-[-50px]  transform -translate-y-1/2 cursor-pointer rounded-full"
-    onClick={onClick}
-  >
-    <MdArrowForwardIos className="text-gray-900 text-base" />
-    {/* Nex0t */}
-  </div>
-);
+import HotDeal from "../components/Slider/HotDeal";
+import { Link } from "react-router-dom";
 
-const PrevArrow = ({ onClick }) => (
-  <div
-    className="absolute text-gray-100 text-base bg-white border-[3px] border-yellow-300 p-1 left-6 bottom-[-50px] transform -translate-y-1/2 cursor-pointer rounded-full"
-    onClick={onClick}
-  >
-    {/* Prev */}
-    <MdArrowBackIos className="text-gray-900 text-base" />
-  </div>
-);
-
-const Home = ({ reviewId }) => {
-  const settings = {
-    infinite: true,
-    speed: 500,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-    nextArrow: <NextArrow />,
-    prevArrow: <PrevArrow />,
-    autoplay: true,
-    autoplaySpeed: 5000,
-    responsive: [
-      {
-        breakpoint: 1024,
-        settings: {
-          slidesToShow: 2,
-          slidesToScroll: 1,
-        },
-      },
-      {
-        breakpoint: 600,
-        settings: {
-          slidesToShow: 1,
-          slidesToScroll: 1,
-        },
-      },
-    ],
-  };
-
+const Home = () => {
   const location = useLocation();
   const dispatch = useDispatch();
   const token = useSelector((state) => state.auth.token);
   const [isVisible, setIsVisible] = useState(false);
   const [reviews, setReviews] = useState([]);
 
-
-
   console.log(token);
-    const renderStars = (stars) => {
+  const renderStars = (stars) => {
     return "⭐".repeat(stars);
   };
 
@@ -90,7 +40,7 @@ const Home = ({ reviewId }) => {
       dispatch(setToken(tokenFromUrl));
     }
     extractDetails();
-    extractReview()
+    extractReview();
 
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -126,19 +76,15 @@ const Home = ({ reviewId }) => {
     }
   };
 
-
-  
   const extractReview = async () => {
     try {
-      const response = await axios.get("/api/review/favorite"
-      );
+      const response = await axios.get("/api/review/favorite");
       console.log(response.data);
-      setReviews(response.data)
+      setReviews(response.data);
     } catch (error) {
       console.error("Error fetching details:", error);
     }
   };
-
 
   useEffect(() => {
     AOS.init({ duration: 1500 });
@@ -159,6 +105,7 @@ const Home = ({ reviewId }) => {
       <div className="" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[89vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="flex flex-col m-5 md:m-32 gap-5 md:gap-14">
+            
             <div className="text-left  z-0 my-10 mr-10 ">
               <div className="bg-yellow-100 inline-flex items-center px-3 py-1.5 rounded-full mb-4">
                 <span role="img" aria-label="thumbs up">
@@ -182,12 +129,12 @@ const Home = ({ reviewId }) => {
                 Find Your Perfect Room
               </h2>
 
-              <a
-                href="#"
+              <Link
+                to="/all-room"
                 className="mt-16 inline-flex items-center px-4 py-2 border border-transparent text-base font-medium rounded-lg shadow-sm text-white bg-[#FFB200] hover:bg-yellow-600"
               >
-                View All Rooms &rarr;
-              </a>
+                View All Rooms
+              </Link>
             </div>
 
             <div className="text-white hidden md:flex md:justify-center ">
@@ -249,127 +196,13 @@ const Home = ({ reviewId }) => {
       </div>
       {/* Featured Rooms Section */}
       <section className="px-12 lg:px-32 gap-7  ">
-        <div className="flex justify-between mb-5 ">
-          <h2 className="text-xl font-semibold text-center ">Featured Rooms</h2>
-          <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
-            View All <span className="ml-2 text-white font-bold">→</span>
-          </button>
-        </div>
-
-        <Slider {...settings}>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://plus.unsplash.com/premium_photo-1678916185607-d75dbfe4f1f7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1572372878072-3faf7ab85648?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Swornim Shrestha is best man"
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://plus.unsplash.com/premium_photo-1691360599379-a5717853ab6e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName=""
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-        </Slider>
+        <Carousel />
       </section>
-      <section className="px-12 lg:px-32 gap-7 mt-12 ">
-        <div className="flex justify-between mb-5 ">
-          <h2 className="text-xl font-semibold text-center ">Hot Deals</h2>
-          <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
-            View All <span className="ml-2 text-white font-bold">→</span>
-          </button>
-        </div>
 
-        <Slider {...settings}>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://plus.unsplash.com/premium_photo-1678916185607-d75dbfe4f1f7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1572372878072-3faf7ab85648?q=80&w=1935&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Swornim Shrestha is best man"
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName="Office space for rent..."
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            />
-          </div>
-          <div className="px-2">
-            <FeatureRoom
-              imageUrl="https://plus.unsplash.com/premium_photo-1691360599379-a5717853ab6e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-              roomName=""
-              location="Gwarko,Lalitpur"
-              roomType="office"
-              price="Rs25000/month"
-              owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-            />
-          </div>
-        </Slider>
-      </section>{" "}
+      <section className="px-12 lg:px-32 gap-7 mt-12 ">
+        <HotDeal />
+      </section>
+
       <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
         <AboutUs />
       </section>

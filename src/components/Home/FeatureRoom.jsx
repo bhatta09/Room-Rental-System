@@ -13,7 +13,7 @@ const FeatureRoom = ({
   owner,
 }) => {
   return (
-    <div className="max-w-72 h-auto bg-[#f4f4fe] rounded-2xl overflow-hidden group relative">
+    <div className="max-w-72 h-auto rounded-2xl overflow-hidden group relative border-2 border-gray-300">
       <div className="relative ">
         <Link to="/roomdetail">
           <img

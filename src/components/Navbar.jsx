@@ -86,16 +86,18 @@ const Navbar = () => {
     <nav className=" bg-white/90 sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1  gap-4 ">
       {/* logo */}
       <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2 ">
-        <div className="flex items-center gap-28">
-          <Link to="/">
-            <img src={logo} alt="" className="w-36" />
-          </Link>
-          <Link to="/profile/wishlist">
-          <Badge badgeContent={4} color="warning">
-            <FavoriteBorderIcon fontSize="small" />
-          </Badge>
-          </Link>
-        </div>
+      <div className="flex items-center gap-28">
+  <Link to="/">
+    <img src={logo} alt="" className="w-36" />
+  </Link>
+  {token && (
+    <Link to="/profile/wishlist">
+      <Badge badgeContent={4} color="warning">
+        <FavoriteBorderIcon fontSize="small" />
+      </Badge>
+    </Link>
+  )}
+</div>
 
         <div className="flex gap-3 items-center ">
           <div className="flex gap-3 items-center">

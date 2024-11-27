@@ -9,6 +9,8 @@ import Layout from "./Layout";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoaderAnimation from "./components/Loader";
+import ResetPassword from "./pages/ResetPassword";
+import ConfirmNewPassword from "./pages/ConfirmNewPassword";
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Login = lazy(() => import("./pages/Login"));
@@ -43,6 +45,10 @@ const App = () => {
         <Route path="about" element={<About />} />
         <Route path="login" element={<Login />} />
         <Route path="sign-up" element={<SignUp />} />
+        <Route path="reset-password" element={<ResetPassword />} />
+
+        <Route path="confirm-new-password" element={<ConfirmNewPassword />} />
+
         <Route path="contact" element={<Contact />} />
         <Route path="profile" element={<Profile />}>
           <Route path="" element={<Dashboard />} />

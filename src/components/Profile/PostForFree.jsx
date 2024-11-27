@@ -1,46 +1,79 @@
 import axios from "axios";
 import {
   Button,
-  Checkbox,
   Group,
   TextInput,
   Select,
   NumberInput,
-  FileButton,
   ScrollArea,
-  Switch,
   MultiSelect,
+  FileButton,
+  Text,
 } from "@mantine/core";
 import { useForm } from "@mantine/form";
-import { useState } from "react";
-import { DateInput, Day } from "@mantine/dates";
+import { DateInput } from "@mantine/dates";
 import { useSelector } from "react-redux";
 import dayjs from "dayjs";
+import { useState } from "react";
 
 const PostForFree = () => {
+  const [file, setFile] = useState(null);
+  const [files, setFiles] = useState([]);
+
   const form = useForm({
     mode: "uncontrolled",
-    initialValues: {},
-
+    initialValues: {
+      image: null,
+      morePhotes: [],
+    },
     validate: {
       // email: (value) => (/^\S+@\S+$/.test(value) ? null : "Invalid email"),
     },
   });
+  const handleFileChange = (uploadedFile) => {
+    setFile(uploadedFile);
+    form.setFieldValue(
+      "image",
+      uploadedFile ? URL.createObjectURL(uploadedFile) : ""
+    );
+  };
+  const handleMultipeFileChange = (uploadedFiles) => {
+    const filesArray = Array.from(uploadedFiles);
+    setFiles(filesArray); // Update state
+    form.setFieldValue("morePhotos", filesArray);
+  };
+
   const token = useSelector((state) => state.auth.token);
   return (
     <>
       <ScrollArea>
         <form
           onSubmit={form.onSubmit(async (values) => {
-            console.log(token);
-            const formattedValues = {
-              ...values,
-              dateOfBuild: dayjs(values.dateOfBuild).format("YYYY-MM-DD"),
-            };
-            console.log(values);
+            const formData = new FormData();
+            const formattedDate = dayjs(values.dateOfBuild).format(
+              "YYYY-MM-DD"
+            );
+            formData.append("dateOfBuild", formattedDate);
+            if (file) {
+              formData.append("image", file);
+            }
+
+            if (files && files.length > 0) {
+              files.forEach((file) => {
+                formData.append("morePhotos", file);
+              });
+            } else {
+              console.error("No files found in `files` array");
+            }
+            Object.keys(values).forEach((key) => {
+              formData.append(key, values[key]);
+            });
+            for (let pair of formData.entries()) {
+              console.log(pair[0], pair[1]); // Logs all keys and values being sent
+            }
 
             try {
-              const response = await axios.post("/api/room", formattedValues, {
+              const response = await axios.post("/api/room", formData, {
                 headers: {
                   Authorization: `Bearer ${token}`,
                   "Content-Type": "multipart/form-data",
@@ -66,7 +99,6 @@ const PostForFree = () => {
               <p className="text-sm text-gray-500">
                 All fields marked with * are mandatory
               </p>
-
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-4">
                 <div>
                   <Select
@@ -113,20 +145,6 @@ const PostForFree = () => {
                   ></Select>
                 </div>
 
-                <div></div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6">
-                <div>
-                  <NumberInput
-                    label="Price"
-                    withAsterisk
-                    description="Enter Price"
-                    placeholder="Enter Price"
-                    key={form.key("price")}
-                    {...form.getInputProps("price")}
-                  />
-                </div>
                 <div>
                   <Select
                     description=" Enter Price Negotiate"
@@ -139,7 +157,47 @@ const PostForFree = () => {
                   ></Select>
                 </div>
               </div>
+              <FileButton
+                onChange={handleFileChange}
+                accept="image/png,image/jpeg"
+              >
+                {(props) => <Button {...props}>Upload image</Button>}
+              </FileButton>
+              {file && (
+                <Text size="sm" ta="center" mt="sm">
+                  Picked file: {file.name}
+                </Text>
+              )}
+              <FileButton
+                onChange={handleMultipeFileChange}
+                accept="image/png,image/jpeg"
+                multiple
+              >
+                {(props) => <Button {...props}>More image</Button>}
+              </FileButton>
+              {files.length > 0 && (
+                <Text size="sm" mt="sm">
+                  Picked files:
+                </Text>
+              )}
+              <ul>
+                {files.map((file, index) => (
+                  <li key={index}>{file.name}</li>
+                ))}
+              </ul>
 
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-10 mt-6">
+                <div>
+                  <NumberInput
+                    label="Price"
+                    withAsterisk
+                    description="Enter Price"
+                    placeholder="Enter Price"
+                    key={form.key("price")}
+                    {...form.getInputProps("price")}
+                  />
+                </div>
+              </div>
               {/* 2 */}
               <div className="w-full   bg-white  rounded-md mt-12">
                 <h2 className="text-xl font-semibold text-gray-700">
@@ -172,7 +230,7 @@ const PostForFree = () => {
                   <div>
                     <Select
                       description=" Enter  Kitchen"
-                      label="Furnishing"
+                      label="Kitchen"
                       defaultValue="YES"
                       placeholder="Pick Kitchen "
                       data={["YES", "NO"]}
@@ -282,7 +340,6 @@ const PostForFree = () => {
                   </div>
                 </div>
               </div>
-
               {/* 3 */}
               <div className="max-w-4xl mx-auto bg-white   rounded-md mt-10">
                 <h2 className="text-xl font-semibold text-gray-700">
@@ -349,7 +406,6 @@ const PostForFree = () => {
                   </div>
                 </div>
               </div>
-
               <Group justify="flex-end" mt="md">
                 <Button type="submit">Submit</Button>
               </Group>

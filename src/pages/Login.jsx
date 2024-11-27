@@ -114,7 +114,14 @@ const Login = () => {
               }}
             />
           </div>
-
+          <div className="text-end text-sm my-5 ">
+            <Link
+              to="/reset-password"
+              className="text-yellow-400 font-semibold "
+            >
+              Forget Password
+            </Link>
+          </div>
           <button
             onClick={handleSubmit}
             className="w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-gray-800"

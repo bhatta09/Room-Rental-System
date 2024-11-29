@@ -1,163 +1,106 @@
+import { Badge, Button } from "@mantine/core";
+import Breadcumbs from "../components/Breadcumbs";
+import {
+  IconCalendar,
+  IconDirection,
+  IconHeart,
+  IconNavigation,
+  IconNavigationBolt,
+  IconShare,
+} from "@tabler/icons-react";
+
 const RoomDetail = () => {
-  return <div>room details</div>;
+  return (
+    <div>
+      {/* title section */}
+      <div className="px-36 py-6 flex flex-col gap-1">
+        <div>
+          <Breadcumbs />
+          <div className="flex justify-between">
+            <Badge variant="outline" color="orange" size="sm" radius="xs">
+              Rent
+            </Badge>
+            <div className="flex gap-4">
+              <Button
+                leftSection={<IconHeart size={14} />}
+                variant="default"
+                size="compact-sm"
+              >
+                LIKE
+              </Button>
+              <Button
+                leftSection={<IconShare size={14} />}
+                variant="default"
+                size="compact-sm"
+              >
+                Share
+              </Button>
+            </div>
+          </div>
+        </div>
+        <div></div>
+        <div>
+          <h1 className=" text-xl font-semibold ">
+            Mero City Apartment : Apartment for Sale in Hattiban, Lalitpur
+          </h1>
+          <div className="flex justify-between">
+            <h4 className=" text-sm font-light ">Hattiban, Lalitpur</h4>
+            <b className="text-2xl font-bold">
+              Rs. 5700 <span className="text-lg font-semibold">/Months</span>
+            </b>
+          </div>
+        </div>
+
+        <div className="flex justify-between">
+          <Button
+            leftSection={<Icon size={14} />}
+            variant="default"
+            size="compact-xs"
+          >
+            LIKE
+          </Button>
+          <div className="flex justify-end items-center gap-1">
+            <IconCalendar size={14} />
+            <h4 className=" text-sm font-light ">Last updated: Feb 29, 2024</h4>
+          </div>
+        </div>
+      </div>
+      {/* image section */}
+      <div className="px-36  grid grid-cols-4 grid-rows-2 gap-2">
+        <div className="col-span-2 row-span-2">
+          <img
+            src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+
+        <div className="col-span-1">
+          <img
+            src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className="col-span-1">
+          <img
+            src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className="col-span-1">
+          <img
+            src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+        <div className="col-span-1">
+          <img
+            src="https://images.pexels.com/photos/276724/pexels-photo-276724.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt=""
+          />
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default RoomDetail;
-// import PropertyTitle from "../components/RoomDetails/PropertyTitle";
-// import PropertyDetails from "../components/RoomDetails/PropertyDetails";
-// import SellerProfile from "../components/RoomDetails/SellerProfile";
-// import MapSection from "../components/RoomDetails/MapSection";
-
-// import { useEffect } from "react";
-// import FeatureRoom from "../components/Home/FeatureRoom";
-// import ClientReview from "../components/RoomDetails/ClientReview";
-
-// <div className="container mx-auto p-4 lg:px-16">
-//   {/* room images */}
-//   <div className="grid grid-cols-4 grid-rows-4  gap-1 h-[65vh] px-12">
-//     <div className="col-span-2 row-span-4 bg-blue-500 overflow-hidden rounded-l-2xl">
-//       <img
-//         className="object-cover w-full h-full"
-//         src="https://plus.unsplash.com/premium_photo-1680098057160-15950ff013ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         alt=""
-//       />
-//     </div>
-//     <div className="row-span-2  bg-red-500 overflow-hidden ">
-//       <img
-//         className="object-cover w-full h-full"
-//         src="https://plus.unsplash.com/premium_photo-1680098057160-15950ff013ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         alt=""
-//       />
-//     </div>
-//     <div className="row-span-2 bg-green-500 overflow-hidden rounded-tr-2xl">
-//       <img
-//         className="object-cover w-full h-full"
-//         src="https://plus.unsplash.com/premium_photo-1680098057160-15950ff013ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         alt=""
-//       />
-//     </div>
-//     <div className="row-span-2 bg-yellow-500 overflow-hidden ">
-//       <img
-//         className="object-cover w-full h-full"
-//         src="https://plus.unsplash.com/premium_photo-1680098057160-15950ff013ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         alt=""
-//       />
-//     </div>
-//     <div className="row-span-2 bg-pink-500 overflow-hidden rounded-br-2xl">
-//       <img
-//         className="object-cover w-full h-full"
-//         src="https://plus.unsplash.com/premium_photo-1680098057160-15950ff013ce?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         alt=""
-//       />
-//     </div>
-//   </div>
-
-//   {/* room details */}
-//   <div>
-//     <div className="grid grid-cols-4 gap-8 px-12 my-12 ">
-//       <SellerProfile />
-//       <div className="bg-white shadow-md rounded-lg p-6 col-span-2">
-//         <PropertyDetails />
-//         <div className="mt-8">
-//           <h2 className="font-bold text-lg mb-2">Overview</h2>
-//           <p className="text-gray-600">
-//             Kritipur Salyanthan, 10 mins walking distance from Hicast
-//             College near Sasa Restaurant
-//           </p>
-//         </div>
-//         <div className="space-y-8">
-//           <div className="bg-white shadow-md rounded-lg p-6">
-//             <h2 className="font-bold text-lg mb-2">
-//               Local Area Facilities
-//             </h2>
-//             <div className="grid grid-cols-2 gap-y-4 gap-x-8 border border-gray-200 rounded-lg p-4">
-//               {[
-//                 "GYM",
-//                 "Swimming Pool",
-//                 "Hospital",
-//                 "School",
-//                 "Temple",
-//                 "Restaurants",
-//                 "Super Market",
-//                 "Bus Stop",
-//               ].map((facility, index) => (
-//                 <div key={index} className="flex items-center space-x-4">
-//                   <span className="w-4 h-4 rounded-full bg-orange-500 inline-block"></span>
-//                   <span className="text-gray-600">{facility}</span>
-//                 </div>
-//               ))}
-//             </div>
-//           </div>
-
-//           <div className="text-center">
-//             <button className="bg-orange-500 text-white py-3 px-6 rounded-md hover:bg-orange-600 transition duration-200">
-//               Ask anything about 2BHK flat available in Kirtipur
-//             </button>
-//           </div>
-//         </div>
-//         <MapSection />
-//       </div>
-//       <div>
-//         <div className="flex flex-col gap-10">
-//           <ClientReview />
-//           <ClientReview />
-//           <ClientReview />
-//           <ClientReview />
-//           <ClientReview />
-//         </div>
-//       </div>
-//     </div>
-//   </div>
-
-//   {/* similar rooms */}
-//   <section className="px-12">
-//     <div className="flex justify-between mb-5 ">
-//       <h2 className="text-xl font-semibold text-center ">Featured Rooms</h2>
-//       <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
-//         View All <span className="ml-2 text-white font-bold">→</span>
-//       </button>
-//     </div>
-//     <div className="flex flex-row gap-4 mb-12">
-//       <FeatureRoom
-//         imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         roomName="Office space for rent..."
-//         location="Gwarko,Lalitpur"
-//         roomType="office"
-//         price="Rs25000/month"
-//         owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//       />{" "}
-//       <FeatureRoom
-//         imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         roomName="Office space for rent..."
-//         location="Gwarko,Lalitpur"
-//         roomType="office"
-//         price="Rs25000/month"
-//         owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//       />{" "}
-//       <FeatureRoom
-//         imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         roomName="Office space for rent..."
-//         location="Gwarko,Lalitpur"
-//         roomType="office"
-//         price="Rs25000/month"
-//         owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//       />{" "}
-//       <FeatureRoom
-//         imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         roomName="Office space for rent..."
-//         location="Gwarko,Lalitpur"
-//         roomType="office"
-//         price="Rs25000/month"
-//         owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//       />{" "}
-//       <FeatureRoom
-//         imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//         roomName="Office space for rent..."
-//         location="Gwarko,Lalitpur"
-//         roomType="office"
-//         price="Rs25000/month"
-//         owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
-//       />
-//     </div>
-//   </section>
-// </div>

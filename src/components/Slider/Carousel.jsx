@@ -66,8 +66,8 @@ const Carousel = () => {
           <FeatureRoom
             imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="Single room"
+            location="Dhobighat,Lalitpur"
+            roomType="1Room"
             price="Rs25000/month"
             owner="https://images.unsplash.com/photo-1715405155792-ab743e424c81?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
@@ -76,9 +76,9 @@ const Carousel = () => {
           <FeatureRoom
             imageUrl="https://plus.unsplash.com/premium_photo-1678916185607-d75dbfe4f1f7?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
-            roomType="double room"
-            price="Rs25000/month"
+            location="Mhepi,kathmandu"
+            roomType="2Room"
+            price="Rs20000/month"
             owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           />
         </div>
@@ -88,7 +88,7 @@ const Carousel = () => {
             roomName="Swornim Shrestha is best man"
             location="Gwarko,Lalitpur"
             roomType="1 BHK"
-            price="Rs25000/month"
+            price="Rs22000/month"
             owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </div>
@@ -96,9 +96,9 @@ const Carousel = () => {
           <FeatureRoom
             imageUrl="https://images.unsplash.com/photo-1572120360610-d971b9d7767c?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             roomName="Office space for rent..."
-            location="Gwarko,Lalitpur"
+            location="Samakhushi,kathmandu"
             roomType="2 BHK"
-            price="Rs25000/month"
+            price="Rs15000/month"
             owner="https://images.pexels.com/photos/5331099/pexels-photo-5331099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           />
         </div>
@@ -106,9 +106,9 @@ const Carousel = () => {
           <FeatureRoom
             imageUrl="https://plus.unsplash.com/premium_photo-1691360599379-a5717853ab6e?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             roomName=""
-            location="Gwarko,Lalitpur"
+            location="Sanothimi,Bhaktapur"
             roomType="FLAT"
-            price="Rs25000/month"
+            price="Rs27000/month"
             owner="https://plus.unsplash.com/premium_photo-1693243527718-37442fc7f77c?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
           />
         </div>

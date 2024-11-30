@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import img from "../assets/homer.png";
+import img from "../assets/ghar1-removebg-preview.png"
 import PhoneIcon from "@mui/icons-material/Phone";
 import EmailIcon from "@mui/icons-material/Email";
 import InstagramIcon from "@mui/icons-material/Instagram";
@@ -41,12 +41,12 @@ const footerData = [
 
 const Footer = () => {
   return (
-    <div className="  bg-gray-100">
+    <div className=" bg-gray-800">
       {/* footer-content */}
       <div className="flex flex-wrap gap-12 p-12 md:justify-between lg:px-32 ">
         <div className="  flex flex-col gap-5 ">
           <h3 className="text-xl font-semibold text-yellow-400">Quick Links</h3>
-          <div className="flex flex-col">
+          <div className="flex flex-col text-white">
             {footerData[1].navigationLinks.map((data, index) => (
               <Link
                 key={index}
@@ -59,7 +59,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className=" text-black w-1/4">
+        <div className=" text-white">
           <h2 className="text-xl font-semibold text-yellow-400">
             Subscription
           </h2>
@@ -84,7 +84,7 @@ const Footer = () => {
 
         <div className=" flex flex-col gap-4 ">
           <h3 className="text-xl font-semibold text-yellow-400">Accounts</h3>
-          <div className="flex flex-col">
+          <div className="flex flex-col text-white">
             {footerData[2].Account.map((data, index) => (
               <Link
                 key={index}
@@ -96,8 +96,8 @@ const Footer = () => {
             ))}
           </div>
         </div>
-        <div className="text-sm font-medium flex flex-col gap-4  ">
-          <img src={img} alt="" className="h-32 w-64 ml-[-32px]" />
+        <div className="text-sm font-medium flex flex-col gap-4 text-white ">
+          <img src={img} alt="" className="h-32 w-72 ml-[-32px]" />
           <Link>
             <label htmlFor="">
               <PhoneIcon sx={{ fontSize: 18, color: "" }} />
@@ -167,8 +167,8 @@ const Footer = () => {
         </div>
       </div>
 
-      <footer className=" p-6 bg-slate-200 text-white md:px-32  mb-12 md:mb-0">
-        <div className="flex flex-col md:flex-row  md:justify-between  text-black font-semibold">
+      <footer className=" p-6 bg-gray-700 text-white md:px-32  mb-12 md:mb-0">
+        <div className="flex flex-col md:flex-row  md:justify-between  text-white font-semibold">
           <h3>© 2024 Room Rental. All Rights Reserved.</h3>
           <h3>Developed by Academians Hamro Sano Group Technology</h3>
         </div>

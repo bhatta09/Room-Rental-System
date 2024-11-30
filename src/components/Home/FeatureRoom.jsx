@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-import PlaceIcon from "@mui/icons-material/Place";
+import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
-import RoofingIcon from "@mui/icons-material/Roofing";
-import StarIcon from "@mui/icons-material/Star";
-import { yellow } from "@mui/material/colors";
+import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';;
+import { ActionIcon,Button,} from "@mantine/core";
+import {IconPhoneCall} from "@tabler/icons-react";
 const FeatureRoom = ({
   imageUrl,
   roomName,
@@ -13,7 +13,7 @@ const FeatureRoom = ({
   owner,
 }) => {
   return (
-    <div className="max-w-72 h-auto rounded-2xl overflow-hidden group relative border-2 border-gray-300">
+    <div className="max-w-72 h-auto rounded-2xl overflow-hidden group relative border border-gray-300">
       <div className="relative ">
         <Link to="/roomdetail">
           <img
@@ -29,7 +29,7 @@ const FeatureRoom = ({
           <img
             src={owner}
             alt={roomName}
-            className="w-12 h-12 object-cover rounded-full"
+            className="w-12 h-12 object-cover "
           />
         </div>
 
@@ -46,30 +46,34 @@ const FeatureRoom = ({
         </div>
       </div>
       <div className="p-2">
-        <div className="flex bg--400  mb-2 justify-between">
-          <h3 className="text-md font-medium   line-clamp-1 w-[65%]">
-            {roomName}
-          </h3>
-          <p className="text-gray-600 text-sm font-semibold  ">
-            <span className="mr-1">
-              <StarIcon fontSize="medium" sx={{ color: "yellow" }} />
-            </span>
-            4.5(8)
-          </p>
+        <div className="flex mb-2 justify-between">
+          <span className="text-md font-medium text-center  line-clamp-1 w-[65%]">
+            {price}
+          </span>
+          <span className="text-gray-900 text-sm font-medium flex items-center">
+            <HouseOutlinedIcon fontSize="medium" className="mr-1" />
+            {roomType}
+          </span>
         </div>
         <p className="text-gray-800 text-sm font-medium flex items-center mb-3">
           <span className="mr-1">
-            <PlaceIcon fontSize="medium" />
+            <FmdGoodOutlinedIcon fontSize="medium" />
           </span>
           {location}
         </p>
-        <div className="flex justify-between items-center">
-          <span className="text-gray-900 text-sm font-medium flex items-center">
-            <RoofingIcon fontSize="medium" className="mr-1" />
-            {roomType}
-          </span>
-          <span className="text-gray-700 text-base font-semibold">{price}</span>
-        </div>
+        <div className="flex justify-center items-center gap-2">
+              <Button variant="default" color="black" fullWidth>
+                View Details
+              </Button>
+              <ActionIcon
+                variant="gradient"
+                size="lg"
+                aria-label="Gradient action icon"
+                gradient={{ from: "green", to: "teal", deg: 90 }}
+              >
+                <IconPhoneCall size={18} />
+              </ActionIcon>
+            </div>
       </div>
     </div>
   );

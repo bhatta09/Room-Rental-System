@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import AuthBg from "../components/Auth/AuthBg";
 import { TextField } from "@mui/material";
-import { Link } from "react-router-dom";
 import axios from "axios";
 import ConfirmEmailBtn from "./ConfirmEmailtBtn";
 

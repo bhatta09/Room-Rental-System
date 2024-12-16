@@ -1,5 +1,3 @@
-import React from "react";
-
 const PP = () => {
   return (
     <div className="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-8 bg-white shadow-md mt-10 rounded-lg mb-10">
@@ -93,7 +91,7 @@ const PP = () => {
           href="mailto:support@roomrental.com"
           className="text-blue-500 hover:underline"
         >
-          support@roomrental.com
+          noreply.aawas@gmail.com
         </a>
       </p>
     </div>

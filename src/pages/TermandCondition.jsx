@@ -39,7 +39,7 @@ const TermandCondition = () => {
         </p>
   
         <p className="mt-8 text-center text-sm sm:text-base">
-          If you have any questions about these Terms, please contact us at <a href="mailto:support@roomrental.com" className="text-blue-500 hover:underline">support@roomrental.com</a>.
+          If you have any questions about these Terms, please contact us at <a href="noreply.aawas@gmail.com" className="text-blue-500 hover:underline">noreply.aawas@gmail.com</a>.
         </p>
       </div>
     );

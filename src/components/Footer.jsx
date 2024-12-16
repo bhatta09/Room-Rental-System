@@ -112,7 +112,7 @@ const Footer = () => {
           </Link>
           <Link>
             <label htmlFor="">
-              <EmailIcon sx={{ fontSize: 18, color: "", marginRight: "6px" }} />
+              <EmailIcon sx={{fontSize: 18, color: "", marginRight: "6px"}} />
             </label>
        noreply.aawas@gmail.com
           </Link>

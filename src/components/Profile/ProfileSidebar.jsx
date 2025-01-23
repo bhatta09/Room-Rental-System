@@ -14,7 +14,7 @@ import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined
 import IconButton from "@mui/material/IconButton";
 import logo from "../../assets/homer.png";
 import { Typography } from "@mui/material";
-import { Dashboard, Margin } from "@mui/icons-material";
+import { Dashboard } from "@mui/icons-material";
 import ConfirmLogoutBtn from "./ConfirmLogoutBtn";
 const sidebarData = [
   {

@@ -1,6 +1,6 @@
 import { Avatar, Text, Button, Paper, Group } from "@mantine/core";
 import React from "react";
-import { IconBookmark, IconMessage } from "@tabler/icons-react";
+// import { IconBookmark, IconMessage } from "@tabler/icons-react";
 
 const SellerProfile = () => {
   return (
@@ -29,7 +29,7 @@ const SellerProfile = () => {
         <Button
           color="green"
           radius="md"
-          leftSection={<IconBookmark size={14} />}
+          // leftSection={<IconBookmark size={14} />}
           variant="light"
           fullWidth
           mt="md"
@@ -39,7 +39,7 @@ const SellerProfile = () => {
         <Button
           color="yellow"
           radius="md"
-          leftSection={<IconMessage size={14} />}
+          // leftSection={<IconMessage size={14} />}
           variant="light"
           fullWidth
           mt="md"

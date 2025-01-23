@@ -1,16 +1,13 @@
 import AuthBg from "../components/Auth/AuthBg";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  Button,
-  TextField,
-  IconButton,
-  InputAdornment,
-  Grid,
-} from "@mui/material";
+import { TextField, IconButton, InputAdornment, Grid } from "@mui/material";
+import { GoKey } from "react-icons/go";
+import { FaHouseUser } from "react-icons/fa";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import axios from "axios";
-
+import {   Text, Button, SegmentedControl } from "@mantine/core";
+import Dropzone from "../components/utls/Dropzone";
 const SignUp = () => {
   const [formData, setFormData] = useState({
     fullName: "",
@@ -20,7 +17,17 @@ const SignUp = () => {
     address: "",
     password: "",
     confirmPassword: "",
+    role: "RENTER",
+    image: "",
   });
+
+  const [file, setFile] = useState("");
+  const resetRef = useRef();
+
+  const clearFile = () => {
+    setFile(null);
+    resetRef.current?.();
+  };
 
   const [formErrors, setFormErrors] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -35,8 +42,20 @@ const SignUp = () => {
     }));
   };
 
+
+  const handleFileChange = (file) => {
+    setFile(file); // Set the selected file
+  };
+  const handleRoleSelect = (role) => {
+    setFormData((prevData) => ({
+      ...prevData,
+      role,
+    }));
+  };
+
   const handleClickShowPassword = () => setShowPassword(!showPassword);
-  const handleClickShowConfirmPassword = () => setShowConfirmPassword(!showConfirmPassword);
+  const handleClickShowConfirmPassword = () =>
+    setShowConfirmPassword(!showConfirmPassword);
 
   const handleGoogleLogin = () => {
     window.location.href = "http://localhost:9090/oauth2/authorization/google";
@@ -44,8 +63,29 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
+    // Create a FormData object to handle multipart data
+    const formDataToSend = new FormData();
+    // Append all form data fields
+    formDataToSend.append("fullName", formData.fullName);
+    formDataToSend.append("username", formData.username);
+    formDataToSend.append("phoneNumber", formData.phoneNumber);
+    formDataToSend.append("email", formData.email);
+    formDataToSend.append("address", formData.address);
+    formDataToSend.append("password", formData.password);
+    formDataToSend.append("confirmPassword", formData.confirmPassword);
+    formDataToSend.append("role", formData.role);
+
+    if (file) {
+      formDataToSend.append("idCard", file);
+      console.log("File to be uploaded:", file);
+    }
     try {
-      const response = await axios.post("/api/v1/auth/signUp", formData);
+      const response = await axios.post("/api/v1/auth/signUp", formDataToSend, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       console.log(response.data);
       navigate("/emailverification", { state: { email: formData.email } });
     } catch (error) {
@@ -69,8 +109,44 @@ const SignUp = () => {
         <h2 className="uppercase text-2xl font-semibold text-gray-800 text-center">
           Signup
         </h2>
+
+        <h1 className="text-md font-normal my-2 text-center text-black/60">
+              Choose your role and sign up
+            </h1>
         <form onSubmit={handleSubmit}>
+        <SegmentedControl
+            className="border p-2 border--500 my-4"
+            bg="white"
+            color="yellow"
+            fullWidth
+
+            data={[
+              {
+                label: (
+                  <div 
+                  onClick={() => handleRoleSelect("RENTER")} 
+                  className="flex justify-between  flex-col items-center">
+                    <GoKey size={20} />
+                    <span className="font-normal">RENTER</span>
+                  </div>
+                ),
+                value: "checkin",
+              },
+              {
+                label: (
+                  <div  
+                  onClick={() => handleRoleSelect("LANDLORD")}
+                  className="flex justify-between  flex-col items-center">
+                    {/* <LuHouse size={30} /> */}
+                    <FaHouseUser size={20} />
+                    <span className="font-normal">LANDLORD</span>
+                  </div>
+                ),
+                value: "lan",
+              },]}/>
           <Grid container spacing={2}>
+
+
             <Grid item xs={6}>
               <TextField
                 variant="standard"
@@ -178,8 +254,15 @@ const SignUp = () => {
                 InputProps={{
                   endAdornment: (
                     <InputAdornment position="end">
-                      <IconButton onClick={handleClickShowConfirmPassword} edge="end">
-                        {showConfirmPassword ? <VisibilityOff /> : <Visibility />}
+                      <IconButton
+                        onClick={handleClickShowConfirmPassword}
+                        edge="end"
+                      >
+                        {showConfirmPassword ? (
+                          <VisibilityOff />
+                        ) : (
+                          <Visibility />
+                        )}
                       </IconButton>
                     </InputAdornment>
                   ),
@@ -187,6 +270,33 @@ const SignUp = () => {
               />
             </Grid>
           </Grid>
+          {/* {formData.role === "LANDLORD" && (
+            <Group justify="start" className="my-3">
+              <FileButton onChange={setFile} accept="image/png,image/jpeg">
+                {(props) => <Button {...props}>Upload image</Button>}
+              </FileButton>
+              <Button
+                disabled={!file}
+                color="red"
+                variant="filled"
+                onClick={clearFile}
+              >
+                Reset
+              </Button>
+              
+            </Group>
+          )} */}
+           {formData.role === "LANDLORD" &&  <h1 className="text-md font-normal my-4">
+              ID Card Upload
+            </h1>}
+         { formData.role === "LANDLORD" && <Dropzone onFileChange={handleFileChange}   />}
+        
+
+          {file && (
+            <Text size="sm" ta="center" mt="sm">
+              Picked file: {file.name}
+            </Text>
+          )}
           <button
             type="submit"
             className="mt-5 w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-gray-800"
@@ -200,24 +310,27 @@ const SignUp = () => {
             login
           </Link>
         </div>
-        <div>
-          <h1 className="text-lg font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
-            or
-          </h1>
-          <h1 className="text-lg font-normal tracking-normal mb-6 text-gray-800 text-center">
-            Continue With
-          </h1>
-          <div className="flex justify-center gap-2">
-            <Button variant="outlined" onClick={handleGoogleLogin}>
-              <img
-                className="w-7"
-                src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
-                alt="Google"
-              />
-              Google
-            </Button>
+
+        {formData.role === "RENTER" && (
+          <div>
+            <h1 className="text-lg font-normal tracking-normal mt-6 text-gray-800 text-center uppercase">
+              or
+            </h1>
+            <h1 className="text-lg font-normal tracking-normal mb-6 text-gray-800 text-center">
+              Continue With
+            </h1>
+            <div className="flex justify-center gap-2">
+              <Button variant="light" onClick={handleGoogleLogin}>
+                <img
+                  className="w-7"
+                  src="https://img.icons8.com/?size=100&id=17949&format=png&color=000000"
+                  alt="Google"
+                />
+                Google
+              </Button>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );

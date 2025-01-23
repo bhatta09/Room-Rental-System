@@ -3,7 +3,7 @@ import FmdGoodOutlinedIcon from '@mui/icons-material/FmdGoodOutlined';
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import HouseOutlinedIcon from '@mui/icons-material/HouseOutlined';;
 import { ActionIcon,Button,} from "@mantine/core";
-import {IconPhoneCall} from "@tabler/icons-react";
+// import {IconPhoneCall} from "@tabler/icons-react";
 const FeatureRoom = ({
   imageUrl,
   roomName,
@@ -71,7 +71,7 @@ const FeatureRoom = ({
                 aria-label="Gradient action icon"
                 gradient={{ from: "green", to: "teal", deg: 90 }}
               >
-                <IconPhoneCall size={18} />
+                {/* <IconPhoneCall size={18} /> */}
               </ActionIcon>
             </div>
       </div>

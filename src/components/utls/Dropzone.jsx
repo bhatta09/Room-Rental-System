@@ -32,25 +32,21 @@ const img = {
   height: "100%",
 };
 
-const Dropzone = ({onFileChange}) => {
+const Dropzone = ({ onChange }) => {
   const [files, setFiles] = useState([]);
   const { getRootProps, getInputProps } = useDropzone({
     accept: {
       "image/*": [],
     },
     onDrop: (acceptedFiles) => {
-      setFiles(
-        acceptedFiles.map((file) =>
-          Object.assign(file, {
-            preview: URL.createObjectURL(file),
-          })
-        )
+      const fileWithPreview = acceptedFiles.map((file) =>
+        Object.assign(file, {
+          preview: URL.createObjectURL(file),
+        })
       );
-      if (onFileChange) {
-        onFileChange(file); 
-      }
+      setFiles(fileWithPreview);
+      onChange(fileWithPreview[0]);
     },
-   
   });
 
   const thumbs = files.map((file) => (

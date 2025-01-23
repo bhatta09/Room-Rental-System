@@ -6,7 +6,7 @@ import { FaHouseUser } from "react-icons/fa";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { useRef, useState } from "react";
 import axios from "axios";
-import {   Text, Button, SegmentedControl } from "@mantine/core";
+import { Text, Button, SegmentedControl } from "@mantine/core";
 import Dropzone from "../components/utls/Dropzone";
 const SignUp = () => {
   const [formData, setFormData] = useState({
@@ -42,9 +42,8 @@ const SignUp = () => {
     }));
   };
 
-
   const handleFileChange = (file) => {
-    setFile(file); // Set the selected file
+    setFile(file);
   };
   const handleRoleSelect = (role) => {
     setFormData((prevData) => ({
@@ -63,10 +62,7 @@ const SignUp = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
-    // Create a FormData object to handle multipart data
     const formDataToSend = new FormData();
-    // Append all form data fields
     formDataToSend.append("fullName", formData.fullName);
     formDataToSend.append("username", formData.username);
     formDataToSend.append("phoneNumber", formData.phoneNumber);
@@ -111,21 +107,21 @@ const SignUp = () => {
         </h2>
 
         <h1 className="text-md font-normal my-2 text-center text-black/60">
-              Choose your role and sign up
-            </h1>
+          Choose your role and sign up
+        </h1>
         <form onSubmit={handleSubmit}>
-        <SegmentedControl
+          <SegmentedControl
             className="border p-2 border--500 my-4"
             bg="white"
             color="yellow"
             fullWidth
-
             data={[
               {
                 label: (
-                  <div 
-                  onClick={() => handleRoleSelect("RENTER")} 
-                  className="flex justify-between  flex-col items-center">
+                  <div
+                    onClick={() => handleRoleSelect("RENTER")}
+                    className="flex justify-between  flex-col items-center"
+                  >
                     <GoKey size={20} />
                     <span className="font-normal">RENTER</span>
                   </div>
@@ -134,19 +130,20 @@ const SignUp = () => {
               },
               {
                 label: (
-                  <div  
-                  onClick={() => handleRoleSelect("LANDLORD")}
-                  className="flex justify-between  flex-col items-center">
+                  <div
+                    onClick={() => handleRoleSelect("LANDLORD")}
+                    className="flex justify-between  flex-col items-center"
+                  >
                     {/* <LuHouse size={30} /> */}
                     <FaHouseUser size={20} />
                     <span className="font-normal">LANDLORD</span>
                   </div>
                 ),
                 value: "lan",
-              },]}/>
+              },
+            ]}
+          />
           <Grid container spacing={2}>
-
-
             <Grid item xs={6}>
               <TextField
                 variant="standard"
@@ -286,11 +283,12 @@ const SignUp = () => {
               
             </Group>
           )} */}
-           {formData.role === "LANDLORD" &&  <h1 className="text-md font-normal my-4">
-              ID Card Upload
-            </h1>}
-         { formData.role === "LANDLORD" && <Dropzone onFileChange={handleFileChange}   />}
-        
+          {formData.role === "LANDLORD" && (
+            <h1 className="text-md font-normal my-4">ID Card Upload</h1>
+          )}
+          {formData.role === "LANDLORD" && (
+            <Dropzone value={formData.image} onChange={handleFileChange} />
+          )}
 
           {file && (
             <Text size="sm" ta="center" mt="sm">
@@ -299,7 +297,7 @@ const SignUp = () => {
           )}
           <button
             type="submit"
-            className="mt-5 w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-gray-800"
+            className="mt-5 w-full font-semibold bg-yellow-400 rounded h-10 text-base font-sm text-black"
           >
             Signup
           </button>

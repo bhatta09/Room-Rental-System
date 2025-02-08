@@ -6,7 +6,7 @@ import { Visibility, VisibilityOff } from "@mui/icons-material";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
-import { setToken } from "../redux/auth/authSlice";
+import { setRole, setToken } from "../redux/auth/authSlice";
 
 const Login = () => {
   const [searchParams] = useSearchParams();
@@ -30,7 +30,10 @@ const Login = () => {
 
       console.log("Response:", response.data.token);
       const userToken = response.data.token;
+      const role = response.data.role;
       dispatch(setToken(userToken));
+      dispatch(setRole(role));
+
       toast.success("Login Successfully");
       setPassword("");
       setusername("");

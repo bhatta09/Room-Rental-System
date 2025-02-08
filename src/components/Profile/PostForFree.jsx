@@ -323,8 +323,8 @@ const PostForFree = () => {
                         "DHALAN_ROAD",
                         "MUDDY_ROAD",
                       ]}
-                      key={form.key("roodType")}
-                      {...form.getInputProps("roodType")}
+                      key={form.key("roadType")}
+                      {...form.getInputProps("roadType")}
                     ></Select>
                   </div>
                   <div>

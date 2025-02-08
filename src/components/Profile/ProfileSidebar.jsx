@@ -5,7 +5,7 @@ import ReplyIcon from "@mui/icons-material/Reply";
 import LogoutIcon from "@mui/icons-material/Logout";
 import { Link, NavLink, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import { clearToken } from "../../redux/auth/authSlice";
+import { clearRole, clearToken } from "../../redux/auth/authSlice";
 import { toast } from "react-toastify";
 import GridViewIcon from "@mui/icons-material/GridView";
 import RateReviewOutlinedIcon from "@mui/icons-material/RateReviewOutlined";
@@ -61,6 +61,7 @@ const ProfileSidebar = ({ open }) => {
   const navigate = useNavigate();
   const handleLogout = () => {
     dispatch(clearToken());
+    dispatch(clearRole());
     setopenDialog(true);
   };
 

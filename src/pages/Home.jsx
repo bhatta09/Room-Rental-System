@@ -105,7 +105,6 @@ const Home = () => {
       <div className="" id="heroSection">
         <section className="shadow-xl relative flex items-center justify-center h-[89vh]   bg-cover bg-center overflow-hidden w-full bg-hero-pattern ">
           <div className="flex flex-col m-5 md:m-32 gap-5 md:gap-14">
-            
             <div className="text-left  z-0 my-10 mr-10 ">
               <div className="bg-yellow-100 inline-flex items-center px-3 py-1.5 rounded-full mb-4">
                 <span role="img" aria-label="thumbs up">
@@ -204,7 +203,7 @@ const Home = () => {
       </section>
 
       <section data-aos="fade-up" className="md:mx-32 my-5 md:my-14">
-        <AboutUs />
+        {/* <AboutUs /> */}
       </section>
       {/* <section className="bg-[#fefeff]" data-aos="fade-down">
         <Agent />

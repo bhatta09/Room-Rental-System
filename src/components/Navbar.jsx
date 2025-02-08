@@ -42,6 +42,8 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 const Navbar = () => {
   const token = useSelector((state) => state.auth.token);
+  const role = useSelector((state) => state.auth.role);
+
   const [username, setUsername] = useState("");
   const [image, setImage] = useState("");
   useEffect(() => {
@@ -86,53 +88,54 @@ const Navbar = () => {
     <nav className=" bg-white/90 sticky  top-0 z-[100] flex flex-wrap  items-center   px-12 lg:px-32  pt-1  gap-4 ">
       {/* logo */}
       <div className="bg--500 w-full flex justify-between  text-sm font-medium py-2 ">
-      <div className="flex items-center gap-28">
-  <Link to="/">
-    <img src={logo} alt="" className="w-36" />
-  </Link>
-  {token && (
-    <Link to="/profile/wishlist">
-      <Badge badgeContent={4} color="warning">
-        <FavoriteBorderIcon fontSize="small" />
-      </Badge>
-    </Link>
-  )}
-</div>
+        <div className="flex items-center gap-28">
+          <Link to="/">
+            <img src={logo} alt="" className="w-36" />
+          </Link>
+          {token && (
+            <Link to="/profile/wishlist">
+              <Badge badgeContent={4} color="warning">
+                <FavoriteBorderIcon fontSize="small" />
+              </Badge>
+            </Link>
+          )}
+        </div>
 
         <div className="flex gap-3 items-center ">
           <div className="flex gap-3 items-center">
-            <div className="hidden md:flex gap-4 items-center  mr-20 ">
-              
-              <span className="flex gap-1 items-center">
-              <Link to="/profile/post-room">
-                Add Room
-                <AddIcon fontSize="small" />
+            {role === "LANDLORD" && (
+              <div className="hidden md:flex gap-4 items-center  mr-20 ">
+                <span className="flex gap-1 items-center">
+                  <Link to="/profile/post-room">
+                    Add Room
+                    <AddIcon fontSize="small" />
+                  </Link>
+                </span>
+
+                <Link
+                  className="text-black font-medium hover:text-yellow-300 "
+                  to="/contact"
+                ></Link>
+                <Link
+                  className="text-black font-medium hover:text-[#FFB200] "
+                  to="/find-room"
+                >
+                  <button className="hidden md:block border-2 border-[#]  p-2 px-5 rounded-md ">
+                    <h1 className=" uppercase text-xs leading-4 font-medium">
+                      Find me room
+                    </h1>
+                  </button>
                 </Link>
-              </span>
-             
-              <Link
-                className="text-black font-medium hover:text-yellow-300 "
-                to="/contact"
-              ></Link>
-              <Link
-                className="text-black font-medium hover:text-[#FFB200] "
-                to="/find-room"
-              >
-                <button className="hidden md:block border-2 border-[#]  p-2 px-5 rounded-md ">
-                  <h1 className=" uppercase text-xs leading-4 font-medium">
-                    Find me room
-                  </h1>
-                </button>
-              </Link>
-              <Link to="/shift-home">
-                <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-[#FFB200]">
-                  <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
-                  <h1 className=" uppercase text-xs leading-4 font- text-white">
-                    shift Home
-                  </h1>
-                </button>
-              </Link>
-            </div>
+                <Link to="/shift-home">
+                  <button className="  p-2 px-5 rounded-md hidden md:flex  gap-1  bg-[#FFB200]">
+                    <AirportShuttleIcon sx={{ fontSize: 17, color: "white" }} />
+                    <h1 className=" uppercase text-xs leading-4 font- text-white">
+                      shift Home
+                    </h1>
+                  </button>
+                </Link>
+              </div>
+            )}
 
             {username ? (
               <>

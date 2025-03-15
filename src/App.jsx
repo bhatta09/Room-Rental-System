@@ -11,6 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 import LoaderAnimation from "./components/Loader";
 import ResetPassword from "./pages/ResetPassword";
 import ConfirmNewPassword from "./pages/ConfirmNewPassword";
+import AgentProfile from "./pages/AgentProfile";
 const Home = lazy(() => import("./pages/Home"));
 const Contact = lazy(() => import("./pages/Contact"));
 const Login = lazy(() => import("./pages/Login"));
@@ -71,6 +72,7 @@ const App = () => {
         <Route path="online-payment" element={<OnlinePayment />} />
         <Route path="find-room" element={<FindRoom />} />
         <Route path="all-room" element={<AllRoom />} />
+        <Route path="agentdetail" element={<AgentProfile />} />
       </Route>
     )
   );

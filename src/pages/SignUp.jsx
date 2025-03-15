@@ -141,6 +141,19 @@ const SignUp = () => {
                 ),
                 value: "lan",
               },
+              {
+                label: (
+                  <div
+                    onClick={() => handleRoleSelect("AGENT")}
+                    className="flex justify-between  flex-col items-center"
+                  >
+                    {/* <LuHouse size={30} /> */}
+                    <FaHouseUser size={20} />
+                    <span className="font-normal">Agent</span>
+                  </div>
+                ),
+                value: "agent",
+              },
             ]}
           />
           <Grid container spacing={2}>
@@ -283,10 +296,10 @@ const SignUp = () => {
               
             </Group>
           )} */}
-          {formData.role === "LANDLORD" && (
+          {(formData.role === "LANDLORD" || formData.role === "AGENT") && (
             <h1 className="text-md font-normal my-4">ID Card Upload</h1>
           )}
-          {formData.role === "LANDLORD" && (
+          {(formData.role === "LANDLORD" || formData.role === "AGENT") && (
             <Dropzone value={formData.image} onChange={handleFileChange} />
           )}
 

@@ -3,7 +3,6 @@ import {
   List,
   ThemeIcon,
   rem,
-  Input,
   Button,
   Select,
   ActionIcon,
@@ -14,18 +13,17 @@ import {
   IconArrowsMaximize,
   IconCalendar,
   IconCircleCheck,
-  IconFilter,
   IconHeart,
+  IconShare,
   IconHome,
-  IconLocation,
-  IconMoneybag,
   IconPhoneCall,
   IconUser,
 } from "@tabler/icons-react";
 import { useState } from "react";
 import axios from "axios";
+import ads from "../assets/googleAds1.png";
 
-const AllRoom = () => {
+const AgentProfile = () => {
   const [room, setRoom] = useState([]);
   useEffect(() => {
     fetchRoom();
@@ -39,51 +37,27 @@ const AllRoom = () => {
     <div className="px-36 mb-12">
       <div className="bg--500 h- grid grid-cols-4  ">
         {/* search-filters */}
-        <div className=" mb-6 col-span-4 bg-white  sticky top-20  pt-3 z-50 flex flex-col gap-1">
-          <div className="grid grid-cols-8 gap-1 h-fit">
-            <Button
-              leftSection={<IconHome size={14} />}
-              variant="light"
-              color="black"
-              fullWidth
-            >
-              For Rent
-            </Button>
-            <Input
-              clearable
-              className="col-span-2"
-              size="md"
-              placeholder="Location"
-              leftSection={<IconLocation size={16} />}
-            />
-            <Select
-              data={["React", "Angular", "Vue", "Svelte"]}
-              className="col-span-2"
-              size="md"
-              clearable
-              placeholder="Price Range"
-              leftSection={<IconMoneybag size={16} />}
-            />
-            <Select
-              data={["React", "Angular", "Vue", "Svelte"]}
-              className="col-span-2"
-              size="md"
-              placeholder="Room Type"
-              leftSection={<IconHome size={16} />}
-              clearable
-            />
-            <Button
-              leftSection={<IconFilter size={14} />}
-              variant="default"
-              color="black"
-              fullWidth
-            >
-              More Filter
-            </Button>
+        <div className=" mb-6 col-span-4 bg-slate-100/90    pt-3 flex flex-col gap-1 p-5">
+          <div className="  w-1/3  flex  ">
+            <div className="w-32 h-32 relative overflow-hidden">
+              <img
+                className="w-32 h-32"
+                src="https://basobaas.com/_next/image?url=https%3A%2F%2Fapi.basobaas.com%2Fapi%2Ffiles%2Fw1z2pceuc5h89y6%2Faytfq48xbp5ib9i%2Fbnx_profile_pic_dYP3JFRw40.png&w=1920&q=75"
+                alt=""
+              />
+            </div>
+            <div className="flex flex-col p-6 gap-2">
+              <h1 className="text-xl font-bold">BN Exclusive</h1>
+              <h1 className=" text-sm font-normal ">Banesthali</h1>
+              <Button
+                leftSection={<IconShare size={14} />}
+                variant="default"
+                size="compact-sm"
+              >
+                Share Profile
+              </Button>
+            </div>
           </div>
-          <h2 className="text-xs font-bold mb-3 uppercase text-gray-500 hover:text-red-500 cursor-pointer">
-            Clear Filters
-          </h2>
         </div>
         {/* room results */}
         <div className="col-span-3   mr-12">
@@ -201,33 +175,7 @@ const AllRoom = () => {
         {/* explore and ads section */}
         <div className="col-span-1 bg--700  ">
           <div className="w-full ">
-            <h2 className="text-base font-semibold mb-3">Explore more rooms</h2>
-
-            <List
-              spacing="xs"
-              size="sm"
-              center
-              icon={
-                <ThemeIcon color="#ffb200" size={24} radius="xl">
-                  <IconCircleCheck
-                    style={{ width: rem(16), height: rem(16) }}
-                  />
-                </ThemeIcon>
-              }
-            >
-              <List.Item className=" cursor-pointer">
-                Room in Lalitpur
-              </List.Item>
-              <List.Item className=" cursor-pointer">
-                Room in Bhaktapur
-              </List.Item>
-              <List.Item className=" cursor-pointer">
-                Room in Outside Kathmandu Valley
-              </List.Item>
-              <List.Item className=" cursor-pointer">
-                Room in Kathmandu
-              </List.Item>
-            </List>
+            <img src={ads} alt="" />
           </div>
         </div>
       </div>
@@ -235,4 +183,4 @@ const AllRoom = () => {
   );
 };
 
-export default AllRoom;
+export default AgentProfile;

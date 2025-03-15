@@ -194,7 +194,7 @@ const Home = () => {
         <img src={banner1} alt="" className="h-32 " />
       </div>
       {/* Featured Rooms Section */}
-      <section className="px-12 lg:px-32 gap-7  ">
+      <section className="px-12 lg:px-32 gap-7 ">
         <Carousel />
       </section>
 

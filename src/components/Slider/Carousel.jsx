@@ -47,21 +47,24 @@ const Carousel = () => {
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
+          centerMode: true,
+          centerPadding: "0px",
         },
       },
     ],
   };
+  
 
   return (
     <div>
-      <div className="flex justify-between mb-5 ">
+      <div className="flex justify-between mb-5 md:items-center">
         <h2 className="text-xl font-semibold text-center ">Featured Rooms</h2>
         <button className="bg-yellow-400 border-yellow-500 border-2 rounded-lg font-medium px-5 py-1 text-white">
           View All <span className="ml-2 text-white font-bold">→</span>
         </button>
       </div>
 
-      <Slider {...settings}>
+      <Slider {...settings} className="">
         <div className="px-2">
           <FeatureRoom
             imageUrl="https://images.unsplash.com/photo-1668258849037-4caa7e2c1347?q=80&w=1887&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
